@@ -11,8 +11,9 @@
     <body class="antialiased font-sans bg-gray-100 pt-12">
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <h1 class="block text-4xl text-bold mb-4">Laravel Versions</h1>
-            <p class="max-w-2xl">For LTS releases, such as Laravel 6, bug fixes are provided for 2 years and security fixes are provided for 3 years. These releases provide the longest window of support and maintenance. For general releases, bug fixes are provided for 7 months and security fixes are provided for 1 year. For all additional libraries, including Lumen, only the latest release receives bug fixes.</p>
-            <br><br>
+            <p class="max-w-2xl mb-4">For LTS releases, such as Laravel 6, bug fixes are provided for 2 years and security fixes are provided for 3 years. These releases provide the longest window of support and maintenance. For general releases, bug fixes are provided for 7 months and security fixes are provided for 1 year. For all additional libraries, including Lumen, only the latest release receives bug fixes.</p>
+            <p class="max-w-2xl mb-8">To learn more, check out the <a href="https://laravel-news.com/laravel-releases" class="text-blue-800 underline hover:text-blue-600">Laravel news "Laravel Releases" page</a>.</p>
+            <br>
 
             <div class="mb-8">
                 <div class="font-bold">Colors:</div>
@@ -135,8 +136,6 @@
                                         ✓
                                     </td>
                                 </tr>
-
-                                <!-- More items... -->
                             </tbody>
                             </table>
                         </div>
@@ -177,10 +176,13 @@
                                         5.8
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        February 26th, 2019
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        August 26th, 2019
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        February 26th, 2020
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     </td>
@@ -191,10 +193,13 @@
                                         5.7
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        September 4th, 2018
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        March 4th, 2019
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        September 4th, 2019
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     </td>
@@ -205,10 +210,13 @@
                                         5.6
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        February 7th, 2018
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        August 7th, 2018
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        February 7th, 2019
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     </td>
@@ -219,12 +227,16 @@
                                         5.5
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        August 30th, 2017
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        August 30th, 2019
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        August 30th, 2020
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        ✓
                                     </td>
                                 </tr>
                                 <tr>
@@ -312,7 +324,6 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     </td>
                                 </tr>
-                                <!-- More items... -->
                             </tbody>
                             </table>
                         </div>
