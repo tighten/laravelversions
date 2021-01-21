@@ -14,5 +14,34 @@
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"
+    },
+    "prettier": {
+        "singleQuote": true,
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "printWidth": 80
+    },
+    "dependencies": {
+        "husky": "^4.3.8",
+        "lint-staged": "^10.5.3",
+        "prettier": "^2.2.1",
+        "stylelint": "^13.9.0",
+        "stylelint-config-standard": "^20.0.0"
+    },
+    "lint-staged": {
+        "*.php": [
+            "vendor/bin/php-cs-fixer fix --config=.php_cs.dist"
+        ],
+        "*.(css|scss)": [
+            "stylelint"
+        ],
+        "resources/**/*.(js|ts|tsx|css|vue)": [
+            "node_modules/.bin/prettier --write"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged && vendor/bin/tlint lint --diff"
+        }
     }
 }
