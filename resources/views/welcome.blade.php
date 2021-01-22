@@ -6,6 +6,27 @@
 
         <title>Laravel Versions</title>
 
+        <meta name="description" content="Security and bug fix timelines for all Laravel Versions">
+
+        <meta property="og:site_name" content="Laravel Versions">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:title" content="Laravel Versions">
+        <meta property="og:url" content="https://laravelversions.com/">
+        <meta property="og:type" content="website">
+        <meta property="og:description" content="Security and bug fix timelines for all Laravel Versions">
+
+        <meta property="og:image" content="https://laravelversions.com/og.png">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:width" content="1200">
+
+        <meta name="twitter:site" content="@laravelversions">
+        <meta name="twitter:creator" content="@stauffermatt">
+        <meta name="twitter:title" content="Laravel Versions">
+        <meta name="twitter:description" content="Security and bug fix timelines for all Laravel Versions">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="https://laravelversions.com/og.png">
+
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body class="antialiased font-sans bg-gray-100 pt-12">
