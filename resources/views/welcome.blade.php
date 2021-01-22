@@ -31,23 +31,28 @@
     </head>
     <body class="antialiased font-sans bg-gray-100 pt-12">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="block text-4xl text-bold mb-4">Laravel Versions</h1>
-            <p class="max-w-2xl mb-4">Timelines for releases, bug fixes, and security fixes for all versions of Laravel.</p>
+            <h1 class="block text-5xl text-bold mb-4">Laravel Versions</h1>
+            <p class="max-w-2xl mb-8 text-lg">Release dates and security/bugfix timelines for all versions of Laravel.</p>
 
-            <h2 class="block text-xl font-bold">Laravel's versioning strategy</h2>
-            <p class="max-w-2xl mb-4">For LTS releases, such as Laravel 6, bug fixes are provided for 2 years and security fixes are provided for 3 years. These releases provide the longest window of support and maintenance. For general releases, bug fixes are provided for 7 months and security fixes are provided for 1 year. For all additional libraries, including Lumen, only the latest release receives bug fixes.</p>
-            <p class="max-w-2xl mb-8">To learn more, check out the <a href="https://laravel-news.com/laravel-releases" class="text-blue-800 underline hover:text-blue-600">Laravel news "Laravel Releases" page</a>.</p>
-            <br>
-
-            <div class="mb-8">
+            <div class="mb-8 max-w-xs">
+                <div class="float-right cursor-pointer hover:text-blue-800" id="colorblind-mode-toggle">Colorblind mode</div>
                 <div class="font-bold">Colors:</div>
 
-                <div class="max-w-xs">
-                    <div class="p-2 bg-red-300">End of Life</div>
-                    <div class="p-2 bg-yellow-300">Security fixes only</div>
-                    <div class="p-2 bg-green-300">Bug and security fixes</div>
+                <div class="p-2 bg-red-300">
+                    <div class="float-right font-bold js-colorblind font-bold hidden">EOL</div>
+                    End of Life
+                </div>
+                <div class="p-2 bg-yellow-300">
+                    <div class="float-right font-bold js-colorblind font-bold hidden">SEC</div>
+                    Security fixes only
+                </div>
+                <div class="p-2 bg-green-300">
+                    <div class="float-right font-bold js-colorblind font-bold hidden">ALL</div>
+                    Bug and security fixes
                 </div>
             </div>
+
+            <p class="max-w-3xl mb-8">To learn more about Laravel's versioning strategy, check out the <a href="https://laravel-news.com/laravel-releases" class="text-blue-800 underline hover:text-blue-600">Laravel news "Laravel Releases" page</a>.</p>
 
             <h2 class="block text-xl font-bold mb-2">Currently supported versions</h2>
             <div class="flex flex-col">
@@ -81,11 +86,19 @@
                                     'active' => 'bg-green-300',
                                     'security' => 'bg-yellow-300',
                                     'inactive' => 'bg-red-300',
-                                ]
+                                ];
+                                $statusTextMap = [
+                                    'active' => 'ALL',
+                                    'security' => 'SEC',
+                                    'inactive' => 'EOL',
+                                ];
                             @endphp
                             @foreach ($activeVersions as $version)
                                 <tr>
-                                    <th scope="col" class="{{ $statusClassMap[$version->status] }}">&nbsp;</th>
+                                    <th scope="col" class="{{ $statusClassMap[$version->status] }}">
+                                        <span class="js-colorblind hidden">{{ $statusTextMap[$version->status] }}</span>
+                                        &nbsp;
+                                    </th>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                         {{ $version->major }} {{ $version->released_at->gt(now()) ? '(not released yet!)' : '' }}
                                     </td>
@@ -139,7 +152,10 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                             @foreach ($inactiveVersions as $version)
                                 <tr>
-                                    <th scope="col" class="{{ $statusClassMap[$version->status] }}">&nbsp;</th>
+                                    <th scope="col" class="{{ $statusClassMap[$version->status] }}">
+                                        <span class="js-colorblind hidden">{{ $statusTextMap[$version->status] }}</span>
+                                        &nbsp;
+                                    </th>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                         {{ $version->major }}{{ $version->major < 6 ? '.' . $version->minor : '' }}
                                     </td>
@@ -169,5 +185,39 @@
                 <a href="https://github.com/tighten/laravelversions" class="text-blue-800 hover:text-blue-600 underline">Source on GitHub</a> | <a href="/api/versions/laravel" class="text-blue-800 hover:text-blue-600 underline">Data available in JSON format</a>
             </div>
         </div>
+
+        <script>
+                if (localStorage.getItem('colorblind_mode') != 'true') {
+                    localStorage.setItem('colorblind_mode', 'false');
+                }
+
+                let $button = document.getElementById('colorblind-mode-toggle');
+                let $labels = document.getElementsByClassName('js-colorblind');
+                let colorblind_mode = false;
+
+                function colorBlindModeOn() {
+                    $button.classList.add('font-bold');
+                    for (let $label of $labels) {
+                        $label.classList.remove('hidden');
+                    }
+                }
+                function colorBlindModeOff() {
+                    $button.classList.remove('font-bold');
+                    for (let $label of $labels) {
+                        $label.classList.add('hidden');
+                    }
+                }
+
+                $button.addEventListener('click', () => {
+                    if (colorblind_mode) { colorBlindModeOff() } else { colorBlindModeOn() }
+                    colorblind_mode = ! colorblind_mode;
+                    localStorage.setItem('colorblind_mode', colorblind_mode ? 'true' : 'false');
+                });
+
+                if (localStorage.getItem('colorblind_mode') === 'true') {
+                    colorBlindModeOn();
+                    colorblind_mode = true;
+                }
+            </script>
     </body>
 </html>
