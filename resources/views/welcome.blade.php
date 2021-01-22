@@ -8,7 +8,7 @@
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
-    <body class="antialiased font-sans bg-gray-100 pt-12">
+    <body class="antialiased font-sans bg-gray-100 pt-12 px-4">
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <h1 class="block text-4xl text-bold mb-4">Laravel Versions</h1>
             <p class="max-w-2xl mb-4">For LTS releases, such as Laravel 6, bug fixes are provided for 2 years and security fixes are provided for 3 years. These releases provide the longest window of support and maintenance. For general releases, bug fixes are provided for 7 months and security fixes are provided for 1 year. For all additional libraries, including Lumen, only the latest release receives bug fixes.</p>
