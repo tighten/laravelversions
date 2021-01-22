@@ -26,7 +26,7 @@ class LaravelVersionSeeder extends Seeder
             ],
             [
                 'major' => 9,
-                'released_at' => '2021-02-15',
+                'released_at' => '2021-03-15',
             ],
             [
                 'major' => 8,
