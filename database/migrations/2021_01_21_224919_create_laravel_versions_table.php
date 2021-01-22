@@ -8,11 +8,16 @@ class CreateLaravelVersionsTable extends Migration
 {
     public function up()
     {
+        // Semver versions (6+)
         Schema::create('laravel_versions', function (Blueprint $table) {
             $table->id();
-            $table->string('major');
-            $table->string('minor');
-            $table->string('patch')->nullablle();
+            $table->integer('major');
+            $table->integer('minor')->default(0);
+            $table->integer('patch')->default(0);
+            $table->boolean('is_lts')->default(false);
+            $table->date('released_at');
+            $table->date('ends_bugfixes_at')->nullable();
+            $table->date('ends_securityfixes_at')->nullable();
             $table->timestamps();
         });
     }

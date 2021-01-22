@@ -1,18 +1,21 @@
 <?php
 
+use App\Models\LaravelVersion;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
-    return view('welcome');
+    $versions = LaravelVersion::orderBy('major', 'desc')->orderBy('minor', 'desc')->get();
+
+    $activeVersions = $versions->filter(function ($version) {
+        return $version->ends_securityfixes_at && $version->ends_securityfixes_at->gt(now()) || $version->released_at->gt(now());
+    });
+    $inActiveVersions = $versions->filter(function ($version) {
+        return $version->released_at->lt(now()) &&
+            (! $version->ends_securityfixes_at || $version->ends_securityfixes_at->lt(now()));
+    });
+
+    return view('welcome', [
+        'activeVersions' => $activeVersions,
+        'inactiveVersions' => $inActiveVersions,
+    ]);
 });
