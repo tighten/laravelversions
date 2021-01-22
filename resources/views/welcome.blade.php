@@ -162,6 +162,8 @@
             </div>
             <div class="text-center my-8">
                 Brought to you by the lovely folks at <a href="https://tighten.co/" class="text-blue-800 hover:text-blue-600 underline">Tighten</a>.
+                <br>
+                <a href="https://github.com/tighten/laravelversions" class="text-blue-800 hover:text-blue-600 underline">Source on GitHub</a> | <a href="/api/versions/laravel" class="text-blue-800 hover:text-blue-600 underline">Data available in JSON format</a>
             </div>
         </div>
     </body>
