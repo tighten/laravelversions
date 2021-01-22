@@ -8,7 +8,6 @@ class CreateLaravelVersionsTable extends Migration
 {
     public function up()
     {
-        // Semver versions (6+)
         Schema::create('laravel_versions', function (Blueprint $table) {
             $table->id();
             $table->integer('major');
