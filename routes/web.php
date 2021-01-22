@@ -10,7 +10,8 @@ Route::get('/', function () {
     });
 
     $activeVersions = $versions->filter(function ($version) {
-        return $version->ends_securityfixes_at && $version->ends_securityfixes_at->gt(now()) || $version->released_at->gt(now());
+        return $version->released_at->gt(now())
+            || ($version->ends_securityfixes_at&& $version->ends_securityfixes_at->gt(now()));
     });
 
     $inActiveVersions = $versions->filter(function ($version) {
