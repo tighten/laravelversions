@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $versions = Cache::remember(3600, 'versions', function () {
+    $versions = Cache::remember(3600, 'laravel-versions', function () {
         return LaravelVersion::orderBy('major', 'desc')->orderBy('minor', 'desc')->get();
     });
 
