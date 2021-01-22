@@ -6,7 +6,7 @@
 
         <title>Laravel Versions</title>
 
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body class="antialiased font-sans bg-gray-100 pt-12">
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">

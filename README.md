@@ -35,3 +35,5 @@ A canonical source of everything you need to know about Laravel versions' suppor
     php -S localhost:8080 -t public
     ```
 1. Run tests with `php artisan test`.
+
+> Note: In order to make page caching work, you'll need to follow the installation instructions if you're installing this site on a production server. https://github.com/JosephSilber/page-cache
