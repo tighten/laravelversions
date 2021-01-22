@@ -24,3 +24,18 @@ Route::get('/', function () {
         'inactiveVersions' => $inActiveVersions,
     ]);
 });
+
+Route::get('{version}', function ($path) {
+    // @todo regex this with someone who's smarter at regex-ing... this is obviously super dumb
+    $segments = explode('.', $path);
+
+    $version = LaravelVersion::where([
+        'major' => $segments[0],
+    ])->firstOrFail();
+
+    return view('versions.show', [
+        'version' => $version,
+        'path' => $path,
+        'segments' => $segments,
+    ]);
+});
