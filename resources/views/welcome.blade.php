@@ -32,6 +32,9 @@
     <body class="antialiased font-sans bg-gray-100 pt-12">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 class="block text-4xl text-bold mb-4">Laravel Versions</h1>
+            <p class="max-w-2xl mb-4">Timelines for releases, bug fixes, and security fixes for all versions of Laravel.</p>
+
+            <h2 class="block text-xl font-bold">Laravel's versioning strategy</h2>
             <p class="max-w-2xl mb-4">For LTS releases, such as Laravel 6, bug fixes are provided for 2 years and security fixes are provided for 3 years. These releases provide the longest window of support and maintenance. For general releases, bug fixes are provided for 7 months and security fixes are provided for 1 year. For all additional libraries, including Lumen, only the latest release receives bug fixes.</p>
             <p class="max-w-2xl mb-8">To learn more, check out the <a href="https://laravel-news.com/laravel-releases" class="text-blue-800 underline hover:text-blue-600">Laravel news "Laravel Releases" page</a>.</p>
             <br>
