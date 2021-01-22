@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel Versions</title>
+        <title>{{ $title ? $title . ' - ' : '' }}Laravel Versions</title>
 
         <meta name="description" content="Security and bug fix timelines for all Laravel Versions">
 

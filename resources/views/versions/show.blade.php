@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout :title="$path">
     <h1 class="block mb-4 text-5xl text-bold">Laravel Version: <span>{{ $path }}</span></h1>
 
     <div class="flex flex-col">

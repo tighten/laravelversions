@@ -104,7 +104,7 @@
                                 &nbsp;
                             </th>
                             <td class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                {{ $version->major }} {{ $version->released_at->gt(now()) ? '(not released yet!)' : '' }}
+                                <a href="{{ $version->url }}" class="underline">{{ $version->major }} {{ $version->released_at->gt(now()) ? '(not released yet!)' : '' }}</a>
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                 {{ $version->released_at->gt(now()) ? $version->released_at->format('F, Y') . ' (estimated)' : $version->released_at->format('F j, Y') }}
@@ -161,7 +161,7 @@
                                 &nbsp;
                             </th>
                             <td class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                {{ $version->major }}{{ $version->major < 6 ? '.' . $version->minor : '' }}
+                                <a href="{{ $version->url }}" class="underline">{{ $version->major }}{{ $version->major < 6 ? '.' . $version->minor : '' }}</a>
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                 {{ $version->released_at->format('F j, Y') }} {{ $version->released_at->gt(now()) ? '(estimated)' : '' }}

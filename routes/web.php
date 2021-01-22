@@ -19,7 +19,7 @@ Route::get('/', function () {
             (! $version->ends_securityfixes_at || $version->ends_securityfixes_at->lt(now()));
     });
 
-    return view('welcome', [
+    return view('versions.index', [
         'activeVersions' => $activeVersions,
         'inactiveVersions' => $inActiveVersions,
     ]);

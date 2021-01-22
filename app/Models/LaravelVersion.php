@@ -35,4 +35,13 @@ class LaravelVersion extends Model
 
         return 'inactive';
     }
+
+    public function getUrlAttribute()
+    {
+        if ($this->major < 6) {
+            return url($this->major . '.' . $this->minor);
+        }
+
+        return url($this->major);
+    }
 }
