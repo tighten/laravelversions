@@ -17,6 +17,13 @@ class LaravelVersionResource extends JsonResource
             'ends_bugfixes_at' => $this->ends_bugfixes_at,
             'ends_securityfixes_at' => $this->ends_securityfixes_at,
             'status' => $this->status,
+            'links' => [
+                [
+                    'type' => 'GET',
+                    'rel' => 'self',
+                    'href' => $this->api_url,
+                ],
+            ]
         ];
     }
 }

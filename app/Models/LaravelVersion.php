@@ -44,4 +44,15 @@ class LaravelVersion extends Model
 
         return url($this->major);
     }
+
+    public function getApiUrlAttribute()
+    {
+        $path = $this->major;
+
+        if ($this->major < 6) {
+            $path .= '.' . $this->minor;
+        }
+
+        return url('api/versions/laravel/' . $path);
+    }
 }
