@@ -16,7 +16,7 @@ Route::get('versions/laravel', function (Request $request) {
 });
 
 Route::get('versions/laravel/{version}', function ($path) {
-    [$version, $sanitizedPath, $segments] = (new LaravelVersionFromPath())($path);
+    [$version] = (new LaravelVersionFromPath())($path);
 
     return new LaravelVersionResource($version);
 });
