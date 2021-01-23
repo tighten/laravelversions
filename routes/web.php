@@ -1,5 +1,6 @@
 <?php
 
+use App\LaravelVersionFromPath;
 use App\Models\LaravelVersion;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
@@ -26,31 +27,11 @@ Route::get('/', function () {
 });
 
 Route::get('{version}', function ($path) {
-    // @todo regex this with someone who's smarter at regex-ing... this is obviously super dumb
-    $segments = explode('.', $path);
-
-    if ((int) $segments[0] === 0) {
-        abort(404);
-    }
-
-    if ($segments[0] < 6) {
-        if (! isset($segments[1])) {
-            abort(404);
-        }
-
-        $version = LaravelVersion::where([
-            'major' => $segments[0],
-            'minor' => $segments[1],
-        ])->firstOrFail();
-    } else {
-        $version = LaravelVersion::where([
-            'major' => $segments[0],
-        ])->firstOrFail();
-    }
+    [$version, $sanitizedPath, $segments] = (new LaravelVersionFromPath())($path);
 
     return view('versions.show', [
         'version' => $version,
-        'path' => $path,
+        'path' => $sanitizedPath,
         'segments' => $segments,
     ]);
 });

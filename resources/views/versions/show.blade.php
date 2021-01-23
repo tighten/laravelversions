@@ -1,23 +1,33 @@
 <x-app-layout :title="$path">
-    <h1 class="block mb-4 text-5xl text-bold">Laravel Version: <span>{{ $path }}</span></h1>
+    <h1 class="block text-5xl text-bold">Laravel Version: <span>{{ $path }}</span></h1>
+    <a href="/" class="block mb-6 underline">(see all versions)</a>
 
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+            @php
+                $statusText = [
+                    'active' => 'Active support',
+                    'security' => 'Security fixes only',
+                    'inactive' => 'Not receiving bug or security fixes',
+                ];
+
+                $recommendationText = [
+                    'active' => 'Keep patch updated.',
+                    'security' => 'Update to the latest major or LTS release.',
+                    'inactive' => 'Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>',
+                ];
+            @endphp
                 <h2 class="text-xl font-bold">Status:</h2>
-                <p class="mb-12 text-lg">
-                @switch($version->status)
-                    @case('active')
-                        Active Support
-                        @break
-                    @case('security')
-                        Security Fixes Only
-                        @break
-                    @case('inactive')
-                        No bug or security fixes! <strong>Upgrade as soon as possible.</strong>
-                        @break
-                @endswitch
-                </p>
+                <p class="mb-6 text-lg">{{ $statusText[$version->status] }}</p>
+
+                <h2 class="text-xl font-bold">Recommendation:</h2>
+                <p class="mb-6 text-lg">{{ $recommendationText[$version->status] }}</p>
+{{--
+                <h2 class="text-xl font-bold">Latest Patch Release:</h2>
+                <p class="mb-6 text-lg">@todo</p>
+--}}
+
                 <div class="mb-8 overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
                     <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
@@ -79,18 +89,6 @@
                     </tbody>
                     </table>
                 </div>
-
-                <br>
-            <!--
-
-                // todo:
-                - latest patch
-                - status
-                - dangerous?
-                - recommendation
-            -->
-
-            <p class="max-w-3xl mb-6">To learn more about Laravel's versioning strategy, check out the <a href="https://laravel-news.com/laravel-releases" class="text-blue-800 underline hover:text-blue-600">Laravel news "Laravel Releases" page</a>.</p>
             </div>
         </div>
     </div>
