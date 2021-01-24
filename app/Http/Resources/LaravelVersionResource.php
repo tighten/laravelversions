@@ -26,7 +26,7 @@ class LaravelVersionResource extends JsonResource
                 'specific_version' => [
                     'provided' => end($segments),
                     'needs_patch' => $request->url() !== $this->latest_patch_api_url,
-                    'needs_major_upgrade' => $this->status === 'inactive',
+                    'needs_major_upgrade' => $this->status === 'end-of-life',
                 ],
             ]),
             'links' => $this->links($request),

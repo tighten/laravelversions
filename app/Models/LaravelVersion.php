@@ -9,6 +9,10 @@ class LaravelVersion extends Model
 {
     use HasFactory;
 
+    const STATUS_ACTIVE = 'active';
+    const STATUS_SECURITY = 'security';
+    const STATUS_ENDOFLIFE = 'end-of-life';
+
     protected $guarded = [];
 
     protected $casts = [
@@ -25,20 +29,20 @@ class LaravelVersion extends Model
 
     public function getStatusAttribute()
     {
-        // active, security, inactive
+        // active, security, end-of-life
         if ($this->released_at->gt(now())) {
-            return 'active';
+            return self::STATUS_ACTIVE;
         }
 
         if ($this->ends_bugfixes_at && $this->ends_bugfixes_at->gt(now())) {
-            return 'active';
+            return self::STATUS_ACTIVE;
         }
 
         if ($this->ends_securityfixes_at && $this->ends_securityfixes_at->gt(now())) {
-            return 'security';
+            return self::STATUS_SECURITY;
         }
 
-        return 'inactive';
+        return self::STATUS_ENDOFLIFE;
     }
 
     public function getUrlAttribute()

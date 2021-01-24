@@ -87,14 +87,14 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                     @php
                         $statusClassMap = [
-                            'active' => 'bg-green-300',
-                            'security' => 'bg-yellow-300',
-                            'inactive' => 'bg-red-300',
+                            App\Models\LaravelVersion::STATUS_ACTIVE => 'bg-green-300',
+                            App\Models\LaravelVersion::STATUS_SECURITY => 'bg-yellow-300',
+                            App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'bg-red-300',
                         ];
                         $statusTextMap = [
-                            'active' => 'ALL',
-                            'security' => 'SEC',
-                            'inactive' => 'EOL',
+                            App\Models\LaravelVersion::STATUS_ACTIVE => 'ALL',
+                            App\Models\LaravelVersion::STATUS_SECURITY => 'SEC',
+                            App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'EOL',
                         ];
                     @endphp
                     @foreach ($activeVersions as $version)

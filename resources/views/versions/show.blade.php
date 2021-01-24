@@ -7,15 +7,15 @@
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
             @php
                 $statusText = [
-                    'active' => 'Active support',
-                    'security' => 'Security fixes only',
-                    'inactive' => 'Not receiving bug or security fixes',
+                    App\Models\LaravelVersion::STATUS_ACTIVE => 'Active support',
+                    App\Models\LaravelVersion::STATUS_SECURITY => 'Security fixes only',
+                    App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'Not receiving bug or security fixes',
                 ];
 
                 $recommendationText = [
-                    'active' => 'Keep patch updated.',
-                    'security' => 'Update to the latest major or LTS release.',
-                    'inactive' => 'Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>',
+                    App\Models\LaravelVersion::STATUS_ACTIVE => 'Keep patch updated.',
+                    App\Models\LaravelVersion::STATUS_SECURITY => 'Update to the latest major or LTS release.',
+                    App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>',
                 ];
             @endphp
                 <h2 class="text-xl font-bold">Status:</h2>
@@ -52,14 +52,14 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                     @php
                         $statusClassMap = [
-                            'active' => 'bg-green-300',
-                            'security' => 'bg-yellow-300',
-                            'inactive' => 'bg-red-300',
+                            App\Models\LaravelVersion::STATUS_ACTIVE => 'bg-green-300',
+                            App\Models\LaravelVersion::STATUS_SECURITY => 'bg-yellow-300',
+                            App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'bg-red-300',
                         ];
                         $statusTextMap = [
-                            'active' => 'ALL',
-                            'security' => 'SEC',
-                            'inactive' => 'EOL',
+                            App\Models\LaravelVersion::STATUS_ACTIVE => 'ALL',
+                            App\Models\LaravelVersion::STATUS_SECURITY => 'SEC',
+                            App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'EOL',
                         ];
                     @endphp
                     @foreach ([$version] as $version)
