@@ -35,10 +35,12 @@
 @endpush
 
 <x-app-layout>
-    <h1 class="block mb-4 text-5xl text-bold">Laravel Versions</h1>
-    <p class="max-w-2xl mb-8 text-lg">Release dates and security/bugfix timelines for all versions of Laravel.</p>
+    <div class="float-left lg:w-1/2">
+        <h1 class="block mb-4 text-5xl text-bold">Laravel Versions</h1>
+        <p class="max-w-2xl mb-8 text-lg">Release dates and timelines for security and bug fixes for all versions of Laravel.</p>
+    </div>
 
-    <div class="max-w-xs mb-8">
+    <div class="max-w-xs mb-8 lg:w-1/2 lg:float-right">
         <div class="float-right cursor-pointer hover:text-blue-800" id="colorblind-mode-toggle">Colorblind mode</div>
         <div class="font-bold">Colors:</div>
 
@@ -56,7 +58,7 @@
         </div>
     </div>
 
-    <p class="max-w-3xl mb-8">To learn more about Laravel's versioning strategy, check out the <a href="https://laravel-news.com/laravel-releases" class="text-blue-800 underline hover:text-blue-600">Laravel News "Laravel Releases" page</a>.</p>
+    <p class="mb-8 3xl clear" style="clear: both">To learn more about Laravel's versioning strategy, check out the <a href="https://laravel-news.com/laravel-releases" class="text-blue-800 underline hover:text-blue-600">Laravel News "Laravel Releases" page</a>.</p>
 
     <h2 class="block mb-2 text-xl font-bold">Currently supported versions</h2>
     <div class="flex flex-col">
