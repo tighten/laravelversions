@@ -19,4 +19,4 @@ Route::get('versions/{version}', function ($path) {
     [$version] = (new LaravelVersionFromPath())($path);
 
     return new LaravelVersionResource($version);
-})->name('-versions.show');
+})->name('versions.show');
