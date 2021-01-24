@@ -50,7 +50,7 @@ class FetchLatestReleaseNumbers extends Command
                 }
 
                 // Take the highest minor, then its highest patch
-                return $item->sortByDesc('minor')->sortByDesc('patch')->first();
+                return $item->sortBy([['minor', 'desc'], ['patch', 'desc']])->first();
             })
             ->each(function ($item) {
                 if ($item['major'] < 6) {

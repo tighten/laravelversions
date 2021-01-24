@@ -23,10 +23,9 @@
 
                 <h2 class="text-xl font-bold">Recommendation:</h2>
                 <p class="mb-6 text-lg">{{ $recommendationText[$version->status] }}</p>
-{{--
+
                 <h2 class="text-xl font-bold">Latest Patch Release:</h2>
-                <p class="mb-6 text-lg">@todo</p>
---}}
+                <p class="mb-6 text-lg">{{ $version }}</p>
 
                 <div class="mb-8 overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
                     <table class="min-w-full divide-y divide-gray-200">
