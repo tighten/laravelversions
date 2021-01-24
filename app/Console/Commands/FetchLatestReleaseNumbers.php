@@ -84,7 +84,7 @@ class FetchLatestReleaseNumbers extends Command
                 }
 
                 // Update the minor and patch if needed
-                if ($version->minor != $item['minor'] || $version->patch != $item['patch'] ) {
+                if ($version->minor != $item['minor'] || $version->patch != $item['patch']) {
                     $version->update(['minor' => $item['minor'], 'patch' => $item['patch']]);
                     $this->info('Updated Laravel version ' . $version . ' to use latest minor/patch.');
                 }
