@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <p class="max-w-3xl mb-8">To learn more about Laravel's versioning strategy, check out the <a href="https://laravel-news.com/laravel-releases" class="text-blue-800 underline hover:text-blue-600">Laravel news "Laravel Releases" page</a>.</p>
+    <p class="max-w-3xl mb-8">To learn more about Laravel's versioning strategy, check out the <a href="https://laravel-news.com/laravel-releases" class="text-blue-800 underline hover:text-blue-600">Laravel News "Laravel Releases" page</a>.</p>
 
     <h2 class="block mb-2 text-xl font-bold">Currently supported versions</h2>
     <div class="flex flex-col">
