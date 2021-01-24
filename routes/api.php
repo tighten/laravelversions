@@ -13,10 +13,10 @@ Route::get('versions/laravel', function (Request $request) {
     });
 
     return LaravelVersionResource::collection($versions);
-});
+})->name('laravel-versions.index');
 
 Route::get('versions/laravel/{version}', function ($path) {
     [$version] = (new LaravelVersionFromPath())($path);
 
     return new LaravelVersionResource($version);
-});
+})->name('laravel-versions.show');
