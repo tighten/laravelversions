@@ -9,7 +9,7 @@ class LaravelVersion extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $guarded = [];
 
     protected $casts = [
         'released_at' => 'date',
@@ -64,5 +64,14 @@ class LaravelVersion extends Model
             $this->minor,
             $this->patch,
         ));
+    }
+
+    public function __toString()
+    {
+        return implode('.', [
+            $this->major,
+            $this->minor,
+            $this->patch,
+        ]);
     }
 }
