@@ -70,6 +70,27 @@ class LaravelVersion extends Model
         return route('api.versions.show', [$this->__toString()]);
     }
 
+    public function needsNotification()
+    {
+        // I don't think we'll do any notifications on day of, because released_at is just a rough number,
+        // Unless there's some way to guarantee it never accidentally tweets a release just because
+        // that happens to be the rough day we originally estimated, which sounds unenjoyable
+
+        $days = [
+            now()->startOfDay(),
+            now()->subDay()->startOfDay(),
+            now()->subWeek()->startOfDay(),
+        ];
+
+        foreach ($days as $day) {
+            if ($this->ends_bugfixes_at->eq($day) || $this->ends_securityfixes_at->eq($day)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function __toString()
     {
         return implode('.', [
