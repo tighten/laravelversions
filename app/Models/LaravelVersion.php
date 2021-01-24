@@ -18,6 +18,11 @@ class LaravelVersion extends Model
         'is_lts' => 'bool',
     ];
 
+    public function scopeReleased($query)
+    {
+        $query->where('released_at', '<=', now());
+    }
+
     public function getStatusAttribute()
     {
         // active, security, inactive
