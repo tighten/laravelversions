@@ -7,16 +7,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
-Route::get('versions/laravel', function (Request $request) {
+Route::get('versions', function (Request $request) {
     $versions = Cache::remember(3600, 'laravel-versions', function () {
         return LaravelVersion::released()->orderBy('major', 'desc')->orderBy('minor', 'desc')->get();
     });
 
     return LaravelVersionResource::collection($versions);
-})->name('laravel-versions.index');
+})->name('versions.index');
 
-Route::get('versions/laravel/{version}', function ($path) {
+Route::get('versions/{version}', function ($path) {
     [$version] = (new LaravelVersionFromPath())($path);
 
     return new LaravelVersionResource($version);
-})->name('laravel-versions.show');
+})->name('-versions.show');

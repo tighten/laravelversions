@@ -62,17 +62,12 @@ class LaravelVersion extends Model
             $path .= '.' . $this->minor;
         }
 
-        return url('api/versions/laravel/' . $path);
+        return route('api.versions.show', [$path]);
     }
 
     public function getLatestPatchApiUrlAttribute()
     {
-        return url(sprintf(
-            'api/versions/laravel/%s.%s.%s',
-            $this->major,
-            $this->minor,
-            $this->patch,
-        ));
+        return route('api.versions.show', [$this->__toString()]);
     }
 
     public function __toString()

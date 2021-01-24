@@ -7,7 +7,7 @@ A canonical source of everything you need to know about Laravel versions' suppor
 
 Full list of all released versions here:
 
-https://laravelversions.com/api/versions/laravel
+https://laravelversions.com/api/versions
 
 ```json
 {
@@ -26,12 +26,12 @@ https://laravelversions.com/api/versions/laravel
                 {
                 "type": "GET",
                 "rel": "self",
-                "href": "https://laravelversions.com/api/versions/laravel/8"
+                "href": "https://laravelversions.com/api/versions/8"
                 },
                 {
                 "type": "GET",
                 "rel": "latest",
-                "href": "https://laravelversions.com/api/versions/laravel/8.24.0"
+                "href": "https://laravelversions.com/api/versions/8.24.0"
                 }
             ]
         },
@@ -42,9 +42,9 @@ https://laravelversions.com/api/versions/laravel
 
 Test individual versions like this:
 
-https://laravelversions.com/api/versions/laravel/8
-https://laravelversions.com/api/versions/laravel/8.1
-https://laravelversions.com/api/versions/laravel/8.1.0
+https://laravelversions.com/api/versions/8
+https://laravelversions.com/api/versions/8.1
+https://laravelversions.com/api/versions/8.1.0
 
 If you pass a major version (e.g. `/8`) you'll only see information about that major release, just like its entry in the full list (as seen above).
 
@@ -71,17 +71,17 @@ If you request a minor/patch version (e.g. `/8.1` or `/8.1.0`) you'll see an add
             {
                 "type": "GET",
                 "rel": "major",
-                "href": "http://laravelversions.test/api/versions/laravel/8"
+                "href": "https://laravelversions.com/api/versions/8"
             },
             {
                 "type": "GET",
                 "rel": "self",
-                "href": "http://laravelversions.test/api/versions/laravel/8.1.5"
+                "href": "https://laravelversions.com/api/versions/8.1.5"
             },
             {
                 "type": "GET",
                 "rel": "latest",
-                "href": "http://laravelversions.test/api/versions/laravel/8.24.0"
+                "href": "https://laravelversions.com/api/versions/8.24.0"
             }
         ]
     }
