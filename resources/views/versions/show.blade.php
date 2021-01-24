@@ -22,7 +22,19 @@
                 <p class="mb-6 text-lg">{{ $statusText[$version->status] }}</p>
 
                 <h2 class="text-xl font-bold">Recommendation:</h2>
-                <p class="mb-6 text-lg">{!! $recommendationText[$version->status] !!}</p>
+                <p class="mb-6 text-lg">
+                    @if ($version->status == App\Models\LaravelVersion::STATUS_ACTIVE)
+                        Keep patch updated.
+                    @elseif ($version->status == App\Models\LaravelVersion::STATUS_SECURITY)
+                        Update to the latest major or LTS release.
+                    @else
+                        @php
+                            $recommendation = (new App\LowestSupportedVersion)($version);
+                        @endphp
+                        Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong><br>
+                        The lowest version still getting security fixes is: <a href="{{ route('versions.show', [$recommendation->major]) }}" class="text-blue-800 underline hover:text-blue-600">{{ $recommendation->major  }}</a>
+                    @endif
+                </p>
 
                 <h2 class="text-xl font-bold">Latest Patch Release:</h2>
                 <p class="mb-6 text-lg">{{ $version }}</p>

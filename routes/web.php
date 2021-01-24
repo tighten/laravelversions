@@ -24,7 +24,7 @@ Route::get('/', function () {
         'activeVersions' => $activeVersions,
         'inactiveVersions' => $inActiveVersions,
     ]);
-});
+})->name('versions.index');
 
 Route::get('{version}', function ($path) {
     [$version, $sanitizedPath, $segments] = (new LaravelVersionFromPath())($path);
@@ -34,4 +34,4 @@ Route::get('{version}', function ($path) {
         'path' => $sanitizedPath,
         'segments' => $segments,
     ]);
-});
+})->name('versions.show');
