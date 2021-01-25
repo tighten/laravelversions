@@ -22,6 +22,15 @@ class LaravelVersion extends Model
         'is_lts' => 'bool',
     ];
 
+    public static function notificationDays()
+    {
+        return [
+            'today' => now()->startOfDay(),
+            'tomorrow' => now()->subDay()->startOfDay(),
+            'in one week' => now()->subWeek()->startOfDay(),
+        ];
+    }
+
     public function scopeReleased($query)
     {
         $query->where('released_at', '<=', now());
@@ -72,14 +81,9 @@ class LaravelVersion extends Model
 
     public function needsNotification()
     {
-        $days = [
-            now()->startOfDay(),
-            now()->subDay()->startOfDay(),
-            now()->subWeek()->startOfDay(),
-        ];
-
-        foreach ($days as $day) {
-            if ($this->ends_bugfixes_at->eq($day) || $this->ends_securityfixes_at->eq($day)) {
+        foreach (self::notificationDays() as $day) {
+            if (($this->ends_bugfixes_at && $this->ends_bugfixes_at->eq($day))
+                || ($this->ends_securityfixes_at && $this->ends_securityfixes_at->eq($day))) {
                 return true;
             }
         }

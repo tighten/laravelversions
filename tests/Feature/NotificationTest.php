@@ -38,4 +38,19 @@ class NotificationTest extends TestCase
         $this->assertFalse($release->needsNotification());
         $this->assertFalse($none->needsNotification());
     }
+
+    /** @test */
+    public function it_handles_null_fix_dates()
+    {
+        $null_security = LaravelVersion::factory()->create([
+            'ends_securityfixes_at' => null,
+        ]);
+
+        $null_bug = LaravelVersion::factory()->create([
+            'ends_bugfixes_at' => null,
+        ]);
+
+        $this->assertFalse($null_security->needsNotification());
+        $this->assertFalse($null_bug->needsNotification());
+    }
 }

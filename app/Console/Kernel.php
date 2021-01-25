@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('fetch-laravel-versions')->hourly();
+        $schedule->command('tweet-important-dates')->dailyAt('08:00')->timezone('America/New_York');
     }
 
     /**
