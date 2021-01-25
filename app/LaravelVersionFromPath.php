@@ -36,7 +36,6 @@ class LaravelVersionFromPath
             ])->firstOrFail();
         }
 
-        // @todo: Check that they haven't asked for a minor or patch that hasn't been released yet
         return [
             $version,
             $sanitizedPath,

@@ -72,10 +72,6 @@ class LaravelVersion extends Model
 
     public function needsNotification()
     {
-        // I don't think we'll do any notifications on day of, because released_at is just a rough number,
-        // Unless there's some way to guarantee it never accidentally tweets a release just because
-        // that happens to be the rough day we originally estimated, which sounds unenjoyable
-
         $days = [
             now()->startOfDay(),
             now()->subDay()->startOfDay(),
