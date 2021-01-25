@@ -19,8 +19,8 @@ class LaravelVersionFactory extends Factory
             'patch' => rand(0, 80),
             'is_lts' => false,
             'released_at' => $released_at,
-            'ends_bugfixes_at' => $released_at->addYear(),
-            'ends_securityfixes_at' => $released_at->addYears(2),
+            'ends_bugfixes_at' => $released_at->clone()->addYear(),
+            'ends_securityfixes_at' => $released_at->clone()->addYears(2),
         ];
     }
 }

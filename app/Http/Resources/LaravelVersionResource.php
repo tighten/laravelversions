@@ -35,7 +35,7 @@ class LaravelVersionResource extends JsonResource
 
     public function specificVersionProvided(Request $request): bool
     {
-        return ($this->api_url !== $request->url()) && ! $request->routeIs('api.laravel-versions.index');
+        return ($this->api_url !== $request->url()) && ! $request->routeIs('api.versions.index');
     }
 
     public function links(Request $request): array
