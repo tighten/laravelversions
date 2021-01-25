@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Exceptions\FixableInvalidVersionException;
 use App\Models\LaravelVersion;
 
 class LaravelVersionFromPath
@@ -14,7 +15,7 @@ class LaravelVersionFromPath
         $sanitizedPath = implode('.', $segments);
 
         if ($path !== $sanitizedPath) {
-            return redirect('/' . $sanitizedPath);
+            throw FixableInvalidVersionException::toUrl('/' . $sanitizedPath);
         }
 
         if ((int) $segments[0] === 0) {
