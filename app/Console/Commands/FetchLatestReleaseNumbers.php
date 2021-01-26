@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\LaravelVersion;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -93,6 +94,7 @@ class FetchLatestReleaseNumbers extends Command
             });
 
         $this->info('Finished saving Laravel versions.');
+        Artisan::call('page-cache:clear');
     }
 
     private function fetchVersionsFromGitHub()
