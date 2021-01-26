@@ -112,10 +112,14 @@
                                 {{ $version->released_at->gt(now()) ? $version->released_at->format('F, Y') . ' (estimated)' : $version->released_at->format('F j, Y') }}
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                {{ $version->ends_bugfixes_at ? $version->ends_bugfixes_at->format('F j, Y'): '' }}
+                                @if ($version->ends_bugfixes_at)
+                                    {{ $version->released_at->gt(now()) ? $version->ends_bugfixes_at->format('F, Y') . ' (estimated)' : $version->ends_bugfixes_at->format('F j, Y') }}
+                                @endif
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                {{ $version->ends_securityfixes_at ? $version->ends_securityfixes_at->format('F j, Y') : '' }}
+                                @if ($version->ends_securityfixes_at)
+                                    {{ $version->released_at->gt(now()) ? $version->ends_securityfixes_at->format('F, Y') . ' (estimated)' : $version->ends_securityfixes_at->format('F j, Y') }}
+                                @endif
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                 {{ $version->is_lts ? '✓' : '' }}
