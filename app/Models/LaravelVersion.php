@@ -40,6 +40,11 @@ class LaravelVersion extends Model
         $query->where('released_at', '<=', now());
     }
 
+    public function scopeFront($query)
+    {
+        $query->where('is_front', '=', true);
+    }
+
     public function getStatusAttribute()
     {
         // active, security, end-of-life
