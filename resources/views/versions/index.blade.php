@@ -133,7 +133,8 @@
         </div>
     </div>
 
-    <h2 class="block mb-2 text-xl font-bold">No longer receiving security updates!</h2>
+    <h2 class="block mb-1 text-xl font-bold">No longer receiving security updates!</h2>
+    <p class="mb-4">Need help upgrading your app? Try <a href="https://laravelshift.com/" class="text-blue-800 underline hover:text-blue-600">Laravel Shift</a> for automated upgrades or <a href="https://tighten.co/" class="text-blue-800 underline hover:text-blue-600">contact Tighten</a> if you need more than just upgrades.</a></p>
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
