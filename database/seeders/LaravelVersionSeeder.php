@@ -21,12 +21,16 @@ class LaravelVersionSeeder extends Seeder
         return [
             [
                 'major' => 10,
-                'released_at' => '2021-09-15',
-                'is_lts' => true,
+                'released_at' => '2022-09-15',
+                'ends_bugfixes_at' => '2024-03-15',
+                'ends_securityfixes_at' => '2024-09-15',
             ],
             [
                 'major' => 9,
-                'released_at' => '2021-03-15',
+                'released_at' => '2021-09-15',
+                'ends_bugfixes_at' => '2023-09-15',
+                'ends_securityfixes_at' => '2024-09-15',
+                'is_lts' => true,
             ],
             [
                 'major' => 8,
