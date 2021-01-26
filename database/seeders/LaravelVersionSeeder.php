@@ -35,8 +35,8 @@ class LaravelVersionSeeder extends Seeder
             [
                 'major' => 8,
                 'released_at' => '2020-09-08',
-                'ends_bugfixes_at' => '2021-04-21',
-                'ends_securityfixes_at' => '2021-09-08',
+                'ends_bugfixes_at' => '2022-03-01',
+                'ends_securityfixes_at' => '2022-09-06',
             ],
             [
                 'major' => 7,
@@ -47,8 +47,8 @@ class LaravelVersionSeeder extends Seeder
             [
                 'major' => 6,
                 'released_at' => '2019-09-03',
-                'ends_bugfixes_at' => '2021-10-05',
-                'ends_securityfixes_at' => '2022-09-03',
+                'ends_bugfixes_at' => '2021-09-07',
+                'ends_securityfixes_at' => '2022-09-06',
                 'is_lts' => true,
             ],
             [
