@@ -101,9 +101,8 @@
                     @endphp
                     @foreach ($activeVersions as $version)
                         <tr>
-                            <th scope="col" class="{{ $statusClassMap[$version->status] }}">
-                                <span class="hidden js-colorblind">{{ $statusTextMap[$version->status] }}</span>
-                                &nbsp;
+                            <th scope="col" class="w-3 {{ $statusClassMap[$version->status] }}">
+                                <span class="hidden js-colorblind mx-2">{{ $statusTextMap[$version->status] }}</span>
                             </th>
                             <td class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
                                 <a href="{{ $version->url }}" class="underline">{{ $version->major }} {{ $version->released_at->gt(now()) ? '(not released yet!)' : '' }}</a>
@@ -163,9 +162,8 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                     @foreach ($inactiveVersions as $version)
                         <tr>
-                            <th scope="col" class="{{ $statusClassMap[$version->status] }}">
-                                <span class="hidden js-colorblind">{{ $statusTextMap[$version->status] }}</span>
-                                &nbsp;
+                            <th scope="col" class="w-3 {{ $statusClassMap[$version->status] }}">
+                                <span class="hidden js-colorblind mx-2">{{ $statusTextMap[$version->status] }}</span>
                             </th>
                             <td class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
                                 <a href="{{ $version->url }}" class="underline">{{ $version->major }}{{ $version->major < 6 ? '.' . $version->minor : '' }}</a>
