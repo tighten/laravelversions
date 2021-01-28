@@ -56,6 +56,10 @@
             <div class="hidden float-right font-bold js-colorblind">ALL</div>
             Bug and security fixes
         </div>
+        <div class="p-2 bg-blue-300">
+            <div class="hidden float-right font-bold js-colorblind">FUT</div>
+            Future release
+        </div>
     </div>
 
     <p class="mb-8 3xl clear" style="clear: both">To learn more about Laravel's versioning strategy, check out the <a href="https://laravel-news.com/laravel-releases" class="text-blue-800 underline hover:text-blue-600">Laravel News "Laravel Releases" page</a>.</p>
@@ -89,11 +93,13 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                     @php
                         $statusClassMap = [
+                            App\Models\LaravelVersion::STATUS_FUTURE => 'bg-blue-300',
                             App\Models\LaravelVersion::STATUS_ACTIVE => 'bg-green-300',
                             App\Models\LaravelVersion::STATUS_SECURITY => 'bg-yellow-300',
                             App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'bg-red-300',
                         ];
                         $statusTextMap = [
+                            App\Models\LaravelVersion::STATUS_FUTURE => 'FUT',
                             App\Models\LaravelVersion::STATUS_ACTIVE => 'ALL',
                             App\Models\LaravelVersion::STATUS_SECURITY => 'SEC',
                             App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'EOL',
