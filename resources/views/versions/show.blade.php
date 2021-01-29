@@ -29,6 +29,9 @@
                         Keep patch updated.
                     @elseif ($version->status == App\Models\LaravelVersion::STATUS_SECURITY)
                         Update to the latest major or LTS release.
+                    @elseif ($version->status == App\Models\LaravelVersion::STATUS_FUTURE)
+                        This version of the release is planned only and <strong>not released yet!</strong><br>
+                        The estimated release date is {{ $version->released_at->format('F Y') }}
                     @else
                         @php
                             $recommendation = (new App\LowestSupportedVersion)($version);
