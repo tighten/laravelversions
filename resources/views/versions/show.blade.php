@@ -7,12 +7,14 @@
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
             @php
                 $statusText = [
+                    App\Models\LaravelVersion::STATUS_FUTURE => 'Future release',
                     App\Models\LaravelVersion::STATUS_ACTIVE => 'Active support',
                     App\Models\LaravelVersion::STATUS_SECURITY => 'Security fixes only',
                     App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'Not receiving bug or security fixes',
                 ];
 
                 $recommendationText = [
+                    App\Models\LaravelVersion::STATUS_FUTURE => 'Planned release.',
                     App\Models\LaravelVersion::STATUS_ACTIVE => 'Keep patch updated.',
                     App\Models\LaravelVersion::STATUS_SECURITY => 'Update to the latest major or LTS release.',
                     App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>',
@@ -27,6 +29,9 @@
                         Keep patch updated.
                     @elseif ($version->status == App\Models\LaravelVersion::STATUS_SECURITY)
                         Update to the latest major or LTS release.
+                    @elseif ($version->status == App\Models\LaravelVersion::STATUS_FUTURE)
+                        This version of the release is planned only and <strong>not released yet!</strong><br>
+                        The estimated release date is {{ $version->released_at->format('F Y') }}
                     @else
                         @php
                             $recommendation = (new App\LowestSupportedVersion)($version);
@@ -64,11 +69,13 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                     @php
                         $statusClassMap = [
+                            App\Models\LaravelVersion::STATUS_FUTURE => 'bg-blue-300',
                             App\Models\LaravelVersion::STATUS_ACTIVE => 'bg-green-300',
                             App\Models\LaravelVersion::STATUS_SECURITY => 'bg-yellow-300',
                             App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'bg-red-300',
                         ];
                         $statusTextMap = [
+                            App\Models\LaravelVersion::STATUS_FUTURE => 'FUT',
                             App\Models\LaravelVersion::STATUS_ACTIVE => 'ALL',
                             App\Models\LaravelVersion::STATUS_SECURITY => 'SEC',
                             App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'EOL',

@@ -9,6 +9,7 @@ class LaravelVersion extends Model
 {
     use HasFactory;
 
+    const STATUS_FUTURE = 'future';
     const STATUS_ACTIVE = 'active';
     const STATUS_SECURITY = 'security';
     const STATUS_ENDOFLIFE = 'end-of-life';
@@ -40,7 +41,7 @@ class LaravelVersion extends Model
     {
         // active, security, end-of-life
         if ($this->released_at->gt(now())) {
-            return self::STATUS_ACTIVE;
+            return self::STATUS_FUTURE;
         }
 
         if ($this->ends_bugfixes_at && $this->ends_bugfixes_at->gt(now())) {
