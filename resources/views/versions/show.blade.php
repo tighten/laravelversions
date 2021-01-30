@@ -42,7 +42,10 @@
                 </p>
 
                 <h2 class="text-xl font-bold">Latest Patch Release:</h2>
-                <p class="mb-6 text-lg">{{ $version }}</p>
+                @php
+                $latest = (count($releases)) ? $releases->first() : $version;
+                @endphp
+                <p class="mb-6 text-lg"><a href="#{{ $latest }}">{{ $latest }}</a></p>
 
                 <div class="mb-8 overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
                     <table class="min-w-full divide-y divide-gray-200">
@@ -107,6 +110,34 @@
                     </tbody>
                     </table>
                 </div>
+
+                @if (count($releases) > 1)
+                    <h2 class="mb-3 text-xl font-bold">Releases</h2>
+
+                    <div class="text-center my-3 px-8">
+                        @foreach ($releases as $release)
+                            <a href="#{{ $release }}" class="whitespace-nowrap">{{ $release }}</a>
+                            @if (!$loop->last) | @endif
+                        @endforeach
+                    </div>
+                    <div class="mb-8">
+                        @foreach ($releases as $release)
+                            <a name="{{ $release }}"></a>
+                            <div class="mb-8 overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
+                                <div class="min-w-full">
+                                    <div class="bg-gray-50 text-sm font-medium text-gray-500 px-6 py-4">
+                                        {{ $release }}
+                                    </div>
+                                    <div class="bg-white px-6 py-4">
+                                        <div class="markdown">
+                                            {!! $release->changelog !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
     </div>

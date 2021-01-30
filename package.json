@@ -34,7 +34,7 @@
         "*.php": [
             "vendor/bin/php-cs-fixer fix --config=.php_cs.dist"
         ],
-        "*.(css|scss)": [
+        "resources/css/**/*.(css|scss)": [
             "stylelint"
         ],
         "resources/**/*.(js|ts|tsx|css|vue)": [
