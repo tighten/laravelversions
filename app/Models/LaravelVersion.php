@@ -58,10 +58,10 @@ class LaravelVersion extends Model
     public function getUrlAttribute()
     {
         if ($this->major < 6) {
-            return url($this->major . '.' . $this->minor);
+            return route('versions.show.lang', ['version' => $this->major . '.' . $this->minor, 'lang' => app()->getLocale()]);
         }
 
-        return url($this->major);
+        return route('versions.show.lang', ['version' => $this->major, 'lang' => app()->getLocale()]);
     }
 
     public function getApiUrlAttribute()
