@@ -37,6 +37,6 @@
     "To learn more about Laravel's versioning strategy, check out the :link.": "Aby dowiedzieć się więcej o strategii przechowywania wersji Laravel, odwiedź stronę :link.",
     "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>": "Zaktualizuj <em>co najmniej</em> do wersji z zabezpieczeniami <strong>tak szybko, jak to możliwe!</strong>",
     "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong><br>\n                        The lowest version still getting security fixes is: :link": "Zaktualizuj <em>co najmniej</em> do wersji z zachowanymi zabezpieczeniami <strong>tak szybko, jak to możliwe!</strong><br>Najniższa wersja, w której wciąż są dostępne poprawki zabezpieczeń, to :link",
-    "Update to the latest major or LTS release.": "Zaktualizuj do najnowszej wersji głównej (major) lub LTS.",
+    "Update to the latest major or LTS release.": "Zaktualizuj do najnowszej wersji głównej (major) lub do wersji LTS.",
     "Version": "Wersja"
 }
