@@ -6,7 +6,7 @@
 
         <title>{{ $title ? $title . ' - ' : '' }}Laravel Versions</title>
 
-        <meta name="description" content="Security and bug fix timelines for all Laravel Versions">
+        <meta name="description" content="{{ __('Security and bug fix timelines for all Laravel Versions') }}">
 
         <meta property="og:site_name" content="Laravel Versions">
         <meta property="og:locale" content="en_US">
@@ -37,10 +37,10 @@
             </main>
 
             <div class="my-8 text-center">
-                Brought to you by the lovely folks at <a href="https://tighten.co/" class="text-blue-800 underline hover:text-blue-600">Tighten</a>.
+                {{ __('Brought to you by the lovely folks at') }} <a href="https://tighten.co/" class="text-blue-800 underline hover:text-blue-600">Tighten</a>.
                 <br>
-                <a href="https://github.com/tighten/laravelversions" class="text-blue-800 underline hover:text-blue-600">Source on GitHub</a> | <a href="/api/versions" class="text-blue-800 underline hover:text-blue-600">Data available in JSON format</a>
-                | <a href="https://twitter.com/laravelversions" class="text-blue-800 underline hover:text-blue-600">Follow on Twitter for important dates</a>
+                <a href="https://github.com/tighten/laravelversions" class="text-blue-800 underline hover:text-blue-600">{{ __('Source on GitHub') }}</a> | <a href="/api/versions" class="text-blue-800 underline hover:text-blue-600">{{ __('Data available in JSON format') }}</a>
+                | <a href="https://twitter.com/laravelversions" class="text-blue-800 underline hover:text-blue-600">{{ __('Follow on Twitter for important dates') }}</a>
             </div>
         </div>
 
