@@ -1,6 +1,6 @@
 <x-app-layout :title="$path">
     <h1 class="block text-5xl text-bold">{{ __('Laravel Version') }}: <span>{{ $path }}</span></h1>
-    <a href="/" class="block mb-6 underline">({{ __('see all versions') }})</a>
+    <a href="{{ route('versions.index.lang', ['lang' => app()->getLocale()]) }}" class="block mb-6 underline">({{ __('see all versions') }})</a>
 
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
