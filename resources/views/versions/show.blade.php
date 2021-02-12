@@ -1,6 +1,6 @@
 <x-app-layout :title="$path">
     <h1 class="block text-5xl text-bold">{{ __('Laravel Version') }}: <span>{{ $path }}</span></h1>
-    <a href="{{ route('versions.index.lang', ['lang' => app()->getLocale()]) }}" class="block mb-6 underline">({{ __('see all versions') }})</a>
+    <a href="{{ route('versions.index') }}" class="block mb-6 underline">({{ __('see all versions') }})</a>
 
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -37,7 +37,7 @@
                             $recommendation = (new App\LowestSupportedVersion)($version);
                         @endphp
                         {!! __('Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong><br>
-                        The lowest version still getting security fixes is: :link', ['link' => '<a href="' . route('versions.show.lang', ['version' => $recommendation->major, 'lang' => app()->getLocale()]) . '" class="text-blue-800 underline hover:text-blue-600">' . $recommendation->major . '</a>']) !!}
+                        The lowest version still getting security fixes is: :link', ['link' => '<a href="' . route('versions.show', [$recommendation->major]) . '" class="text-blue-800 underline hover:text-blue-600">' . $recommendation->major . '</a>']) !!}
                     @endif
                 </p>
 
