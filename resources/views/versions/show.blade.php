@@ -37,7 +37,7 @@
                             $recommendation = (new App\LowestSupportedVersion)($version);
                         @endphp
                         {!! __('Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong><br>
-                        The lowest version still getting security fixes is: :link', ['link' => '<a href="' . route('versions.show', [$recommendation->major]) . '" class="text-blue-800 underline hover:text-blue-600">' . $recommendation->major . '</a>']) !!}
+                        The lowest version still getting security fixes is: :link', ['link' => '<a href="' . route('versions.show.lang', ['version' => $recommendation->major, 'lang' => app()->getLocale()]) . '" class="text-blue-800 underline hover:text-blue-600">' . $recommendation->major . '</a>']) !!}
                     @endif
                 </p>
 
