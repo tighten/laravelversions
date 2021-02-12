@@ -20,4 +20,15 @@ class ShowVersionTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    /** @test */
+    public function it_loads_lang()
+    {
+        $version = LaravelVersion::factory()->create([
+                'ends_securityfixes_at' => now()->addYear(),
+            ]);
+        $response = $this->get(route('versions.show.lang', [$version->__toString(), 'lang' => 'pl']));
+
+        $response->assertStatus(200);
+    }
 }

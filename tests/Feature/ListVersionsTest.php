@@ -16,4 +16,12 @@ class ListVersionsTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    /** @test */
+    public function it_loads_lang()
+    {
+        $response = $this->get(route('versions.index.lang', ['lang' => 'pl']));
+
+        $response->assertStatus(200);
+    }
 }
