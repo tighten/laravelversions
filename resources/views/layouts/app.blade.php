@@ -32,6 +32,8 @@
     <body class="pt-12 font-sans antialiased bg-gray-100">
         <div class="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
 
+            @include('includes.langs')
+
             <main>
                 {{ $slot }}
             </main>
