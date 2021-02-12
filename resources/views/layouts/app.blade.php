@@ -8,6 +8,8 @@
 
         <meta name="description" content="{{ __('Security and bug fix timelines for all Laravel Versions') }}">
 
+        @include('includes/meta-langs')
+
         <meta property="og:site_name" content="Laravel Versions">
         <meta property="og:locale" content="en_US">
         <meta property="og:title" content="Laravel Versions">
