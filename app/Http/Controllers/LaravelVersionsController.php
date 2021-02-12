@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\LaravelVersionFromPath;
 use App\Models\LaravelVersion;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class LaravelVersionsController extends Controller
@@ -31,10 +30,8 @@ class LaravelVersionsController extends Controller
         ]);
     }
 
-    public function show(Request $request)
+    public function show($path)
     {
-        $path = $request->route('version');
-
         [$version, $sanitizedPath, $segments] = (new LaravelVersionFromPath())($path);
 
         return view('versions.show', [
