@@ -1,0 +1,8 @@
+/* there is no flag for EN - create copy flag from US */
+.flag-icon-en {
+    background-image: url(/images/vendor/flag-icon-css/flags/4x3/us.svg);
+}
+
+.flag-icon-en.flag-icon-squared {
+    background-image: url(/images/vendor/flag-icon-css/flags/4x3/us.svg);
+}

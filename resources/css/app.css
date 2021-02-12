@@ -1,3 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import 'flag-icon-css/css/flag-icon.css';
+@import 'flag-icon-en.css';
