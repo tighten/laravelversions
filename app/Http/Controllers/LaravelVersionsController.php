@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\LaravelVersionFromPath;
 use App\Models\LaravelVersion;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class LaravelVersionsController extends Controller
@@ -16,7 +17,7 @@ class LaravelVersionsController extends Controller
 
         $activeVersions = $versions->filter(function ($version) {
             return $version->released_at->gt(now())
-                || ($version->ends_securityfixes_at&& $version->ends_securityfixes_at->gt(now()));
+                || ($version->ends_securityfixes_at && $version->ends_securityfixes_at->gt(now()));
         });
 
         $inActiveVersions = $versions->filter(function ($version) {
@@ -30,8 +31,10 @@ class LaravelVersionsController extends Controller
         ]);
     }
 
-    public function show($path)
+    public function show(Request $request)
     {
+        $path = $request->route('version');
+
         [$version, $sanitizedPath, $segments] = (new LaravelVersionFromPath())($path);
 
         return view('versions.show', [
