@@ -37,7 +37,9 @@
                             $recommendation = (new App\LowestSupportedVersion)($version);
                         @endphp
                         Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong><br>
-                        The lowest version still getting security fixes is: <a href="{{ route('versions.show', [$recommendation->major]) }}" class="text-blue-800 underline hover:text-blue-600">{{ $recommendation->major  }}</a>
+                        The lowest version still getting security fixes is: <a href="{{ route('versions.show', [$recommendation->major]) }}" class="text-blue-800 underline hover:text-blue-600">{{ $recommendation->major }}</a><br>
+                        To upgrade, follow the instructions in the docs or use <a href="https://laravelshift.com/shifts?version={{ $version->majorish }}" class="text-blue-800 underline hover:text-blue-600">Laravel Shift</a> to upgrade automatically.
+
                     @endif
                 </p>
 
