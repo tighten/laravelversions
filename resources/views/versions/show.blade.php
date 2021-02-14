@@ -44,7 +44,7 @@
                             ]) !!}
                     @endif
                 </p>
-@dd($version->majorish,$version)
+
                 <h2 class="text-xl font-bold">{{ __('Latest Patch Release') }}:</h2>
                 <p class="mb-6 text-lg">{{ $version }}</p>
 
