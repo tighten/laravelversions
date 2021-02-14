@@ -66,7 +66,7 @@ class LaravelVersion extends Model
             $majorish .= '.' . $this->minor;
         }
 
-        return route('versions.show', ['version' => $majorish]);
+        return $majorish;
     }
 
     public function getUrlAttribute()

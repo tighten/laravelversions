@@ -40,11 +40,11 @@
                         The lowest version still getting security fixes is: :link <br>
                         To upgrade, follow the instructions in the docs or use :link-laravelshifts to upgrade automatically.', [
                             'link' => '<a href="' . route('versions.show', [$recommendation->major]) . '" class="text-blue-800 underline hover:text-blue-600">' . $recommendation->major . '</a>',
-                            'link-laravelshifts' => '<a href="https://laravelshift.com/shifts?version=' . $path . '" class="text-blue-800 underline hover:text-blue-600">Laravel Shift</a>'
+                            'link-laravelshifts' => '<a href="https://laravelshift.com/shifts?version=' . $version->majorish . '" class="text-blue-800 underline hover:text-blue-600">Laravel Shift</a>'
                             ]) !!}
                     @endif
                 </p>
-
+@dd($version->majorish,$version)
                 <h2 class="text-xl font-bold">{{ __('Latest Patch Release') }}:</h2>
                 <p class="mb-6 text-lg">{{ $version }}</p>
 
