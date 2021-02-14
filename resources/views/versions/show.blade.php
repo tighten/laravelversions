@@ -37,7 +37,11 @@
                             $recommendation = (new App\LowestSupportedVersion)($version);
                         @endphp
                         {!! __('Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong><br>
-                        The lowest version still getting security fixes is: :link', ['link' => '<a href="' . route('versions.show', [$recommendation->major]) . '" class="text-blue-800 underline hover:text-blue-600">' . $recommendation->major . '</a>']) !!}
+                        The lowest version still getting security fixes is: :link <br>
+                        To upgrade, follow the instructions in the docs or use :link-laravelshifts to upgrade automatically.', [
+                            'link' => '<a href="' . route('versions.show', [$recommendation->major]) . '" class="text-blue-800 underline hover:text-blue-600">' . $recommendation->major . '</a>',
+                            'link-laravelshifts' => '<a href="https://laravelshift.com/shifts?version=' . $path . '" class="text-blue-800 underline hover:text-blue-600">Laravel Shift</a>'
+                            ]) !!}
                     @endif
                 </p>
 

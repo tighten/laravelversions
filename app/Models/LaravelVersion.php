@@ -55,24 +55,28 @@ class LaravelVersion extends Model
         return self::STATUS_ENDOFLIFE;
     }
 
-    public function getUrlAttribute()
+    /**
+     * Returns major for semver Laravel, or major.minor for pre-semver Laravel
+     */
+    public function getMajorishAttribute(): string
     {
+        $majorish = $this->major;
+
         if ($this->major < 6) {
-            return route('versions.show', ['version' => $this->major . '.' . $this->minor]);
+            $majorish .= '.' . $this->minor;
         }
 
-        return route('versions.show', ['version' => $this->major]);
+        return route('versions.show', ['version' => $majorish]);
+    }
+
+    public function getUrlAttribute()
+    {
+        return url($this->majorish);
     }
 
     public function getApiUrlAttribute()
     {
-        $path = $this->major;
-
-        if ($this->major < 6) {
-            $path .= '.' . $this->minor;
-        }
-
-        return route('api.versions.show', [$path]);
+        return route('api.versions.show', [$this->majorish]);
     }
 
     public function getLatestPatchApiUrlAttribute()
