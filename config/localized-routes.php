@@ -8,6 +8,14 @@ return [
     'supported-locales' => ['en', 'pl'],
 
     /**
+     * Native language name
+     */
+    'locales-name-native' => [
+        'en' => 'English',
+        'pl' => 'Polski',
+    ],
+
+    /**
      * If you have a main locale and don't want
      * to prefix it in the URL, specify it here.
      *
