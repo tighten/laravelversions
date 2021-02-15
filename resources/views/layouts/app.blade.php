@@ -46,8 +46,8 @@
                 <a href="https://github.com/tighten/laravelversions" class="text-blue-800 underline hover:text-blue-600">{{ __('Source on GitHub') }}</a> | <a href="/api/versions" class="text-blue-800 underline hover:text-blue-600">{{ __('Data available in JSON format') }}</a>
                 | <a href="https://twitter.com/laravelversions" class="text-blue-800 underline hover:text-blue-600">{{ __('Follow on Twitter for important dates') }}</a>
 
-                @if ( ! App::isLocale( Config::get('localized-routes.omit_url_prefix_for_locale') ) )
-                <br>
+                @if (! App::isLocale(Config::get('localized-routes.omit_url_prefix_for_locale')))
+                    <br>
                     {{ __('Greetings from the author of the translations') }}
                 @endif
             </div>
