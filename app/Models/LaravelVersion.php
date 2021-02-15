@@ -71,7 +71,7 @@ class LaravelVersion extends Model
 
     public function getUrlAttribute()
     {
-        return url($this->majorish);
+        return route('versions.show', [$this->majorish]);
     }
 
     public function getApiUrlAttribute()
