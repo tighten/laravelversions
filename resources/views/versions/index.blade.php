@@ -58,7 +58,7 @@
         </div>
         <div class="p-2 bg-blue-300">
             <div class="hidden float-right font-bold js-colorblind">FUT</div>
-            {{ __('Future releases') }}
+            {{ __('Future release') }}
         </div>
     </div>
 
