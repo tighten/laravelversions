@@ -1,6 +1,6 @@
 <section>
     @if ($version->status == App\Models\LaravelVersion::STATUS_ACTIVE)
-        <div class="flex items-center p-5 mb-4 border-2 border-green-300 rounded-md">
+        <div class="flex items-center p-5 mb-10 border-2 border-green-300 rounded-md">
             <svg 
                 class="mr-3 text-green-300 fill-current"
                 width="15" height="15" 
@@ -11,7 +11,7 @@
             <p>{{ $statusText[$version->status] }}</p>
         </div>
     @elseif ($version->status == App\Models\LaravelVersion::STATUS_SECURITY)
-        <div class="flex items-center p-5 mb-4 border-2 border-yellow-300 rounded-md">
+        <div class="flex items-center p-5 mb-10 border-2 border-yellow-300 rounded-md">
             <svg 
                 class="mr-3 text-yellow-300 fill-current"
                 width="15" height="15" 
@@ -22,7 +22,7 @@
             <p>{{ $statusText[$version->status] }}</p>
         </div>
     @elseif ($version->status == App\Models\LaravelVersion::STATUS_FUTURE)
-        <div class="flex items-center p-5 mb-4 border-2 border-blue-300 rounded-md">
+        <div class="flex items-center p-5 mb-10 border-2 border-blue-300 rounded-md">
             <svg 
                 class="mr-3 text-blue-300 fill-current"
                 width="15" height="15" 
@@ -33,7 +33,7 @@
             <p>{{ $statusText[$version->status] }}</p>
         </div>
     @else
-        <div class="flex items-center p-5 mb-4 border-2 border-red-300 rounded-md">
+        <div class="flex items-center p-5 mb-10 border-2 border-red-300 rounded-md">
             <svg 
                 class="mr-3 text-red-300 fill-current"
                 width="15" height="15" 
