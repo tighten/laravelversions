@@ -1,5 +1,5 @@
 <section class="flex flex-col py-6">
-    <h2 class="block mb-2 text-xl font-bold">Currently supported versions</h2>
+    <h2 class="block mb-6 text-xl font-bold">Currently supported versions</h2>
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
             <div class="mb-8 overflow-hidden border-gray-200 shadow sm:rounded-lg">

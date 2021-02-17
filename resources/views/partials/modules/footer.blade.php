@@ -1,4 +1,4 @@
-<footer class="my-8 text-center">
+<footer class="py-8 leading-loose text-center lg:mt-32 bg-gray-50 md:leading-normal">
     Brought to you by the lovely folks at 
     <a href="https://tighten.co/" class="text-blue-800 border-hover">
         Tighten

@@ -6,7 +6,7 @@
             </a>
         </h1> 
     </div>
-    <div class="max-w-screen-xl px-4 py-4 mx-auto text-base text-white sm:px-6 lg:px-8">
+    <div class=" {{ \Request::is('/') ? 'max-w-screen-xl px-4 py-4 mx-auto text-base text-white sm:px-6 lg:px-8' : 'hidden'}}">
         <p class="mb-4 md:mb-2">
             Release dates and timelines for security and bug fixes for all versions of Laravel.
         </p>

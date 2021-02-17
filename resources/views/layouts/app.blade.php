@@ -34,8 +34,8 @@
         <div class="max-w-screen-xl px-4 pt-12 mx-auto sm:px-6 lg:px-8">
             <main>
                 {{ $slot }}
-            </main>
-            @include ('partials/modules/footer')           
-        </div>        
+            </main>      
+        </div> 
+        @include ('partials/modules/footer')            
     </body>
 </html>
