@@ -1,0 +1,71 @@
+<section class="flex flex-col py-6">
+    <h2 class="block mb-1 text-xl font-bold">No longer receiving security updates!</h2>
+    <p class="mb-6">
+        Need help upgrading your app? Try 
+        <a href="https://laravelshift.com/" class="inline-block text-blue-800 border-hover">
+            Laravel Shift
+        </a> 
+        for automated upgrades or 
+        <a href="https://tighten.co/" class="inline-block text-blue-800 border-hover">
+            contact Tighten
+        </a> 
+        if you need more than just upgrades.
+    </p>
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+            <div class="mb-8 overflow-hidden border-gray-200 shadow sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                Version
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                Release date
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                Bug Fixes Until
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                Security Fixes Until
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                LTS?
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                Status
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+
+                        @foreach ($inactiveVersions as $version)
+                            <tr>
+                                <th class="px-6 py-4 text-sm font-medium text-left text-gray-900 whitespace-nowrap">
+                                    <a href="{{ $version->url }}" class="border-hover">{{ $version->major }}{{ $version->major < 6 ? '.' . $version->minor : '' }}</a>
+                                </th>
+                                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    {{ $version->released_at->format('F j, Y') }} {{ $version->released_at->gt(now()) ? '(estimated)' : '' }}
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    {{ $version->ends_bugfixes_at ? $version->ends_bugfixes_at->format('F j, Y'): '' }}
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    {{ $version->ends_securityfixes_at ? $version->ends_securityfixes_at->format('F j, Y') : '' }}
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    {{ $version->is_lts ? '✓' : '' }}
+                                </td>
+                                <td scope="col">
+                                    <div class="{{ $statusClassMap[$version->status] }}">
+                                        <span>{{ $statusTextMap[$version->status] }}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
