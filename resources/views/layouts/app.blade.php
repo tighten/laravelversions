@@ -4,9 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ $title ? $title . ' - ' : '' }}Laravel Versions</title>
+        <title>{{ $title ? $title . ' - ' : '' }}{{ __('Laravel Versions') }}</title>
 
-        <meta name="description" content="Security and bug fix timelines for all Laravel Versions">
+        <meta name="description" content="{{ __('Security and bug fix timelines for all Laravel Versions') }}">
+
+        @include('includes/meta-langs')
 
         <meta property="og:site_name" content="Laravel Versions">
         <meta property="og:locale" content="en_US">
@@ -32,15 +34,22 @@
     <body class="pt-12 font-sans antialiased bg-gray-100">
         <div class="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
 
+            @include('includes.langs')
+
             <main>
                 {{ $slot }}
             </main>
 
             <div class="my-8 text-center">
-                Brought to you by the lovely folks at <a href="https://tighten.co/" class="text-blue-800 underline hover:text-blue-600">Tighten</a>.
+                {{ __('Brought to you by the lovely folks at') }} <a href="https://tighten.co/" class="text-blue-800 underline hover:text-blue-600">Tighten</a>.
                 <br>
-                <a href="https://github.com/tighten/laravelversions" class="text-blue-800 underline hover:text-blue-600">Source on GitHub</a> | <a href="/api/versions" class="text-blue-800 underline hover:text-blue-600">Data available in JSON format</a>
-                | <a href="https://twitter.com/laravelversions" class="text-blue-800 underline hover:text-blue-600">Follow on Twitter for important dates</a>
+                <a href="https://github.com/tighten/laravelversions" class="text-blue-800 underline hover:text-blue-600">{{ __('Source on GitHub') }}</a> | <a href="/api/versions" class="text-blue-800 underline hover:text-blue-600">{{ __('Data available in JSON format') }}</a>
+                | <a href="https://twitter.com/laravelversions" class="text-blue-800 underline hover:text-blue-600">{{ __('Follow on Twitter for important dates') }}</a>
+
+                @if (! App::isLocale(Config::get('localized-routes.omit_url_prefix_for_locale')))
+                    <br>
+                    {{ __('Greetings from the author of the translations') }}
+                @endif
             </div>
         </div>
 
