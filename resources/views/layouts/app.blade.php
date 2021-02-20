@@ -31,28 +31,15 @@
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
-    <body class="pt-12 font-sans antialiased bg-gray-100">
-        <div class="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
+    <body class="font-sans antialiased bg-gray-100">
+        @include('partials/modules/header')
 
-            @include('includes.langs')
-
+        <div class="max-w-screen-xl px-4 pt-12 mx-auto sm:px-6 lg:px-8">
             <main>
                 {{ $slot }}
             </main>
-
-            <div class="my-8 text-center">
-                {{ __('Brought to you by the lovely folks at') }} <a href="https://tighten.co/" class="text-blue-800 underline hover:text-blue-600">Tighten</a>.
-                <br>
-                <a href="https://github.com/tighten/laravelversions" class="text-blue-800 underline hover:text-blue-600">{{ __('Source on GitHub') }}</a> | <a href="/api/versions" class="text-blue-800 underline hover:text-blue-600">{{ __('Data available in JSON format') }}</a>
-                | <a href="https://twitter.com/laravelversions" class="text-blue-800 underline hover:text-blue-600">{{ __('Follow on Twitter for important dates') }}</a>
-
-                @if (! App::isLocale(Config::get('localized-routes.omit_url_prefix_for_locale')))
-                    <br>
-                    {{ __('Greetings from the author of the translations') }}
-                @endif
-            </div>
         </div>
 
-        @stack('footer-scripts')
+        @include('partials/modules/footer')
     </body>
 </html>

@@ -1,4 +1,9 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/svg/icon_all.svg": "/svg/icon_all.svg",
+    "/svg/icon_eol.svg": "/svg/icon_eol.svg",
+    "/svg/icon_fut.svg": "/svg/icon_fut.svg",
+    "/svg/icon_sec.svg": "/svg/icon_sec.svg",
+    "/svg/logo.svg": "/svg/logo.svg"
 }
