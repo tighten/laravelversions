@@ -1,15 +1,10 @@
 <section class="flex flex-col py-6">
-    <h2 class="block mb-1 text-xl font-bold">No longer receiving security updates!</h2>
+    <h2 class="block mb-1 text-xl font-bold">{{ __('No longer receiving security updates!') }}</h2>
     <p class="mb-6">
-        Need help upgrading your app? Try 
-        <a href="https://laravelshift.com/" class="inline-block text-blue-800 border-hover">
-            Laravel Shift
-        </a> 
-        for automated upgrades or 
-        <a href="https://tighten.co/" class="inline-block text-blue-800 border-hover">
-            contact Tighten
-        </a> 
-        if you need more than just upgrades.
+        {!! __('Need help upgrading your app? Try :link-laravelshift for automated upgrades or :link-tighten if you need more than just upgrades.', [
+            'link-laravelshift' => '<a href="https://laravelshift.com/" class="text-blue-800 underline hover:text-blue-600">Laravel Shift</a>',
+            'link-tighten' => '<a href="https://tighten.co/" class="text-blue-800 underline hover:text-blue-600">' . __('contact Tighten') . '</a>',
+        ]) !!}
     </p>
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -18,22 +13,22 @@
                     <thead>
                         <tr class="bg-gray-50">
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                Version
+                                {{ __('Version') }}
                             </th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                Release date
+                                {{ __('Release date') }}
                             </th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                Bug Fixes Until
+                                {{ __('Bug Fixes Until') }}
                             </th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                Security Fixes Until
+                                {{ __('Security Fixes Until') }}
                             </th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                LTS?
+                                {{ __('LTS?') }}
                             </th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                Status
+                                {{ __('Status') }}
                             </th>
                         </tr>
                     </thead>
@@ -45,7 +40,7 @@
                                     <a href="{{ $version->url }}" class="border-hover">{{ $version->major }}{{ $version->major < 6 ? '.' . $version->minor : '' }}</a>
                                 </th>
                                 <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    {{ $version->released_at->format('F j, Y') }} {{ $version->released_at->gt(now()) ? '(estimated)' : '' }}
+                                    {{ $version->released_at->format('F j, Y') }} {{ $version->released_at->gt(now()) ? '(' . __('estimated') . ')' : '' }}
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                     {{ $version->ends_bugfixes_at ? $version->ends_bugfixes_at->format('F j, Y'): '' }}

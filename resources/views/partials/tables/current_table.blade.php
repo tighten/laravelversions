@@ -1,5 +1,5 @@
 <section class="flex flex-col py-6">
-    <h2 class="block mb-6 text-xl font-bold">Currently supported versions</h2>
+    <h2 class="block mb-6 text-xl font-bold">{{ __('Currently supported versions') }}</h2>
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
             <div class="mb-8 overflow-hidden border-gray-200 shadow sm:rounded-lg">
@@ -7,43 +7,43 @@
                 <thead>
                     <tr class="bg-gray-50">
                         <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                            Version
+                            {{ __('Version') }}
                         </th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                            Release date
+                            {{ __('Release date') }}
                         </th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                            Bug Fixes Until
+                            {{ __('Bug Fixes Until') }}
                         </th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                            Security Fixes Until
+                            {{ __('Security Fixes Until') }}
                         </th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                            LTS?
+                            {{ __('LTS?') }}
                         </th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                            Status
+                            {{ __('Status') }}
                         </th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    
+
                     @foreach ($activeVersions as $version)
                         <tr>
                             <th class="px-6 py-4 text-sm font-medium text-left text-gray-900 whitespace-nowrap">
-                                <a href="{{ $version->url }}" class="border-hover">{{ $version->major }} {{ $version->released_at->gt(now()) ? '(not released yet!)' : '' }}</a>
+                                <a href="{{ $version->url }}" class="border-hover">{{ $version->major }} {{ $version->released_at->gt(now()) ? '(' . __('not released yet!') . ')' : '' }}</a>
                             </th>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                {{ $version->released_at->gt(now()) ? $version->released_at->format('F, Y') . ' (estimated)' : $version->released_at->format('F j, Y') }}
+                                {{ $version->released_at->gt(now()) ? $version->released_at->format('F, Y') . ' (' . __('estimated') . ')' : $version->released_at->format('F j, Y') }}
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                 @if ($version->ends_bugfixes_at)
-                                    {{ $version->released_at->gt(now()) ? $version->ends_bugfixes_at->format('F, Y') . ' (estimated)' : $version->ends_bugfixes_at->format('F j, Y') }}
+                                    {{ $version->released_at->gt(now()) ? $version->ends_bugfixes_at->format('F, Y') . ' (' . __('estimated') . ')' : $version->ends_bugfixes_at->format('F j, Y') }}
                                 @endif
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                 @if ($version->ends_securityfixes_at)
-                                    {{ $version->released_at->gt(now()) ? $version->ends_securityfixes_at->format('F, Y') . ' (estimated)' : $version->ends_securityfixes_at->format('F j, Y') }}
+                                    {{ $version->released_at->gt(now()) ? $version->ends_securityfixes_at->format('F, Y') . ' (' . __('estimated') . ')' : $version->ends_securityfixes_at->format('F j, Y') }}
                                 @endif
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">

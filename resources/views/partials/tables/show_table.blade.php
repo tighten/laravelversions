@@ -3,22 +3,22 @@
         <thead class="bg-gray-50">
             <tr>
             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                Major Version
+                {{ __('Major Version') }}
             </th>
             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                Release date
+                {{ __('Release date') }}
             </th>
             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                Bug Fixes Until
+                {{ __('Bug Fixes Until') }}
             </th>
             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                Security Fixes Until
+                {{ __('Security Fixes Until') }}
             </th>
             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                LTS?
+                {{ __('LTS?') }}
             </th>
             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                Status
+                {{ __('Status') }}
             </th>
             </tr>
         </thead>
@@ -37,14 +37,14 @@
                 App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'EOL',
             ];
             @endphp
-            
+
             @foreach ([$version] as $version)
                 <tr>
                     <th class="px-6 py-4 text-sm font-medium text-left text-gray-900 whitespace-nowrap">
-                        {{ $version->major < 6 ? $version->major . '.' . $version->minor : $version->major }} {{ $version->released_at->gt(now()) ? '(not released yet!)' : '' }}
+                        {{ $version->major < 6 ? $version->major . '.' . $version->minor : $version->major }} {{ $version->released_at->gt(now()) ? '(' . __('not released yet!') . ')' : '' }}
                     </th>
                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                        {{ $version->released_at->gt(now()) ? $version->released_at->format('F, Y') . ' (estimated)' : $version->released_at->format('F j, Y') }}
+                        {{ $version->released_at->gt(now()) ? $version->released_at->format('F, Y') . ' (' . __('estimated') . ')' : $version->released_at->format('F j, Y') }}
                     </td>
                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                         {{ $version->ends_bugfixes_at ? $version->ends_bugfixes_at->format('F j, Y'): '' }}

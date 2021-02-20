@@ -130,3 +130,10 @@ Potential statuses:
 1. Run tests with `php artisan test`.
 
 > Note: In order to make page caching work, you'll need to follow the installation instructions if you're installing this site on a production server. https://github.com/JosephSilber/page-cache
+
+## How can I add a language in this project ?
+
+* fork this repository
+* copy this file of the English version with your translation : from `resources/lang/en.json` file to `resources/lang/pl.json` file
+* add a pull request with the name of the language
+    * ex: [pl] New language

@@ -4,9 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ $title ? $title . ' - ' : '' }}Laravel Versions</title>
+        <title>{{ $title ? $title . ' - ' : '' }}{{ __('Laravel Versions') }}</title>
 
-        <meta name="description" content="Security and bug fix timelines for all Laravel Versions">
+        <meta name="description" content="{{ __('Security and bug fix timelines for all Laravel Versions') }}">
+
+        @include('includes/meta-langs')
 
         <meta property="og:site_name" content="Laravel Versions">
         <meta property="og:locale" content="en_US">
@@ -30,12 +32,14 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body class="font-sans antialiased bg-gray-100">
-        @include ('partials/modules/header')
+        @include('partials/modules/header')
+
         <div class="max-w-screen-xl px-4 pt-12 mx-auto sm:px-6 lg:px-8">
             <main>
                 {{ $slot }}
-            </main>      
-        </div> 
-        @include ('partials/modules/footer')            
+            </main>
+        </div>
+
+        @include('partials/modules/footer')
     </body>
 </html>

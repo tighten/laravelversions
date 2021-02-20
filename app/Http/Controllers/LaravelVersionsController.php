@@ -16,7 +16,7 @@ class LaravelVersionsController extends Controller
 
         $activeVersions = $versions->filter(function ($version) {
             return $version->released_at->gt(now())
-                || ($version->ends_securityfixes_at&& $version->ends_securityfixes_at->gt(now()));
+                || ($version->ends_securityfixes_at && $version->ends_securityfixes_at->gt(now()));
         });
 
         $inActiveVersions = $versions->filter(function ($version) {

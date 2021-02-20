@@ -1,5 +1,4 @@
-<x-app-layout> 
-
+<x-app-layout>
     @php
         $statusClassMap = [
             App\Models\LaravelVersion::STATUS_FUTURE => 'bg-blue-300 rounded-md inline-block px-2 py-1 inline-block ml-5 font-bold',
@@ -13,10 +12,9 @@
             App\Models\LaravelVersion::STATUS_SECURITY => 'SEC',
             App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'EOL',
         ];
-    @endphp 
+    @endphp
 
     @include('partials/modules/color_key')
     @include('partials/tables/current_table')
     @include('partials/tables/eol_table')
-    
 </x-app-layout>
