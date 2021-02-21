@@ -1,5 +1,5 @@
 <section>
-    <h2 class="text-xl font-bold">Recommendation:</h2>
+    <h2 class="text-xl font-bold">{{ __('Recommendation') }}:</h2>
     <p class="mb-6 text-lg">
         @if ($version->status == App\Models\LaravelVersion::STATUS_ACTIVE)
             {{ __('Keep patch updated.') }}.
