@@ -33,7 +33,6 @@
     "This version of the release is planned only and <strong>not released yet!</strong>": "This version of the release is planned only and <strong>not released yet!</strong>",
     "The estimated release date is :date": "The estimated release date is :date",
     "To learn more about Laravel's versioning strategy, check out the :link.": "To learn more about Laravel's versioning strategy, check out the :link.",
-    "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>": "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>",
     "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong><br>\n            The lowest version still getting security fixes is: :link <br>\n            To upgrade, follow the instructions in the docs or use :link-laravelshifts to upgrade automatically.": "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong><br>\nThe lowest version still getting security fixes is: :link <br>\nTo upgrade, follow the instructions in the docs or use :link-laravelshifts to upgrade automatically.",
     "Update to the latest major or LTS release.": "Update to the latest major or LTS release.",
     "Version": "Version"
