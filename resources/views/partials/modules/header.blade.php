@@ -10,10 +10,10 @@
             </select>
         @endif
         <h1 class="mb-2 text-3xl">
-            <a href="{{ url('/') }}" class="inline-block w-64"><img class="w-full h-full" src="/svg/logo.svg" alt="Laravel Versions Logo"></a>
+            <a href="{{ route('versions.index') }}" class="inline-block w-64"><img class="w-full h-full" src="/svg/logo.svg" alt="Laravel Versions Logo"></a>
         </h1>
     </div>
-    <div class=" {{ Request::is('/') ? 'max-w-screen-xl px-4 py-4 mx-auto text-base text-white sm:px-6 lg:px-8' : 'hidden' }}">
+    <div class=" {{ Route::is('*.versions.index') ? 'max-w-screen-xl px-4 py-4 mx-auto text-base text-white sm:px-6 lg:px-8' : 'hidden' }}">
         <p class="mb-4 md:mb-2">
             {{ __('Release dates and timelines for security and bug fixes for all versions of Laravel.') }}
         </p>
