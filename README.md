@@ -134,6 +134,10 @@ Potential statuses:
 ## How can I add a language in this project ?
 
 * fork this repository
-* copy this file of the English version with your translation : from `resources/lang/en.json` file to `resources/lang/pl.json` file
+* copy this file of the English version with your translation: from `resources/lang/en.json` file to `resources/lang/{code-lang}.json` file 
+  _(where 'code-lang' is the short code of the translated language)_
+* add language in the configuration file ```config/localized-routes.php```
+    - in the variable `supported-locales`, the code of the supported language
+    - in the variable `locales-name-native` the language code as the key, and the value of the name of the native language, which will be displayed in the menu.
 * add a pull request with the name of the language
     * ex: [pl] New language
