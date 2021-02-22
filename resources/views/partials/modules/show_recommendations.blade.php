@@ -14,10 +14,10 @@
             @endphp
             {!! __('Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>') !!}<br>
             {!! __('The lowest version still getting security fixes is: :link', [
-                'link' => '<a href="' . route('versions.show', [$recommendation->major]) . '" class="text-blue-800 underline hover:text-blue-600">' . $recommendation->major . '</a>'])
+                'link' => '<a href="' . route('versions.show', [$recommendation->major]) . '" class="border-hover">' . $recommendation->major . '</a>'])
             !!}<br>
             {!! __('To upgrade, follow the instructions in the docs or use :link-laravelshifts to upgrade automatically.', [
-                'link-laravelshifts' => '<a href="https://laravelshift.com/shifts?version=' . $version->majorish . '" class="text-blue-800 underline hover:text-blue-600">Laravel Shift</a>'
+                'link-laravelshifts' => '<a href="https://laravelshift.com/shifts?version=' . $version->majorish . '" class="border-hover">Laravel Shift</a>'
                 ])
             !!}
         @endif
