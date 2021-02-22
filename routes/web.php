@@ -7,3 +7,7 @@ Route::localized(function () {
     Route::get('/', [LaravelVersionsController::class, 'index'])->name('versions.index');
     Route::get('{version}', [LaravelVersionsController::class, 'show'])->name('versions.show');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
