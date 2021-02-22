@@ -16,6 +16,8 @@ module.exports = {
       'yellow-300': '#F2D987',
       'green-300': '#5AC984',
       'blue-300': '#75B5E2',
+      'blue-500': '#1381BE',
+      'blue-600': '#0D6A9B',
       'white': '#FFFFFF',
     },
     fontSize: {

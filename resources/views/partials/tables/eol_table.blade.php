@@ -2,8 +2,8 @@
     <h2 class="block mb-1 text-xl font-bold">{{ __('No longer receiving security updates!') }}</h2>
     <p class="mb-6">
         {!! __('Need help upgrading your app? Try :link-laravelshift for automated upgrades or :link-tighten if you need more than just upgrades.', [
-            'link-laravelshift' => '<a href="https://laravelshift.com/" class="border-hover">Laravel Shift</a>',
-            'link-tighten' => '<a href="https://tighten.co/" class="border-hover">' . __('contact Tighten') . '</a>',
+            'link-laravelshift' => '<a href="https://laravelshift.com/" class="text-blue-500 hover:text-blue-600 border-hover">Laravel Shift</a>',
+            'link-tighten' => '<a href="https://tighten.co/" class="text-blue-500 hover:text-blue-600 border-hover">' . __('contact Tighten') . '</a>',
         ]) !!}
     </p>
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

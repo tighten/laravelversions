@@ -6,5 +6,5 @@
     @apply inline-block transition border-b;
 }
 .border-hover:hover {
-    box-shadow: 0 2px 0px -0px ;
+    box-shadow: 0 1px 0px -0px ;
 }

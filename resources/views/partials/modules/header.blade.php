@@ -18,7 +18,7 @@
             {{ __('Release dates and timelines for security and bug fixes for all versions of Laravel.') }}
         </p>
         <p>
-            {!! __("To learn more about Laravel's versioning strategy, check out the :link.", ['link' => '<a href="https://laravel-news.com/laravel-releases" class="text-blue-300 border-hover">' . __('Laravel News "Laravel Releases" page') . '</a>']) !!}
+            {!! __("To learn more about Laravel's versioning strategy, check out the :link.", ['link' => '<a href="https://laravel-news.com/laravel-releases" class="text-blue-300 border-hover hover:text-blue-500">' . __('Laravel News "Laravel Releases" page') . '</a>']) !!}
         </p>
     </div>
 </header>
