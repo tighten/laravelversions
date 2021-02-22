@@ -2,7 +2,7 @@
     "Active support": "Aktywne wsparcie",
     "Brought to you by the lovely folks at": "Dostarczone przezuroczych ludzi w",
     "Bug & security fixes": "Poprawki błędów i bezpieczeństwa",
-    "Bug Fixes Until": "Naprawione błędy do",
+    "Bug Fixes Until": "Naprawy błędów do",
     "contact Tighten": "Tighten",
     "Currently supported versions": "Aktualnie utrzymywane wersje",
     "Data available in JSON format": "Dane w formacie JSON",
@@ -19,7 +19,7 @@
     "Latest Patch Release": "Najnowsze wydanie poprawki",
     "Major Version": "Wersja główna (major)",
     "Need help upgrading your app? Try :link-laravelshift for automated upgrades or :link-tighten if you need more than just upgrades.": "Potrzebujesz pomocy w uaktualnieniu aplikacji? Wypróbuj :link-laravelshift do automatycznych aktualizacji lub skontaktuj się z :link-tighten, jeśli potrzebujesz czegoś więcej niż tylko aktualizacje.",
-    "No longer receiving security updates!": "Nie są już dostępne bezpieczeństwo!",
+    "No longer receiving security updates!": "Brak już aktualizacji. Koniec wsparcia!",
     "Not receiving bug or security fixes": "Brak wsparcia z poprawkami błędów lub zabezpieczeń",
     "not released yet!": "jeszcze nie wydany!",
     "Planned release.": "Planowane wydanie.",
@@ -33,8 +33,7 @@
     "This version of the release is planned only and <strong>not released yet!</strong>": "Ta wersja jest tylko planowana do wydania i <strong>jeszcze nie została wydana!</strong>",
     "The estimated release date is :date": "Szacowana data premiery jest na :date",
     "To learn more about Laravel's versioning strategy, check out the :link.": "Aby dowiedzieć się więcej o strategii przechowywania wersji Laravel, odwiedź stronę :link.",
-    "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>": "Zaktualizuj <em>co najmniej</em> do wersji z zabezpieczeniami <strong>tak szybko, jak to możliwe!</strong>",
-    "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong><br>\n                        The lowest version still getting security fixes is: :link <br>\n                        To upgrade, follow the instructions in the docs or use :link-laravelshifts to upgrade automatically.": "Zaktualizuj <em>co najmniej</em> do wersji z zachowanymi zabezpieczeniami <strong>tak szybko, jak to możliwe!</strong><br>Najniższa wersja, w której wciąż są dostępne poprawki zabezpieczeń, to :link <br>Aby zaktualizować, postępuj zgodnie z instrukcjami w dokumentacji lub użyj :link-laravelshifts, aby zaktualizować automatycznie.",
+    "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong><br>\n            The lowest version still getting security fixes is: :link <br>\n            To upgrade, follow the instructions in the docs or use :link-laravelshifts to upgrade automatically.": "Zaktualizuj <em>co najmniej</em> do wersji z zachowanymi zabezpieczeniami <strong>tak szybko, jak to możliwe!</strong><br>Najniższa wersja, w której wciąż są dostępne poprawki zabezpieczeń, to :link <br>Aby zaktualizować, postępuj zgodnie z instrukcjami w dokumentacji lub użyj :link-laravelshifts, aby zaktualizować automatycznie.",
     "Update to the latest major or LTS release.": "Zaktualizuj do najnowszej wersji głównej (major) lub do wersji LTS.",
     "Version": "Wersja"
 }
