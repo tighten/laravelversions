@@ -3,7 +3,7 @@
 
     <ul class="w-3/4 sm:w-full sm:flex sm:flex-wrap">
         <li class="flex items-center px-3 py-2 mb-2 mr-2 bg-green-300 rounded-md">
-            <img class="inline w-4 h-4 mr-3" src="svg/icon_eol.svg" alt="icon">
+            <img class="inline w-4 h-4 mr-3" src="svg/icon_all.svg" alt="icon">
             <span class="mr-2 font-bold">ALL</span>
             <p>{{ __('Bug & security fixes') }}</p>
         </li>
@@ -13,7 +13,7 @@
             <p>{{ __('Security fixes only') }}</p>
         </li>
         <li class="flex items-center px-3 py-2 mb-2 mr-2 bg-red-300 rounded-md">
-            <img class="inline w-4 h-4 mr-3" src="svg/icon_all.svg" alt="icon">
+            <img class="inline w-4 h-4 mr-3" src="svg/icon_eol.svg" alt="icon">
             <span class="mr-2 font-bold">EOL</span>
             <p>{{ __('End of Life') }}</p>
         </li>
