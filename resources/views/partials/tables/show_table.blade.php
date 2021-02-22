@@ -25,9 +25,9 @@
         <tbody class="bg-white divide-y divide-gray-200">
             @php
             $statusClassMap = [
-                App\Models\LaravelVersion::STATUS_FUTURE => 'bg-blue-300 rounded-md inline-block px-2 py-1 inline-block ml-5 font-bold',
-                App\Models\LaravelVersion::STATUS_ACTIVE => 'bg-green-300 rounded-md inline-block px-2 py-1 inline-block ml-5 font-bold',
-                App\Models\LaravelVersion::STATUS_SECURITY => 'bg-yellow-300 rounded-md inline-block px-2 py-1 inline-block ml-5 font-bold',
+                App\Models\LaravelVersion::STATUS_FUTURE => 'bg-blue-300 rounded-md inline-block px-3 py-1 inline-block ml-5 font-bold',
+                App\Models\LaravelVersion::STATUS_ACTIVE => 'bg-green-300 rounded-md inline-block px-3 py-1 inline-block ml-5 font-bold',
+                App\Models\LaravelVersion::STATUS_SECURITY => 'bg-yellow-300 rounded-md inline-block px-3 py-1 inline-block ml-5 font-bold',
                 App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'bg-red-300 rounded-md inline-block px-3 py-2 inline-block ml-5 font-bold',
             ];
             $statusTextMap = [
