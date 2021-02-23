@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg-red-300">
         <div @click="isOpen = !isOpen">
             {{ selected }}
         </div>
@@ -18,21 +18,19 @@
 
 <script>
 export default {
+    props: {
         languages: null,
         currentLanguage: '',
     },
-
     mounted() {
         this.selected = this.currentLanguage;
     },
-
     data() {
         return {
             isOpen: false,
             selected: null,
         };
     },
-
     methods: {
         handleSelect(languageObject) {
             this.selected = languageObject.language_name_native;
