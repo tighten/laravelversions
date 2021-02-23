@@ -35,7 +35,6 @@
     <body class="font-sans antialiased bg-gray-100">
         <div id="app">
             @include('partials/modules/header')
-            <example-component></example-component>
             <div class="max-w-screen-xl px-4 pt-12 mx-auto sm:px-6 lg:px-8">
                 <main>
                     {{ $slot }}

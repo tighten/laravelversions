@@ -1,14 +1,29 @@
 <header class="py-8 bg-gray-700">
     <div class="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
+        
         @if (Config::has('localized-routes.supported-locales'))
-            <select onchange="location = this.value;" class="float-right max-w-6xl px-4 mx-auto text-xs text-black bg-gray-200 border border-gray-200 rounded sm:px-6 lg:px-8 lang">
-                @foreach (Config::get('localized-routes.supported-locales', []) as $lang)
-                    <option value="{{ Route::localizedUrl($lang) }}" @if (App::getLocale() == $lang) selected="selected" @endif class="lang-name lang-name-{{ $lang }}">
-                        {{ Config::get("localized-routes.locales-name-native.{$lang}", Str::upper($lang)) }}
-                    </option>
-                @endforeach
-            </select>
+            {{-- //turn logic/data into object to use in vue --}}
+            @php
+                $formatted_languages = [];
+                $current_language = null;
+
+                foreach (Config::get('localized-routes.supported-locales', []) as $lang) {
+                    $language_name_native = Config::get("localized-routes.locales-name-native.{$lang}", Str::upper($lang));
+                    $formatted_languages[] = [
+                        'language_code' => $lang,
+                        'language_name_native' => $language_name_native,
+                        'language_url' => Route::localizedUrl($lang),
+                    ];
+                    if (App::getLocale() == $lang) {
+                        $current_language = $language_name_native;
+                    }
+                }
+            @endphp
+
+            {{-- encode php to work with js --}}
+            <language-select :languages="{{ json_encode($formatted_languages) }}" :current-language="{{ json_encode($current_language) }}"></language-select>
         @endif
+        
         <h1 class="mb-2 text-3xl">
             <a href="{{ route('versions.index') }}" class="inline-block w-64"><img class="w-full h-full" src="/svg/logo.svg" alt="Laravel Versions Logo"></a>
         </h1>
