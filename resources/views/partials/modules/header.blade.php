@@ -2,7 +2,6 @@
     <div class="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
         
         @if (Config::has('localized-routes.supported-locales'))
-            {{-- //turn logic/data into object to use in vue --}}
             @php
                 $formatted_languages = [];
                 $current_language = null;
@@ -20,7 +19,6 @@
                 }
             @endphp
 
-            {{-- encode php to work with js --}}
             <language-select :languages="{{ json_encode($formatted_languages) }}" :current-language="{{ json_encode($current_language) }}"></language-select>
         @endif
         
