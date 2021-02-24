@@ -1,11 +1,38 @@
 <template>
-    <div class="bg-red-300">
-        <div @click="isOpen = !isOpen">
+    <div
+        class="relative w-full max-w-xs px-3 py-1 mb-8 bg-white cursor-pointer sm:py-2 sm:w-1/4 sm:mb-0"
+    >
+        <div
+            @click="isOpen = !isOpen"
+            class="flex items-center justify-between"
+        >
             {{ selected }}
+            <svg
+                v-bind:class="{
+                    'transform rotate-180 transition': isOpen,
+                    transition: !isOpen,
+                }"
+                width="20"
+                height="24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                />
+            </svg>
         </div>
-
-        <ul v-show="isOpen" class="bg-white">
+        <ul
+            v-show="isOpen"
+            class="absolute left-0 w-full bg-white shadow-md top-8"
+        >
             <li
+                class="px-3 py-2 transition hover:bg-gray-200"
                 v-for="(language, index) in languages"
                 :key="index"
                 @click="handleSelect(language)"
