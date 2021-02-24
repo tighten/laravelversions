@@ -1,6 +1,7 @@
 <template>
     <div
-        class="relative w-full max-w-xs px-3 py-1 mb-8 bg-white cursor-pointer sm:py-2 sm:w-1/4 sm:mb-0"
+        class="relative w-full max-w-xs px-3 py-1 mb-8 bg-gray-100 cursor-pointer sm:py-2 sm:w-1/4 sm:mb-0"
+        v-bind:class="{ 'rounded-t-md': isOpen, 'rounded-md': !isOpen }"
     >
         <div
             @click="isOpen = !isOpen"
@@ -27,12 +28,14 @@
                 />
             </svg>
         </div>
+
         <ul
             v-show="isOpen"
-            class="absolute left-0 w-full bg-white shadow-md top-8"
+            v-outside-click="hide"
+            class="absolute left-0 w-full bg-white shadow-md rounded-b-md top-10"
         >
             <li
-                class="px-3 py-2 transition hover:bg-gray-200"
+                class="px-3 py-2 transition rounded-b-md hover:bg-gray-200"
                 v-for="(language, index) in languages"
                 :key="index"
                 @click="handleSelect(language)"
@@ -62,7 +65,11 @@ export default {
         handleSelect(languageObject) {
             this.selected = languageObject.language_name_native;
             window.location.href = languageObject.language_url;
-            return (this.isOpen = false);
+            this.isOpen = false;
+        },
+
+        hide() {
+            this.isOpen = false;
         },
     },
 };
