@@ -1,16 +1,27 @@
 export default {
     bind(el, binding, vnode) {
-        const menuHandler = (e) => {
-            if (!el.contains(e.target) && el !== e.target) {
-                binding.value(e);
+        const outsideClickHandler = (e) => {
+            const { handler, ignore } = binding.value;
+            let clickedOnIgnoredEl = false;
+
+            ignore.forEach((refName) => {
+                if (!clickedOnIgnoredEl) {
+                    const ignoredEl = vnode.context.$refs[refName];
+                    clickedOnIgnoredEl = ignoredEl.contains(e.target);
+                }
+            });
+
+            if (!el.contains(e.target) && !clickedOnIgnoredEl) {
+                vnode.context[handler]();
             }
         };
 
-        el.outsideClick = menuHandler;
-        document.addEventListener('mousedown', menuHandler);
+        document.addEventListener('click', outsideClickHandler);
+        document.addEventListener('touchstart', outsideClickHandler);
     },
-    unbind(el, binding) {
-        document.removeEventListener('mousedown', el.outsideClick);
-        el.outsideClick = null;
+
+    unbind() {
+        document.removeEventListener('click', outsideClickHandler);
+        document.removeEventListener('touchstart', outsideClickHandler);
     },
 };

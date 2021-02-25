@@ -3,22 +3,23 @@
         v-bind:class="{ 'rounded-t-md': isOpen, 'rounded-md': !isOpen }"
         class="relative w-full max-w-xs px-3 py-1 mb-8 bg-gray-100 cursor-pointer sm:py-2 sm:w-1/4 sm:mb-0"
     >
-        <div
+        <label class="sr-only">Language selector</label>
+
+        <button
             @click="isOpen = !isOpen"
-            class="flex items-center justify-between"
+            for="language selection"
+            ref="language"
+            class="flex items-center justify-between w-full"
         >
             <p>
                 {{ selected }}
             </p>
-
             <svg
-                v-bind:class="{
-                    'transform rotate-180 transition': isOpen,
-                    transition: !isOpen,
-                }"
+                v-bind:class="{ 'transform rotate-180 transition': isOpen }"
+                class="transition"
                 width="20"
                 height="24"
-                xmlns="http://www.w3.org/2000/svg"
+                xmlns="http:www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -30,22 +31,25 @@
                     d="M19 9l-7 7-7-7"
                 />
             </svg>
-        </div>
+        </button>
 
         <ul
             v-show="isOpen"
-            v-outside-click="hide"
+            v-outside-click="{ exclude: ['button'], handler: 'closeDropdown' }"
             class="absolute left-0 w-full bg-white shadow-md rounded-b-md top-10"
         >
             <li
                 v-for="(language, index) in languages"
                 :key="index"
                 @click="handleSelect(language)"
+                tabindex="-1"
                 class="px-3 py-2 transition rounded-b-md hover:bg-gray-200"
             >
-                <p>
-                    {{ language.language_name_native }}
-                </p>
+                <a href="#" role="button">
+                    <p>
+                        {{ language.language_name_native }}
+                    </p>
+                </a>
             </li>
         </ul>
     </div>
@@ -73,7 +77,7 @@ export default {
             this.isOpen = false;
         },
 
-        hide() {
+        closeDropdown() {
             this.isOpen = false;
         },
     },
