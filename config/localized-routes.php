@@ -13,7 +13,7 @@ return [
     'locales-name-native' => [
         'en' => 'English',
         'pl' => 'Polski',
-        'es' => 'Spanish',
+        'es' => 'Español',
     ],
 
     /**
