@@ -1,13 +1,16 @@
 <template>
     <div
-        class="relative w-full max-w-xs px-3 py-1 mb-8 bg-gray-100 cursor-pointer sm:py-2 sm:w-1/4 sm:mb-0"
         v-bind:class="{ 'rounded-t-md': isOpen, 'rounded-md': !isOpen }"
+        class="relative w-full max-w-xs px-3 py-1 mb-8 bg-gray-100 cursor-pointer sm:py-2 sm:w-1/4 sm:mb-0"
     >
         <div
             @click="isOpen = !isOpen"
             class="flex items-center justify-between"
         >
-            {{ selected }}
+            <p>
+                {{ selected }}
+            </p>
+
             <svg
                 v-bind:class="{
                     'transform rotate-180 transition': isOpen,
@@ -35,12 +38,14 @@
             class="absolute left-0 w-full bg-white shadow-md rounded-b-md top-10"
         >
             <li
-                class="px-3 py-2 transition rounded-b-md hover:bg-gray-200"
                 v-for="(language, index) in languages"
                 :key="index"
                 @click="handleSelect(language)"
+                class="px-3 py-2 transition rounded-b-md hover:bg-gray-200"
             >
-                {{ language.language_name_native }}
+                <p>
+                    {{ language.language_name_native }}
+                </p>
             </li>
         </ul>
     </div>
