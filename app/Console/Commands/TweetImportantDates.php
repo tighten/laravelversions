@@ -21,7 +21,7 @@ class TweetImportantDates extends Command
 
     public function versionsNeedingNotification()
     {
-        // This could likely eventaully be a scope
+        // This could likely eventually be a scope
         return LaravelVersion::all()->filter(function ($version) {
             return $version->needsNotification();
         });
