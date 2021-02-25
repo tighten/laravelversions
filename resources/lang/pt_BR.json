@@ -32,7 +32,7 @@
     "Source on GitHub": "Código fonte no GitHub",
     "The estimated release date is :date": "A data estimada de lançamento é :date",
     "The lowest version still getting security fixes is: :link": "A versão mais baixa que ainda recebe correções de segurança é: :link",
-    "This version of the release is planned only and <strong>not released yet!</strong>": "Esta versão foi somente planejada e <strong>ainda não foi lançada!</string>",
+    "This version of the release is planned only and <strong>not released yet!</strong>": "Esta versão foi somente planejada e <strong>ainda não foi lançada!</strong>",
     "To learn more about Laravel's versioning strategy, check out the :link.": "Para conhecer mais sobre a estratégia de versionamento do Laravel, visite a :link.",
     "To upgrade, follow the instructions in the docs or use :link-laravelshifts to upgrade automatically.": "Para atualizar, siga as instruções na documentação ou use :link-laravelshifts para atualizar automaticamente.",
     "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>": "Atualize <em>pelo menos</em> para uma versão que recebe correções de segurança <strong>o mais rápido possível!</strong>",
