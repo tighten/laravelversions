@@ -78,7 +78,7 @@ export default {
             this.isOpen = false;
         },
 
-        closeDropdown() {
+        hide() {
             this.isOpen = false;
         },
     },
