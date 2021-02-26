@@ -22,7 +22,6 @@
             !!}
         @endif
     </p>
-
     <div class="mb-16 lg:mb-24">
         <h2 class="text-xl font-bold">{{ __('Latest Patch Release') }}:</h2>
         <p>{{ $version }}</p>

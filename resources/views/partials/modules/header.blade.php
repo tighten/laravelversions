@@ -1,10 +1,11 @@
 <header class="py-8 bg-gray-700">
     <div class="flex flex-col max-w-screen-xl px-4 mx-auto sm:items-center sm:justify-between sm:flex-row sm:flex-row-reverse sm:px-6 lg:px-8">
+
         @if (Config::has('localized-routes.supported-locales'))
             @php
                 $formatted_languages = [];
                 $current_language = null;
-
+                
                 foreach (Config::get('localized-routes.supported-locales', []) as $lang) {
                     $language_name_native = Config::get("localized-routes.locales-name-native.{$lang}", Str::upper($lang));
                     $formatted_languages[] = [
@@ -21,7 +22,8 @@
                 :languages="{{ json_encode($formatted_languages) }}" 
                 :current-language="{{ json_encode($current_language) }}">
             </language-select>
-        @endif     
+        @endif
+
         <h1 class="mb-2 text-3xl">
             <a href="{{ route('versions.index') }}" class="inline-block"><img class="w-full h-full" src="/svg/logo.svg" alt="Laravel Versions Logo"></a>
         </h1>

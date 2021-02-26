@@ -27,7 +27,6 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-
                     @foreach ($activeVersions as $version)
                         <tr>
                             <th class="py-4 pl-6 text-sm font-medium text-left text-gray-900 lg:pl-8 whitespace-nowrap">

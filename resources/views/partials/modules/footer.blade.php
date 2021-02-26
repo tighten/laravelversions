@@ -8,7 +8,7 @@
         |
         <a href="https://twitter.com/laravelversions" class="border-hover">{{ __('Follow on Twitter for important dates') }}</a>
     </div>
-
+    
     @if (! App::isLocale(Config::get('localized-routes.omit_url_prefix_for_locale')))
         <br>
         {{ __('Greetings from the author of the translations') }}
