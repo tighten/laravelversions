@@ -25,11 +25,7 @@
             </language-select>
         @endif
 
-<<<<<<< HEAD
-        <h1 class="mb-2 text-3xl">
-=======
         <div class="mb-2 text-3xl">
->>>>>>> cf6ccf74903ac30aa8c770e20b1403d709b791bd
             <a href="{{ route('versions.index') }}" class="inline-block"><img class="w-full h-full" src="/svg/logo.svg" alt="Laravel Versions Logo"></a>
         </div>
     </div>
