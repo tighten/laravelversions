@@ -14,13 +14,11 @@
                 {{ selected }}
             </p>
             <svg
-                v-bind:class="{
-                    'transform rotate-180 transition': isOpen,
-                    transition: !isOpen,
-                }"
+                v-bind:class="{ 'transform rotate-180 transition': isOpen }"
+                class="transition"
                 width="20"
                 height="24"
-                xmlns="http://www.w3.org/2000/svg"
+                xmlns="http:www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -80,7 +78,7 @@ export default {
             this.isOpen = false;
         },
 
-        hide() {
+        closeDropdown() {
             this.isOpen = false;
         },
     },

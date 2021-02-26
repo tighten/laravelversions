@@ -18,7 +18,6 @@ Vue.directive('outside-click', OutsideClick);
 /**
  * Components
  */
-
 Vue.component(
     'language-select',
     require('./components/LanguageSelect.vue').default
@@ -27,7 +26,6 @@ Vue.component(
 /**
  * Application instance
  */
-
 const app = new Vue({
     el: '#app',
 });

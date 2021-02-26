@@ -1,5 +1,5 @@
 <header class="py-8 bg-gray-700">
-    <div class="flex flex-col max-w-screen-xl px-4 mx-auto sm:items-center sm:justify-between sm:flex-row sm:flex-row-reverse sm:px-6 lg:px-8">
+    <div class="flex flex-col max-w-screen-xl px-4 mx-auto sm:items-center sm:justify-between sm:flex-row-reverse sm:px-6 lg:px-8">
 
         @if (Config::has('localized-routes.supported-locales'))
             @php
@@ -18,15 +18,20 @@
                     }
                 }            
             @endphp
+            
             <language-select 
                 :languages="{{ json_encode($formatted_languages) }}" 
                 :current-language="{{ json_encode($current_language) }}">
             </language-select>
         @endif
 
+<<<<<<< HEAD
         <h1 class="mb-2 text-3xl">
+=======
+        <div class="mb-2 text-3xl">
+>>>>>>> cf6ccf74903ac30aa8c770e20b1403d709b791bd
             <a href="{{ route('versions.index') }}" class="inline-block"><img class="w-full h-full" src="/svg/logo.svg" alt="Laravel Versions Logo"></a>
-        </h1>
+        </div>
     </div>
     <div class="{{ Route::is('*.versions.index') ? 'max-w-screen-xl px-4 py-4 mx-auto text-base text-white sm:px-6 lg:px-8' : 'hidden' }}">
         <p class="mb-4 md:mb-2">

@@ -140,4 +140,4 @@ Potential statuses:
     - in the variable `supported-locales`, the code of the supported language
     - in the variable `locales-name-native` the language code as the key, and the value of the name of the native language, which will be displayed in the menu.
 * add a pull request with the name of the language
-    * ex: [pl] New languag
+    * ex: [pl] New language
