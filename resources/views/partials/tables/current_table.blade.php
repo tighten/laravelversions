@@ -34,16 +34,16 @@
                                 <a href="{{ $version->url }}" class="border-hover">{{ $version->major }} {{ $version->released_at->gt(now()) ? '(' . __('not released yet!') . ')' : '' }}</a>
                             </th>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                {{ $version->released_at->gt(now()) ? $version->released_at->format('F, Y') . ' (' . __('estimated') . ')' : $version->released_at->format('F j, Y') }}
+                                {{ $version->released_at->gt(now()) ? $version->released_at->translatedFormat(__('DateShortFormat')) . ' (' . __('estimated') . ')' : $version->released_at->translatedFormat(__('DateLongFormat')) }}
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                 @if ($version->ends_bugfixes_at)
-                                    {{ $version->released_at->gt(now()) ? $version->ends_bugfixes_at->format('F, Y') . ' (' . __('estimated') . ')' : $version->ends_bugfixes_at->format('F j, Y') }}
+                                    {{ $version->released_at->gt(now()) ? $version->ends_bugfixes_at->translatedFormat(__('DateShortFormat')) . ' (' . __('estimated') . ')' : $version->ends_bugfixes_at->translatedFormat(__('DateLongFormat')) }}
                                 @endif
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                 @if ($version->ends_securityfixes_at)
-                                    {{ $version->released_at->gt(now()) ? $version->ends_securityfixes_at->format('F, Y') . ' (' . __('estimated') . ')' : $version->ends_securityfixes_at->format('F j, Y') }}
+                                    {{ $version->released_at->gt(now()) ? $version->ends_securityfixes_at->translatedFormat(__('DateShortFormat')) . ' (' . __('estimated') . ')' : $version->ends_securityfixes_at->translatedFormat(__('DateLongFormat')) }}
                                 @endif
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
