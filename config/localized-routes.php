@@ -1,10 +1,12 @@
 <?php
 
 return [
+
     /**
      * The locales you wish to support.
      */
     'supported-locales' => ['en', 'es', 'pl', 'pt_BR', 'de'],
+
     /**
      * Native language name
      */
@@ -15,6 +17,7 @@ return [
         'pt_BR' => 'Português (Brasil)',
         'de' => 'Deutsch',
     ],
+
     /**
      * If you have a main locale and don't want
      * to prefix it in the URL, specify it here.
@@ -22,11 +25,13 @@ return [
      * 'omit_url_prefix_for_locale' => 'en',
      */
     'omit_url_prefix_for_locale' => 'en',
+
     /**
      * If you want to automatically set the locale
      * for localized routes set this to true.
      */
     'use_locale_middleware' => true,
+
     /**
      * If true, this package will use 'codezero/laravel-localizer'
      * to detect and set the preferred supported locale.
@@ -51,4 +56,5 @@ return [
      * This option only has effect if you use the SetLocale middleware.
      */
     'use_localizer' => true,
+
 ];
