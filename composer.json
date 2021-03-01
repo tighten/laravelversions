@@ -16,7 +16,6 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.2",
         "silber/page-cache": "^1.0"
     },
     "require-dev": {

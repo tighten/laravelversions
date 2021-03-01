@@ -8,6 +8,4 @@ Route::localized(function () {
     Route::get('{version}', [LaravelVersionsController::class, 'show'])->name('versions.show');
 });
 
-Auth::routes();
-
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
