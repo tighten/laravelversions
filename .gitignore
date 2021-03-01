@@ -11,3 +11,4 @@ npm-debug.log
 yarn-error.log
 .php_cs.cache
 storage/debugbar
+.DS_Store
