@@ -58,10 +58,8 @@
 
 <script>
 export default {
-    props: {
-        languages: null,
-        currentLanguage: '',
-    },
+    props: ['languages', 'currentLanguage'],
+    
     mounted() {
         this.selected = this.currentLanguage;
     },
