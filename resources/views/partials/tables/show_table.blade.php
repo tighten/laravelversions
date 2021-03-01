@@ -54,22 +54,22 @@
                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                         {{
                             $version->released_at->gt(now())
-                            ? $version->released_at->translatedFormat(__('DateShortFormat')) . ' (' . __('estimated') . ')'
+                            ? $version->released_at->translatedFormat(__('DateLongFormat')) . ' (' . __('estimated') . ')'
                             : $version->released_at->translatedFormat(__('DateLongFormat'))
                         }}
                     </td>
                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                         {{
-                            $version->ends_bugfixes_at
-                            ? $version->ends_bugfixes_at->translatedFormat(__('DateLongFormat'))
-                            : ''
+                            $version->released_at->gt(now())
+                            ? $version->ends_bugfixes_at->translatedFormat(__('DateShortFormat')) . ' (' . __('estimated') . ')'
+                            : $version->ends_bugfixes_at->translatedFormat(__('DateLongFormat'))
                         }}
                     </td>
                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                         {{
-                            $version->ends_securityfixes_at
-                            ? $version->ends_securityfixes_at->translatedFormat(__('DateLongFormat'))
-                            : ''
+                            $version->released_at->gt(now())
+                            ? $version->ends_securityfixes_at->translatedFormat(__('DateShortFormat')) . ' (' . __('estimated') . ')'
+                            : $version->ends_securityfixes_at->translatedFormat(__('DateLongFormat'))
                         }}
                     </td>
                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
