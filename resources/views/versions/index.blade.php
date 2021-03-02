@@ -7,10 +7,10 @@
             App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'bg-red-300 rounded-md inline-block px-3 py-2 inline-block ml-5 font-bold',
         ];
         $statusTextMap = [
-            App\Models\LaravelVersion::STATUS_FUTURE => 'FUT',
-            App\Models\LaravelVersion::STATUS_ACTIVE => 'ALL',
-            App\Models\LaravelVersion::STATUS_SECURITY => 'SEC',
-            App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'EOL',
+            App\Models\LaravelVersion::STATUS_FUTURE => __('FUT'),
+            App\Models\LaravelVersion::STATUS_ACTIVE => __('ALL'),
+            App\Models\LaravelVersion::STATUS_SECURITY => __('SEC'),
+            App\Models\LaravelVersion::STATUS_ENDOFLIFE => __('EOL'),
         ];
     @endphp
 
