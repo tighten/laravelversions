@@ -5,7 +5,16 @@ return [
     /**
      * The locales you wish to support.
      */
-    'supported-locales' => ['en', 'de', 'es', 'fr', 'lt', 'pl', 'pt_BR', 'uk'],
+    'supported-locales' => [
+        'en',
+        'de',
+        'es',
+        'fr',
+        'lt',
+        'pl',
+        'pt_BR',
+        'uk',
+    ],
 
     /**
      * Native language name
