@@ -60,16 +60,24 @@
                     </td>
                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                         {{
-                            $version->released_at->gt(now())
-                                ? $version->ends_bugfixes_at->translatedFormat(__('DateShortFormat')) . ' (' . __('estimated') . ')'
-                                : $version->ends_bugfixes_at->translatedFormat(__('DateLongFormat'))
+                            $version->ends_bugfixes_at
+                                ? (
+                                    $version->released_at->gt(now())
+                                        ? $version->ends_bugfixes_at->translatedFormat(__('DateShortFormat')) . ' (' . __('estimated') . ')'
+                                        : $version->ends_bugfixes_at->translatedFormat(__('DateLongFormat'))
+                                )
+                                : ''
                         }}
                     </td>
                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                         {{
-                            $version->released_at->gt(now())
-                                ? $version->ends_securityfixes_at->translatedFormat(__('DateShortFormat')) . ' (' . __('estimated') . ')'
-                                : $version->ends_securityfixes_at->translatedFormat(__('DateLongFormat'))
+                            $version->ends_securityfixes_at
+                                ? (
+                                    $version->released_at->gt(now())
+                                        ? $version->ends_securityfixes_at->translatedFormat(__('DateShortFormat')) . ' (' . __('estimated') . ')'
+                                        : $version->ends_securityfixes_at->translatedFormat(__('DateLongFormat'))
+                                )
+                                : ''
                         }}
                     </td>
                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
