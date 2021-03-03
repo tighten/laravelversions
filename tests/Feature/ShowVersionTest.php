@@ -20,4 +20,26 @@ class ShowVersionTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    /** @test */
+    public function it_loads_is_not_date_in_ends_bugfixes_at()
+    {
+        $version = LaravelVersion::factory()->create([
+            'ends_bugfixes_at' => null,
+        ]);
+        $response = $this->get(route('versions.show', [$version->__toString()]));
+
+        $response->assertStatus(200);
+    }
+
+    /** @test */
+    public function it_loads_is_not_date_in_ends_securityfixes_at()
+    {
+        $version = LaravelVersion::factory()->create([
+            'ends_securityfixes_at' => null,
+        ]);
+        $response = $this->get(route('versions.show', [$version->__toString()]));
+
+        $response->assertStatus(200);
+    }
 }
