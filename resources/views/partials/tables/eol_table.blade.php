@@ -37,7 +37,11 @@
                         @foreach ($inactiveVersions as $version)
                             <tr>
                                 <th class="px-6 py-4 text-sm font-medium text-left text-gray-900 whitespace-nowrap">
-                                    <a href="{{ $version->url }}" class="border-hover">{{ $version->major }}{{ $version->major < 6 ? '.' . $version->minor : '' }}</a>
+                                    <a href="{{ $version->url }}" class="border-hover">{{ $version->major }}{{ 
+                                        $version->major < 6
+                                            ? '.' . $version->minor
+                                            : '' 
+                                    }}</a>
                                 </th>
                                 <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                     {{ 
