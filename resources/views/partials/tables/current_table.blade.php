@@ -63,11 +63,7 @@
                                 @endif
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                {{ 
-                                    $version->is_lts
-                                    ? '✓'
-                                    : ''
-                                }}
+                                {{  $version->is_lts ? '✓' : '' }}
                             </td>
                             <td scope="col">
                                 <div class="{{ $statusClassMap[$version->status] }}">
