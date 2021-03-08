@@ -40,17 +40,45 @@
 
             @foreach ([$version] as $version)
                 <tr>
-                    <th class="py-4 pl-6 text-sm font-medium text-left text-gray-900 lg:pl-8 whitespace-nowrap">
-                        {{ $version->major < 6 ? $version->major . '.' . $version->minor : $version->major }} {{ $version->released_at->gt(now()) ? '(' . __('not released yet!') . ')' : '' }}
+                    <th class="px-6 py-4 text-sm font-medium text-left text-gray-900 whitespace-nowrap">
+                        {{
+                            $version->major < 6 
+                                ? $version->major . '.' . $version->minor
+                                : $version->major
+                        }} {{
+                            $version->released_at->gt(now())
+                                ? '(' . __('not released yet!') . ')'
+                                : ''
+                        }}
                     </th>
-                    <td class="py-4 pl-6 text-sm text-gray-500 lg:pl-8 whitespace-nowrap">
-                        {{ $version->released_at->gt(now()) ? $version->released_at->format('F, Y') . ' (' . __('estimated') . ')' : $version->released_at->format('F j, Y') }}
+                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                        {{
+                            $version->released_at->gt(now())
+                                ? $version->released_at->translatedFormat(__('DateLongFormat')) . ' (' . __('estimated') . ')'
+                                : $version->released_at->translatedFormat(__('DateLongFormat'))
+                        }}
                     </td>
-                    <td class="py-4 pl-6 text-sm text-gray-500 lg:pl-8 whitespace-nowrap">
-                        {{ $version->ends_bugfixes_at ? $version->ends_bugfixes_at->format('F j, Y'): '' }}
+                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                        {{
+                            $version->ends_bugfixes_at
+                                ? (
+                                    $version->released_at->gt(now())
+                                        ? $version->ends_bugfixes_at->translatedFormat(__('DateShortFormat')) . ' (' . __('estimated') . ')'
+                                        : $version->ends_bugfixes_at->translatedFormat(__('DateLongFormat'))
+                                )
+                                : ''
+                        }}
                     </td>
-                    <td class="py-4 pl-6 text-sm text-gray-500 whitespace-nowrap">
-                        {{ $version->ends_securityfixes_at ? $version->ends_securityfixes_at->format('F j, Y') : '' }}
+                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                        {{
+                            $version->ends_securityfixes_at
+                                ? (
+                                    $version->released_at->gt(now())
+                                        ? $version->ends_securityfixes_at->translatedFormat(__('DateShortFormat')) . ' (' . __('estimated') . ')'
+                                        : $version->ends_securityfixes_at->translatedFormat(__('DateLongFormat'))
+                                )
+                                : ''
+                        }}
                     </td>
                     <td class="py-4 pl-6 text-sm text-gray-500 whitespace-nowrap">
                         {{ $version->is_lts ? '✓' : '' }}

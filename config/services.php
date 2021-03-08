@@ -42,6 +42,6 @@ return [
     ],
 
     'zapier' => [
-        'twitter_webhook_url' => env('ZAPIER_WEBHOOK_URL'),
+        'twitter_webhook_url' => env('ZAPIER_WEBHOOK_URL', 'Fake Url For Tests'),
     ],
 ];

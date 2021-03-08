@@ -7,7 +7,7 @@
             {{ __('Update to the latest major or LTS release.') }}
         @elseif ($version->status == App\Models\LaravelVersion::STATUS_FUTURE)
             {!! __('This version of the release is planned only and <strong>not released yet!</strong>') !!}<br>
-            {{ __('The estimated release date is :date', ['date' => $version->released_at->format('F Y')]) }}
+            {{ __('The estimated release date is :date', ['date' => $version->released_at->translatedFormat(__('DateMonthYear'))]) }}
         @else
             @php
                 $recommendation = (new App\LowestSupportedVersion)($version);

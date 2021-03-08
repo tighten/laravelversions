@@ -36,17 +36,33 @@
 
                         @foreach ($inactiveVersions as $version)
                             <tr>
-                                <th class="py-4 pl-6 text-sm font-medium text-left text-gray-900 lg:pl-8 whitespace-nowrap">
-                                    <a href="{{ $version->url }}" class="border-hover">{{ $version->major }}{{ $version->major < 6 ? '.' . $version->minor : '' }}</a>
+                                <th class="px-6 py-4 text-sm font-medium text-left text-gray-900 whitespace-nowrap">
+                                    <a href="{{ $version->url }}" class="border-hover">{{ $version->major }}{{ 
+                                        $version->major < 6
+                                            ? '.' . $version->minor
+                                            : '' 
+                                    }}</a>
                                 </th>
-                                <td class="py-4 pl-6 text-sm text-gray-500 lg:pl-8 whitespace-nowrap">
-                                    {{ $version->released_at->format('F j, Y') }} {{ $version->released_at->gt(now()) ? '(' . __('estimated') . ')' : '' }}
+                                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    {{ 
+                                        $version->released_at->translatedFormat(__('DateLongFormat')) }} {{ $version->released_at->gt(now())
+                                            ? '(' . __('estimated') . ')'
+                                            : ''
+                                    }}
                                 </td>
-                                <td class="py-4 pl-6 text-sm text-gray-500 lg:pl-8 whitespace-nowrap">
-                                    {{ $version->ends_bugfixes_at ? $version->ends_bugfixes_at->format('F j, Y'): '' }}
+                                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    {{ 
+                                        $version->ends_bugfixes_at
+                                            ? $version->ends_bugfixes_at->translatedFormat(__('DateLongFormat'))
+                                            : ''
+                                    }}
                                 </td>
-                                <td class="py-4 pl-6 text-sm text-gray-500 lg:pl-8 whitespace-nowrap">
-                                    {{ $version->ends_securityfixes_at ? $version->ends_securityfixes_at->format('F j, Y') : '' }}
+                                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    {{ 
+                                        $version->ends_securityfixes_at
+                                            ? $version->ends_securityfixes_at->translatedFormat(__('DateLongFormat'))
+                                            : ''
+                                    }}
                                 </td>
                                 <td class="py-4 pl-6 text-sm text-gray-500 lg:pl-8 whitespace-nowrap">
                                     {{ $version->is_lts ? '✓' : '' }}

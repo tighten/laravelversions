@@ -5,14 +5,29 @@ return [
     /**
      * The locales you wish to support.
      */
-    'supported-locales' => ['en', 'pl'],
+    'supported-locales' => [
+        'en',
+        'de',
+        'es',
+        'fr',
+        'lt',
+        'pl',
+        'pt_BR',
+        'uk',
+    ],
 
     /**
      * Native language name
      */
     'locales-name-native' => [
         'en' => 'English',
+        'de' => 'Deutsch',
+        'es' => 'Español',
+        'fr' => 'Français',
+        'lt' => 'Lietuvių',
         'pl' => 'Polski',
+        'pt_BR' => 'Português (Brasil)',
+        'uk' => 'Українська',
     ],
 
     /**
