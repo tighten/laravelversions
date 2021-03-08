@@ -10,17 +10,9 @@ use Illuminate\View\Component;
 
 class LanguageSelector extends Component
 {
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-
     public $current_language;
     public $formatted_languages;
     public $lang;
-    public $language_name_native;
-    public $supported_languages;
 
     public function __construct()
     {

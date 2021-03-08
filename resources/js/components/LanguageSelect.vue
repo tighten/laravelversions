@@ -14,7 +14,7 @@
                 {{ selected }}
             </p>
             <svg
-                v-bind:class="{ 'transform rotate-180 transition': isOpen }"
+                v-bind:class="{ 'transform rotate-180': isOpen }"
                 class="transition"
                 width="20"
                 height="24"
