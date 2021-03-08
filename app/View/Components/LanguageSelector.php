@@ -10,36 +10,22 @@ use Illuminate\View\Component;
 
 class LanguageSelector extends Component
 {
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-
     public $current_language;
     public $formatted_languages;
-    public $lang;
-    public $language_name_native;
-    public $supported_languages;
 
     public function __construct()
     {
-        $supported_languages = Config::get('localized-routes.supported-locales', []);
-
-        $this->formatted_languages = [];
-
-        foreach ($supported_languages as $lang) {
-            $language_name_native = Config::get("localized-routes.locales-name-native.{$lang}", Str::upper($lang));
-
-            $this->formatted_languages[] = [
-                'language_name_native' => $language_name_native,
+        $this->formatted_languages = collect(Config::get('localized-routes.supported-locales', []))->map(function ($lang) {
+            return [
+                'language_name' => $lang,
+                'language_name_native' => Config::get("localized-routes.locales-name-native.{$lang}", Str::upper($lang)),
                 'language_url' => Route::localizedUrl($lang),
             ];
+        });
 
-            if (App::getLocale() == $lang) {
-                $this->current_language = $language_name_native;
-            }
-        }
+        $this->current_language = $this->formatted_languages->first(function ($languageObject) {
+            return $languageObject['language_name'] === App::getLocale();
+        })['language_name_native'];
     }
 
     /**
