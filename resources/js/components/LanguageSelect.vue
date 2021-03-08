@@ -1,7 +1,7 @@
 <template>
     <div
         v-bind:class="{ 'rounded-t-md': isOpen, 'rounded-md': !isOpen }"
-        class="relative w-full max-w-xs mb-8 bg-gray-100 cursor-pointer sm:w-1/4 sm:mb-0"
+        class="relative w-full max-w-xs mb-8 bg-gray-100 cursor-pointer sm:w-full sm:mb-0"
     >
         <label class="sr-only">Language selector</label>
         <button
@@ -59,16 +59,18 @@
 <script>
 export default {
     props: ['languages', 'currentLanguage'],
-    
+
     mounted() {
         this.selected = this.currentLanguage;
     },
+
     data() {
         return {
             isOpen: false,
             selected: null,
         };
     },
+
     methods: {
         handleSelect(languageObject) {
             this.selected = languageObject.language_name_native;
