@@ -43,10 +43,13 @@
             <li
                 v-for="(language, index) in languages"
                 :key="index"
-                @click="handleSelect(language)"
                 class="transition rounded-b-md hover:bg-gray-200"
             >
-                <a href="#">
+                <a
+                    href="#"
+                    class="block"
+                    @click.prevent="handleSelect(language)"
+                >
                     <p class="px-3 py-2">
                         {{ language.language_name_native }}
                     </p>
