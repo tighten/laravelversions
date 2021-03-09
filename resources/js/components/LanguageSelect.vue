@@ -1,14 +1,14 @@
 <template>
     <div
         v-bind:class="{ 'rounded-t-md': isOpen, 'rounded-md': !isOpen }"
-        class="relative w-full max-w-xs mb-8 bg-gray-100 cursor-pointer sm:w-full sm:mb-0"
+        class="relative w-full max-w-xs mb-8 bg-gray-100 cursor-pointer sm:w-5/12 sm:mb-0"
     >
         <label class="sr-only">Language selector</label>
         <button
             @click="isOpen = !isOpen"
             ref="button"
             for="language selection"
-            class="flex items-center justify-between w-full px-3 py-1 sm:py-2"
+            class="flex items-center justify-between w-full px-3 py-2"
         >
             <p>
                 {{ selected }}
@@ -38,7 +38,7 @@
                 ignore: ['button'],
                 handleClose: 'hide',
             }"
-            class="absolute left-0 w-full bg-white shadow-md rounded-b-md top-10"
+            class="absolute left-0 w-full bg-white shadow-md rounded-b-md top-8 sm:top-10"
         >
             <li
                 v-for="(language, index) in languages"
