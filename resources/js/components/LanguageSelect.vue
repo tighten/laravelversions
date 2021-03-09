@@ -38,7 +38,7 @@
                 ignore: ['button'],
                 handleClose: 'hide',
             }"
-            class="absolute left-0 w-full bg-white shadow-md rounded-b-md top-8 sm:top-10"
+            class="absolute left-0 w-full bg-white shadow-md rounded-b-md top-10"
         >
             <li
                 v-for="(language, index) in languages"
