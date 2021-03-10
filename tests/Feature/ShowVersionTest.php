@@ -22,24 +22,16 @@ class ShowVersionTest extends TestCase
     }
 
     /** @test */
-    public function it_loads_is_not_date_in_ends_bugfixes_at()
+    public function handles_null_bug_and_security_fix_dates()
     {
-        $version = LaravelVersion::factory()->create([
+        $bug_version = LaravelVersion::factory()->create([
             'ends_bugfixes_at' => null,
         ]);
-        $response = $this->get(route('versions.show', [$version->__toString()]));
-
-        $response->assertStatus(200);
-    }
-
-    /** @test */
-    public function it_loads_is_not_date_in_ends_securityfixes_at()
-    {
-        $version = LaravelVersion::factory()->create([
+        $security_version = LaravelVersion::factory()->create([
             'ends_securityfixes_at' => null,
         ]);
-        $response = $this->get(route('versions.show', [$version->__toString()]));
 
-        $response->assertStatus(200);
+        $this->assertNull($bug_version->null);
+        $this->assertNull($security_version->null);
     }
 }
