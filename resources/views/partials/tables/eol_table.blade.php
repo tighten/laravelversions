@@ -2,8 +2,8 @@
     <h2 class="block mb-1 text-xl font-bold">{{ __('No longer receiving security updates!') }}</h2>
     <p class="mb-6">
         {!! __('Need help upgrading your app? Try :link-laravelshift for automated upgrades or :link-tighten if you need more than just upgrades.', [
-            'link-laravelshift' => '<a href="https://laravelshift.com/" class="border-hover">Laravel Shift</a>',
-            'link-tighten' => '<a href="https://tighten.co/" class="border-hover">' . __('contact Tighten') . '</a>',
+            'link-laravelshift' => '<a href="https://laravelshift.com/" class="text-blue-600 hover:text-blue-500 border-hover">Laravel Shift</a>',
+            'link-tighten' => '<a href="https://tighten.co/" class="text-blue-600 hover:text-blue-500 border-hover">' . __('contact Tighten') . '</a>',
         ]) !!}
     </p>
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -12,22 +12,22 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead>
                         <tr class="bg-gray-50">
-                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
                                 {{ __('Version') }}
                             </th>
-                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
                                 {{ __('Release date') }}
                             </th>
-                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
                                 {{ __('Bug Fixes Until') }}
                             </th>
-                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
                                 {{ __('Security Fixes Until') }}
                             </th>
-                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                 {{ __('LTS?') }}
                             </th>
-                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                 {{ __('Status') }}
                             </th>
                         </tr>
@@ -64,7 +64,7 @@
                                             : ''
                                     }}
                                 </td>
-                                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                <td class="py-4 pl-6 text-sm text-gray-500 lg:pl-8 whitespace-nowrap">
                                     {{ $version->is_lts ? '✓' : '' }}
                                 </td>
                                 <td scope="col">

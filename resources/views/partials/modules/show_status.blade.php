@@ -6,6 +6,7 @@
         App\Models\LaravelVersion::STATUS_ENDOFLIFE => __('Not receiving bug or security fixes'),
     ];
 @endphp
+
 <section>
     @if ($version->status == App\Models\LaravelVersion::STATUS_ACTIVE)
         <div class="flex items-center p-5 mb-10 border-2 border-green-300 rounded-md">

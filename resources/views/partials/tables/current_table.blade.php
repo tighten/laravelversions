@@ -6,28 +6,27 @@
                 <table class="min-w-full divide-y divide-gray-200">
                 <thead>
                     <tr class="bg-gray-50">
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                        <th scope="col" class="py-3 pl-6 font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
                             {{ __('Version') }}
                         </th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                        <th scope="col" class="py-3 pl-6 font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
                             {{ __('Release date') }}
                         </th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                        <th scope="col" class="py-3 pl-6 font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
                             {{ __('Bug Fixes Until') }}
                         </th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                        <th scope="col" class="py-3 pl-6 font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
                             {{ __('Security Fixes Until') }}
                         </th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                        <th scope="col" class="py-3 pl-6 font-medium tracking-wider text-left text-gray-500 uppercase">
                             {{ __('LTS?') }}
                         </th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                        <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                             {{ __('Status') }}
                         </th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-
                     @foreach ($activeVersions as $version)
                         <tr>
                             <th class="px-6 py-4 text-sm font-medium text-left text-gray-900 whitespace-nowrap">
@@ -44,7 +43,7 @@
                                         : $version->released_at->translatedFormat(__('DateLongFormat'))
                                 }}
                             </td>
-                            <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                            <td class="py-4 pl-6 text-sm text-gray-500 lg:pl-8 whitespace-nowrap">
                                 @if ($version->ends_bugfixes_at)
                                     {{
                                         $version->released_at->gt(now())
@@ -53,7 +52,7 @@
                                     }}
                                 @endif
                             </td>
-                            <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                            <td class="py-4 pl-6 text-sm text-gray-500 lg:pl-8 whitespace-nowrap">
                                 @if ($version->ends_securityfixes_at)
                                     {{
                                         $version->released_at->gt(now())
@@ -62,7 +61,7 @@
                                     }}
                                 @endif
                             </td>
-                            <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                            <td class="py-4 pl-6 text-sm text-gray-500 lg:pl-8 whitespace-nowrap">
                                 {{ $version->is_lts ? '✓' : '' }}
                             </td>
                             <td scope="col">

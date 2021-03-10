@@ -2,22 +2,22 @@
     <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">
             <tr>
-            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
                 {{ __('Major Version') }}
             </th>
-            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
                 {{ __('Release date') }}
             </th>
-            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
                 {{ __('Bug Fixes Until') }}
             </th>
-            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
                 {{ __('Security Fixes Until') }}
             </th>
-            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
                 {{ __('LTS?') }}
             </th>
-            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
                 {{ __('Status') }}
             </th>
             </tr>
@@ -25,9 +25,9 @@
         <tbody class="bg-white divide-y divide-gray-200">
             @php
             $statusClassMap = [
-                App\Models\LaravelVersion::STATUS_FUTURE => 'bg-blue-300 rounded-md inline-block px-2 py-1 inline-block ml-5 font-bold',
-                App\Models\LaravelVersion::STATUS_ACTIVE => 'bg-green-300 rounded-md inline-block px-2 py-1 inline-block ml-5 font-bold',
-                App\Models\LaravelVersion::STATUS_SECURITY => 'bg-yellow-300 rounded-md inline-block px-2 py-1 inline-block ml-5 font-bold',
+                App\Models\LaravelVersion::STATUS_FUTURE => 'bg-blue-300 rounded-md inline-block px-3 py-1 inline-block ml-5 font-bold',
+                App\Models\LaravelVersion::STATUS_ACTIVE => 'bg-green-300 rounded-md inline-block px-3 py-1 inline-block ml-5 font-bold',
+                App\Models\LaravelVersion::STATUS_SECURITY => 'bg-yellow-300 rounded-md inline-block px-3 py-1 inline-block ml-5 font-bold',
                 App\Models\LaravelVersion::STATUS_ENDOFLIFE => 'bg-red-300 rounded-md inline-block px-3 py-2 inline-block ml-5 font-bold',
             ];
             $statusTextMap = [
@@ -80,7 +80,7 @@
                                 : ''
                         }}
                     </td>
-                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                    <td class="py-4 pl-6 text-sm text-gray-500 whitespace-nowrap">
                         {{ $version->is_lts ? '✓' : '' }}
                     </td>
                     <td scope="col">
