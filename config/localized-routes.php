@@ -14,6 +14,7 @@ return [
         'pl',
         'pt_BR',
         'uk',
+        'ru',
     ],
 
     /**
@@ -28,6 +29,7 @@ return [
         'pl' => 'Polski',
         'pt_BR' => 'Português (Brasil)',
         'uk' => 'Українська',
+        'ru' => 'Русский',
     ],
 
     /**
