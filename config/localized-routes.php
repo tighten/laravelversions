@@ -15,7 +15,7 @@ return [
         'pt_BR',
         'uk',
         'ru',
-        'vi'
+        'vi',
     ],
 
     /**
@@ -31,7 +31,7 @@ return [
         'pt_BR' => 'Português (Brasil)',
         'uk' => 'Українська',
         'ru' => 'Русский',
-        'vi' => 'Tiếng Việt'
+        'vi' => 'Tiếng Việt',
     ],
 
     /**
