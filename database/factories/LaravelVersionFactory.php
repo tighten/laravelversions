@@ -23,4 +23,17 @@ class LaravelVersionFactory extends Factory
             'ends_securityfixes_at' => $released_at->clone()->addYears(2),
         ];
     }
+
+    public function active()
+    {
+        return $this->state(function (array $attributes) {
+            $futureDate = now()->addYear(1);
+
+            return [
+                'major' => 99999,
+                'ends_bugfixes_at' => $futureDate,
+                'ends_securityfixes_at' => $futureDate,
+            ];
+        });
+    }
 }

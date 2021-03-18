@@ -15,6 +15,6 @@ class LowestSupportedVersion
             $query->where('major', '>', $greaterThanVersion->major);
         }
 
-        return $query->first();
+        return $query->firstOrFail();
     }
 }
