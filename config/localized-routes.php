@@ -50,7 +50,7 @@ return [
      * So the home page / would be redirected to /en
      * if the active locale is en and the /en route exists.
      * And /about would redirect to /en/about.
-     * 
+     *
      * 'redirect_to_localized_urls' => true,
      */
     'redirect_to_localized_urls' => true,
