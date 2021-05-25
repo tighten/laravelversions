@@ -13,7 +13,7 @@ class LaravelVersionFromPathTest extends TestCase
     /** @test */
     public function non_version_shaped_path_throws_404()
     {
-        $response = $this->get('/fancy.1.4');
+        $response = $this->get('/en/fancy.1.4');
 
         $response->assertNotFound();
     }
@@ -21,9 +21,18 @@ class LaravelVersionFromPathTest extends TestCase
     /** @test */
     public function more_than_three_segments_redirects_to_three()
     {
-        $response = $this->get('/1.1.1.14');
+        /**
+         * From /en/1.1.1.14 does a redirect to the main one (without language) which is /1.1.1
+         * Later, it checks the main language for the default language and redirects to the appropriate language, 
+         * i.e. /en, that is /en/1.1.1
+         */
+        $response = $this->get('/en/1.1.1.14');
 
         $response->assertRedirect('1.1.1');
+
+        $response = $this->get('1.1.1');
+
+        $response->assertRedirect('/en/1.1.1');
     }
 
     /** @test */
@@ -34,7 +43,7 @@ class LaravelVersionFromPathTest extends TestCase
             'ends_securityfixes_at' => now()->addYear(),
         ]);
 
-        $response = $this->get('/7');
+        $response = $this->get('/en/7');
 
         $response->assertOk();
     }
@@ -46,7 +55,7 @@ class LaravelVersionFromPathTest extends TestCase
             'major' => 5,
         ]);
 
-        $response = $this->get('/5');
+        $response = $this->get('/en/5');
 
         $response->assertNotFound();
     }
@@ -61,12 +70,12 @@ class LaravelVersionFromPathTest extends TestCase
             'ends_securityfixes_at' => now()->addYear(),
         ]);
 
-        $this->get('7.9.42')->assertOk();
-        $this->get('7.9')->assertOk();
-        $this->get('7')->assertOk();
-        $this->get('7.2.0')->assertOk();
-        $this->get('7.0.0')->assertOk();
-        $this->get('7.5')->assertOk();
+        $this->get('/en/7.9.42')->assertOk();
+        $this->get('/en/7.9')->assertOk();
+        $this->get('/en/7')->assertOk();
+        $this->get('/en/7.2.0')->assertOk();
+        $this->get('/en/7.0.0')->assertOk();
+        $this->get('/en/7.5')->assertOk();
     }
 
     /** @test */
@@ -79,9 +88,9 @@ class LaravelVersionFromPathTest extends TestCase
             'ends_securityfixes_at' => now()->addYear(),
         ]);
 
-        $this->get('5.3.21')->assertOk();
-        $this->get('5.3')->assertOk();
-        $this->get('5.3.0')->assertOk();
+        $this->get('/en/5.3.21')->assertOk();
+        $this->get('/en/5.3')->assertOk();
+        $this->get('/en/5.3.0')->assertOk();
     }
 
     /** @test */
@@ -94,14 +103,14 @@ class LaravelVersionFromPathTest extends TestCase
             'ends_securityfixes_at' => now()->addYear(),
         ]);
 
-        $this->get('5.3.21')->assertOk();
-        $this->get('5.2.21')->assertNotFound();
+        $this->get('/en/5.3.21')->assertOk();
+        $this->get('/en/5.2.21')->assertNotFound();
     }
 
     /** @test */
     public function it_404s_when_version_dne()
     {
-        $response = $this->get('/1.0.0');
+        $response = $this->get('/en/1.0.0');
 
         $response->assertNotFound();
     }
