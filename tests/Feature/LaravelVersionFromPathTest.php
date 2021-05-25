@@ -23,7 +23,7 @@ class LaravelVersionFromPathTest extends TestCase
     {
         /**
          * From /en/1.1.1.14 does a redirect to the main one (without language) which is /1.1.1
-         * Later, it checks the main language for the default language and redirects to the appropriate language, 
+         * Later, it checks the main language for the default language and redirects to the appropriate language,
          * i.e. /en, that is /en/1.1.1
          */
         $response = $this->get('/en/1.1.1.14');
