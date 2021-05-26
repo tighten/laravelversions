@@ -38,9 +38,13 @@
                             </th>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                 {{
-                                    $version->released_at->gt(now())
+                                    $version->released_at->subWeeks(2)->gte(now())
                                         ? $version->released_at->translatedFormat(__('DateShortFormat')) . ' (' . __('estimated') . ')'
-                                        : $version->released_at->translatedFormat(__('DateLongFormat'))
+                                        : (
+                                            $version->released_at->gte(now())
+                                            ? $version->released_at->translatedFormat(__('DateLongFormat')) . ' (' . __('Premiere') . ')'
+                                            : $version->released_at->translatedFormat(__('DateLongFormat'))
+                                          )
                                 }}
                             </td>
                             <td class="py-4 pl-6 text-sm text-gray-500 lg:pl-8 whitespace-nowrap">
