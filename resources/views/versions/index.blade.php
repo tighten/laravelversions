@@ -17,4 +17,8 @@
     @include('partials/modules/color_key')
     @include('partials/tables/current_table')
     @include('partials/tables/eol_table')
+
+    <div class="text-center">
+        You can also find a list of all of the security advisories for Laravel here: <a class="text-blue-600 underline" href="https://github.com/FriendsOfPHP/security-advisories/tree/master/laravel/framework">https://github.com/FriendsOfPHP/security-advisories/tree/master/laravel/framework</a>
+    </div>
 </x-app-layout>
