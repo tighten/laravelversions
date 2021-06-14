@@ -15,13 +15,13 @@ class LaravelVersionsController extends Controller
         });
 
         $activeVersions = $versions->filter(function ($version) {
-            return $version->released_at->gt(now())
-                || ($version->ends_securityfixes_at && $version->ends_securityfixes_at->gt(now()));
+            return $version->released_at->endOfDay()->gt(now())
+                || ($version->ends_securityfixes_at && $version->ends_securityfixes_at->endOfDay()->gt(now()));
         });
 
         $inActiveVersions = $versions->filter(function ($version) {
-            return $version->released_at->lt(now()) &&
-                (! $version->ends_securityfixes_at || $version->ends_securityfixes_at->lt(now()));
+            return $version->released_at->endOfDay()->lt(now()) &&
+                (! $version->ends_securityfixes_at || $version->ends_securityfixes_at->endOfDay()->lt(now()));
         });
 
         return view('versions.index', [
