@@ -16,8 +16,20 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $response = $this->get('/');
+        $response = $this->get('/en');
 
         $response->assertStatus(200);
+    }
+
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testRedirectionTest()
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(301);
     }
 }
