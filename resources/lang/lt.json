@@ -41,5 +41,6 @@
     "To upgrade, follow the instructions in the docs or use :link-laravelshifts to upgrade automatically.": "Norėdami atnaujinti versiją, seksite instrukcijas dokumentacijoje arba pasinaudokite :link-laravelshifts, norėdami pritaikyti atnaujinimą automatiškai.",
     "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>": "Atnaujinkite <em>mažiausiai</em> iki saugios versijos <strong>kaip tik įmanoma greičiau!</strong>",
     "Update to the latest major or LTS release.": "Atnaujinkite iki naujausios arba LTS versijos leidimo.",
-    "Version": "Versija"
+    "Version": "Versija",
+    "You can also find a list of all of the security advisories for Laravel here: :link": "You can also find a list of all of the security advisories for Laravel here: :link"
 }
