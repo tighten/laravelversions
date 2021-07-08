@@ -42,5 +42,5 @@
     "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>": "Обновите <em>как минимум</em> до версии с сохранением безопасности <strong>как можно скорее!</strong>",
     "Update to the latest major or LTS release.": "Обновите до последнего основного релиза или релиза с долгосрочной поддержкой(LTS).",
     "Version": "Версия",
-    "You can also find a list of all of the security advisories for Laravel here: :link": "You can also find a list of all of the security advisories for Laravel here: :link"
+    "You can also find a list of all of the security advisories for Laravel here: :link": "Вы также можете найти список всех рекомендаций по безопасности для Laravel здесь: :link"
 }
