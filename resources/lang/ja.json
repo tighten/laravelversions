@@ -42,5 +42,5 @@
     "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>": "<em>少なくとも</em>セキュリティ修正が行われているバージョンまで<strong>できる限り早く</strong>アップデートしてください！",
     "Update to the latest major or LTS release.": "メジャーまたはLTSリリースにアップデートしてください。",
     "Version": "バージョン",
-    "You can also find a list of all of the security advisories for Laravel here: :link": "You can also find a list of all of the security advisories for Laravel here: :link"
+    "You can also find a list of all of the security advisories for Laravel here: :link": "Laravelのすべてのセキュリティアドバイザリはこちらでもご覧いただけます: :link"
 }
