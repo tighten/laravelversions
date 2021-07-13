@@ -40,5 +40,6 @@
     "To upgrade, follow the instructions in the docs or use :link-laravelshifts to upgrade automatically.": "Para atualizar, siga as instruções na documentação ou use :link-laravelshifts para atualizar automaticamente.",
     "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>": "Atualize <em>pelo menos</em> para uma versão que recebe correções de segurança <strong>o mais rápido possível!</strong>",
     "Update to the latest major or LTS release.": "Atualize para a versão mais recente ou LTS",
-    "Version": "Versão"
+    "Version": "Versão",
+    "You can also find a list of all of the security advisories for Laravel here: :link": "Você também pode encontrar uma lista de todos os alertas de segurança para o Laravel aqui: :link"
 }

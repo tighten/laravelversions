@@ -41,5 +41,6 @@
     "To upgrade, follow the instructions in the docs or use :link-laravelshifts to upgrade automatically.": "Untuk meningkatkan, ikuti perintah-perintah yang ada di dokumentasi atau gunakan :link-laravelshifts untuk peningkatan otomatis.",
     "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>": "Perbarui <em>setidaknya</em> ke versi keamanan yang terkelola <strong>secepatnya!</strong>",
     "Update to the latest major or LTS release.": "Perbarui ke rilis LTS major terakhir.",
-    "Version": "Versi"
+    "Version": "Versi",
+    "You can also find a list of all of the security advisories for Laravel here: :link": "You can also find a list of all of the security advisories for Laravel here: :link"
 }

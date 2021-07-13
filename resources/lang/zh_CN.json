@@ -41,5 +41,6 @@
     "To upgrade, follow the instructions in the docs or use :link-laravelshifts to upgrade automatically.": "要升级，请按照文档中的说明操作，或使 :link-laravelshifts 来自动升级.",
     "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>": "<strong>尽快 </strong>升级到<em>至少</em>到安全维护版本！",
     "Update to the latest major or LTS release.": "更新到最新的主要版本或 LTS 版本.",
-    "Version": "版本"
+    "Version": "版本",
+    "You can also find a list of all of the security advisories for Laravel here: :link": "You can also find a list of all of the security advisories for Laravel here: :link"
 }

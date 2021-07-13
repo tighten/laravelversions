@@ -41,5 +41,6 @@
     "To upgrade, follow the instructions in the docs or use :link-laravelshifts to upgrade automatically.": "アップグレードするには、ドキュメントのインストラクションに従うか :link-laravelshifts の自動アップグレードを利用してください。",
     "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>": "<em>少なくとも</em>セキュリティ修正が行われているバージョンまで<strong>できる限り早く</strong>アップデートしてください！",
     "Update to the latest major or LTS release.": "メジャーまたはLTSリリースにアップデートしてください。",
-    "Version": "バージョン"
+    "Version": "バージョン",
+    "You can also find a list of all of the security advisories for Laravel here: :link": "Laravelのすべてのセキュリティアドバイザリはこちらでもご覧いただけます: :link"
 }
