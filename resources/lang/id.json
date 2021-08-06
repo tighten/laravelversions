@@ -42,5 +42,5 @@
     "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>": "Perbarui <em>setidaknya</em> ke versi keamanan yang terkelola <strong>secepatnya!</strong>",
     "Update to the latest major or LTS release.": "Perbarui ke rilis LTS major terakhir.",
     "Version": "Versi",
-    "You can also find a list of all of the security advisories for Laravel here: :link": "You can also find a list of all of the security advisories for Laravel here: :link"
+    "You can also find a list of all of the security advisories for Laravel here: :link": "Anda juga dapat menemukan daftar dari semua saran keamanan untuk Laravel disini: :link"
 }
