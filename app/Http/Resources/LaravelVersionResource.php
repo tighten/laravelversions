@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\LaravelVersion;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,6 +18,7 @@ class LaravelVersionResource extends JsonResource
             $minor_label => $this->minor,
             'latest_patch' => $this->patch,
             'latest' => sprintf('%s.%s.%s', $this->major, $this->minor, $this->patch),
+            'latest_major' => (string) LaravelVersion::released()->orderByDesc('major')->orderByDesc('minor')->orderByDesc('patch')->first(),
             'is_lts' => $this->is_lts,
             'released_at' => $this->released_at,
             'ends_bugfixes_at' => $this->ends_bugfixes_at,
