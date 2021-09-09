@@ -40,7 +40,7 @@ class ApiShowVersionTest extends TestCase
 
         $this->getJson(route('api.versions.show', [$oldest->__toString()]))
             ->assertJsonFragment([
-                'latest_major' => $newest->__toString(),
+                'latest_release' => $newest->__toString(),
         ]);
     }
 }
