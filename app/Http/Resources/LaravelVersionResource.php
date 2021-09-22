@@ -12,13 +12,13 @@ class LaravelVersionResource extends JsonResource
     {
         $minor_label = $this->major < 6 ? 'minor' : 'latest_minor';
         $segments = $request->segments();
+        $latest_version = LaravelVersion::released()->orderByDesc('major')->orderByDesc('minor')->orderByDesc('patch')->first();
 
         return [
             'major' => $this->major,
             $minor_label => $this->minor,
             'latest_patch' => $this->patch,
             'latest' => sprintf('%s.%s.%s', $this->major, $this->minor, $this->patch),
-            'latest_release' => (string) LaravelVersion::released()->orderByDesc('major')->orderByDesc('minor')->orderByDesc('patch')->first(),
             'is_lts' => $this->is_lts,
             'released_at' => $this->released_at,
             'ends_bugfixes_at' => $this->ends_bugfixes_at,
@@ -32,6 +32,10 @@ class LaravelVersionResource extends JsonResource
                 ],
             ]),
             'links' => $this->links($request),
+            'global' => [
+                'latest_version' => (string) $latest_version,
+                'latest_version_is_lts' => $latest_version->is_lts,
+            ],
         ];
     }
 

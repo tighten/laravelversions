@@ -24,6 +24,7 @@ class ApiShowVersionTest extends TestCase
     {
         $newest = LaravelVersion::factory()->create([
             'major' => 8,
+            'is_lts' => false,
         ]);
 
         // older patch
@@ -40,7 +41,8 @@ class ApiShowVersionTest extends TestCase
 
         $this->getJson(route('api.versions.show', [$oldest->__toString()]))
             ->assertJsonFragment([
-                'latest_release' => $newest->__toString(),
+                'latest_version' => $newest->__toString(),
+                'latest_version_is_lts' => false,
         ]);
     }
 }
