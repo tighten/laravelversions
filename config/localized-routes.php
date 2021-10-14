@@ -21,7 +21,7 @@ return [
         'ja',
         'zh_CN',
         'sw',
-        'bn'
+        'bn',
     ],
 
     /**
