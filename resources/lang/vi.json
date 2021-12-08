@@ -41,5 +41,6 @@
     "To upgrade, follow the instructions in the docs or use :link-laravelshifts to upgrade automatically.": "Để nâng cấp, hãy làm theo hướng dẫn trong tài liệu hoặc sử dụng :link-laravelshifts để nâng cấp tự động.",
     "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>": "Cập nhật <em>tối thiểu</em> sang phiên bản được bảo trì lỗi bảo mật <strong>sớm nhất có thể!</strong>",
     "Update to the latest major or LTS release.": "Cập nhật lên bản phát hành chính gần nhất hoặc LTS mới nhất.",
-    "Version": "Phiên bản"
+    "Version": "Phiên bản",
+    "You can also find a list of all of the security advisories for Laravel here: :link": "Bạn cũng có thể tìm thấy danh sách tất cả các cố vấn bảo mật cho Laravel tại đây: :link"
 }
