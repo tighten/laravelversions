@@ -43,5 +43,5 @@
     "Update to the latest major or LTS release.": "Zaktualizuj do najnowszej wersji głównej (major) lub do wersji LTS.",
     "Version": "Wersja",
     "You can also find a list of all of the security advisories for Laravel here: :link": "Listę wszystkich poradników bezpieczeństwa dla Laravela znajdziesz na: :link",
-    "A list of currently supported PHP versions can be found here: :link": "Listę aktualnie obsługiwanych wersji PHP można znaleźć na: :link"
+    "A list of currently supported PHP versions can be found here: :link": "Aktualna lista obsługiwanych wersji PHP można znaleźć na: :link"
 }
