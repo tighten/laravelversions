@@ -1,4 +1,5 @@
 {
+    "A list of currently supported PHP versions can be found here: :link": "Orodha ya matoleo ya PHP yanayotumika sasa yanaweza kupatikana hapa: :link",
     "Active support":"Msaada wa kazi",
     "Brought to you by the lovely folks at":"Kuletwa kwako na watu wazuri huko",
     "Bug & security fixes":"Marekebisho ya hitilafu na usalama",
@@ -42,6 +43,5 @@
     "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>": "Sasisha <em>angalau</em> toleo linalodumishwa kwa usalama  <strong>haraka iwezekanavyo!</strong>",
     "Update to the latest major or LTS release.": "Sasisha kutolewa kwa hivi karibuni kuu au LTS.",
     "Version": "Toleo",
-    "You can also find a list of all of the security advisories for Laravel here: :link":"Unaweza pia kupata orodha ya mashauri yote ya usalama ya Laravel hapa: :link",
-    "A list of currently supported PHP versions can be found here: :link": "Orodha ya matoleo ya PHP yanayotumika sasa yanaweza kupatikana hapa: :link"
+    "You can also find a list of all of the security advisories for Laravel here: :link":"Unaweza pia kupata orodha ya mashauri yote ya usalama ya Laravel hapa: :link"
 }
