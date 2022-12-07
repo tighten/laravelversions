@@ -18,4 +18,31 @@ class ApiShowVersionTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    /** @test */
+    public function it_loads_latest_version()
+    {
+        $newest = LaravelVersion::factory()->create([
+            'major' => 8,
+            'is_lts' => false,
+        ]);
+
+        // older patch
+        LaravelVersion::factory()->create([
+            'major' => $newest->major,
+            'minor' => $newest->minor,
+            'patch' => $newest->minor - 1,
+        ]);
+
+        //older major version
+        $oldest = LaravelVersion::factory()->create([
+            'major' => $newest->major - 1,
+        ]);
+
+        $this->getJson(route('api.versions.show', [$oldest->__toString()]))
+            ->assertJsonFragment([
+                'latest_version' => $newest->__toString(),
+                'latest_version_is_lts' => false,
+        ]);
+    }
 }
