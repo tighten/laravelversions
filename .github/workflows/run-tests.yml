@@ -12,23 +12,23 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v1
+      uses: actions/checkout@v3
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-          php-version: 7.4
+          php-version: 8.0
           extensions: posix, dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
           coverage: none
 
     - name: Install dependencies
       run: composer install --prefer-source --no-interaction
-      
+
     - name: Copy .env.example to .env
       run: cp .env.example .env
 
     - name: Generate App Key
       run: php artisan key:generate
-        
+
     - name: Run PHPUnit tests
       run: vendor/bin/phpunit
