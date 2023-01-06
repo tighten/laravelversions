@@ -27,8 +27,8 @@ class LaravelVersion extends Model
     {
         return [
             'today' => now()->startOfDay(),
-            'tomorrow' => now()->subDay()->startOfDay(),
-            'in one week' => now()->subWeek()->startOfDay(),
+            'tomorrow' => now()->addDay()->startOfDay(),
+            'in one week' => now()->addWeek()->startOfDay(),
         ];
     }
 
