@@ -32,7 +32,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased bg-gray-100" dir="{{__('dir')}}">
+    <body class="font-sans antialiased bg-gray-100" dir="{{ __('dir') }}">
         <div id="app">
             @include('partials/modules/header')
             <div class="max-w-screen-xl px-4 pt-12 mx-auto sm:px-6 lg:px-8">
