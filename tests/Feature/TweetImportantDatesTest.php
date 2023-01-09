@@ -26,7 +26,7 @@ class TweetImportantDatesTest extends TestCase
         Artisan::call('tweet-important-dates');
 
         Http::assertSent(function (Request $request) use ($version) {
-            return Str::contains($request['text'], 'Laravel version ' . $version->major);
+            return Str::contains($request['text'], "Laravel version {$version->major} will stop receiving security fixes today.");
         });
     }
 
@@ -42,7 +42,7 @@ class TweetImportantDatesTest extends TestCase
         Artisan::call('tweet-important-dates');
 
         Http::assertSent(function (Request $request) use ($version) {
-            return Str::contains($request['text'], 'Laravel version ' . $version->major);
+            return Str::contains($request['text'], "Laravel version {$version->major} will stop receiving security fixes tomorrow.");
         });
     }
 
@@ -58,7 +58,7 @@ class TweetImportantDatesTest extends TestCase
         Artisan::call('tweet-important-dates');
 
         Http::assertSent(function (Request $request) use ($version) {
-            return Str::contains($request['text'], 'Laravel version ' . $version->major);
+            return Str::contains($request['text'], "Laravel version {$version->major} will stop receiving security fixes in one week.");
         });
     }
 
@@ -74,7 +74,7 @@ class TweetImportantDatesTest extends TestCase
         Artisan::call('tweet-important-dates');
 
         Http::assertSent(function (Request $request) use ($version) {
-            return Str::contains($request['text'], 'Laravel version ' . $version->major);
+            return Str::contains($request['text'], "Laravel version {$version->major} will stop receiving bug fixes today.");
         });
     }
 
@@ -90,7 +90,7 @@ class TweetImportantDatesTest extends TestCase
         Artisan::call('tweet-important-dates');
 
         Http::assertSent(function (Request $request) use ($version) {
-            return Str::contains($request['text'], 'Laravel version ' . $version->major);
+            return Str::contains($request['text'], "Laravel version {$version->major} will stop receiving bug fixes tomorrow.");
         });
     }
 
@@ -106,7 +106,7 @@ class TweetImportantDatesTest extends TestCase
         Artisan::call('tweet-important-dates');
 
         Http::assertSent(function (Request $request) use ($version) {
-            return Str::contains($request['text'], 'Laravel version ' . $version->major);
+            return Str::contains($request['text'], "Laravel version {$version->major} will stop receiving bug fixes in one week.");
         });
     }
 }
