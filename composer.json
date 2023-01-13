@@ -23,7 +23,8 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.3",
         "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.4"
+        "spatie/laravel-ignition": "^1.4",
+        "tightenco/duster": "^0.5.5"
     },
     "config": {
         "optimize-autoloader": true,
@@ -65,6 +66,12 @@
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "lint": [
+            "vendor/bin/duster"
+        ],
+        "fix": [
+            "vendor/bin/duster --fix"
         ]
     }
 }
