@@ -12,7 +12,6 @@
         "bugsnag/bugsnag-laravel": "^2.24",
         "codezero/laravel-localized-routes": "^2.7",
         "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.83",
         "laravel/tinker": "^2.5",
