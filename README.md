@@ -135,10 +135,10 @@ Potential statuses:
 
 > Note: In order to make page caching work, you'll need to follow the installation instructions if you're installing this site on a production server. https://github.com/JosephSilber/page-cache
 
-## How can I add a language in this project ?
+## How do I add additional languages to Laravel Versions?
 
 * fork this repository
-* copy this file of the English version with your translation: from `resources/lang/en.json` file to `resources/lang/{code-lang}.json` file
+* copy this file of the English version with your translation: from `lang/en.json` file to `lang/{code-lang}.json` file
   _(where 'code-lang' is the short code of the translated language)_
 * add language in the configuration file ```config/localized-routes.php```
     - in the variable `supported-locales`, the code of the supported language
