@@ -18,6 +18,7 @@ return [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
         'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
+        'scheme' => 'https',
     ],
 
     'postmark' => [
@@ -44,4 +45,5 @@ return [
     'zapier' => [
         'twitter_webhook_url' => env('ZAPIER_WEBHOOK_URL', 'Fake Url For Tests'),
     ],
+
 ];
