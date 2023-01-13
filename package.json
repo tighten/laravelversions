@@ -36,9 +36,6 @@
         "vue": "^2.6.12"
     },
     "lint-staged": {
-        "*.php": [
-            "vendor/bin/php-cs-fixer fix --config=.php_cs.dist"
-        ],
         "*.(css|scss)": [
             "stylelint"
         ],
@@ -48,7 +45,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged && vendor/bin/tlint lint --diff"
+            "pre-commit": "lint-staged"
         }
     }
 }

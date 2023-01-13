@@ -11,32 +11,36 @@ https://laravelversions.com/api/versions
 
 ```json
 {
-    "data": [
+  "data":[
+    {
+      "major":9,
+      "latest_minor":47,
+      "latest_patch":0,
+      "latest":"9.47.0",
+      "is_lts":false,
+      "released_at":"2022-02-08T00:00:00.000000Z",
+      "ends_bugfixes_at":"2023-08-08T00:00:00.000000Z",
+      "ends_securityfixes_at":"2024-02-08T00:00:00.000000Z",
+      "status":"active",
+      "links":[
         {
-            "major": 8,
-            "latest_minor": 24,
-            "latest_patch": 0,
-            "latest": "8.24.0",
-            "is_lts": false,
-            "released_at": "2020-09-08T00:00:00.000000Z",
-            "ends_bugfixes_at": "2021-04-21T00:00:00.000000Z",
-            "ends_securityfixes_at": "2021-09-08T00:00:00.000000Z",
-            "status": "active",
-            "links": [
-                {
-                "type": "GET",
-                "rel": "self",
-                "href": "https://laravelversions.com/api/versions/8"
-                },
-                {
-                "type": "GET",
-                "rel": "latest",
-                "href": "https://laravelversions.com/api/versions/8.24.0"
-                }
-            ]
+          "type":"GET",
+          "rel":"self",
+          "href":"https:\/\/laravelversions.com\/api\/versions\/9"
         },
-        {}
-    ]
+        {
+          "type":"GET",
+          "rel":"latest",
+          "href":"https:\/\/laravelversions.com\/api\/versions\/9.47.0"
+        }
+      ],
+      "global":{
+        "latest_version":"9.47.0",
+        "latest_version_is_lts":false
+      }
+    },
+    {}
+  ]
 }
 ```
 
@@ -98,8 +102,8 @@ Potential statuses:
 ## Instructions for hosting/installing yourself
 ### Requirements
 
-* PHP >= 7.3 with [the extensions listed in the Laravel docs](https://laravel.com/docs/8.x/deployment#server-requirements)
-* A [supported relational database](http://laravel.com/docs/8.x/database#introduction) and corresponding PHP extension
+* PHP >= 8.1 with [the extensions listed in the Laravel docs](https://laravel.com/docs/9.x/deployment#server-requirements)
+* A [supported relational database](http://laravel.com/docs/9.x/database#introduction) and corresponding PHP extension
 * [Composer](https://getcomposer.org/download/)
 * [NPM](https://nodejs.org/)
 
@@ -115,7 +119,7 @@ Potential statuses:
     php artisan key:generate
     ```
 1. Create a database and point the `DB_DATABASE` to it in the `.env` file.
-1. [Run database migrations](http://laravel.com/docs/8.x/migrations#running-migrations). If you want to include seed data, add a `--seed` flag.
+1. [Run database migrations](http://laravel.com/docs/9.x/migrations#running-migrations). If you want to include seed data, add a `--seed` flag.
 
     ```bash
     php artisan migrate
@@ -134,7 +138,7 @@ Potential statuses:
 ## How can I add a language in this project ?
 
 * fork this repository
-* copy this file of the English version with your translation: from `resources/lang/en.json` file to `resources/lang/{code-lang}.json` file 
+* copy this file of the English version with your translation: from `resources/lang/en.json` file to `resources/lang/{code-lang}.json` file
   _(where 'code-lang' is the short code of the translated language)_
 * add language in the configuration file ```config/localized-routes.php```
     - in the variable `supported-locales`, the code of the supported language
