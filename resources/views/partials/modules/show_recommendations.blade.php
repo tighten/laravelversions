@@ -20,7 +20,7 @@
                 'link-laravelshifts' => '<a href="https://laravelshift.com/shifts?version=' . $version->majorish . '" class="border-hover">Laravel Shift</a>'
                 ])
             !!}
-            
+
         @endif
     </p>
     <div class="mb-16 lg:mb-24">
