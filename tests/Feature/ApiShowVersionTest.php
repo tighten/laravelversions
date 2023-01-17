@@ -43,6 +43,6 @@ class ApiShowVersionTest extends TestCase
             ->assertJsonFragment([
                 'latest_version' => $newest->__toString(),
                 'latest_version_is_lts' => false,
-        ]);
+            ]);
     }
 }

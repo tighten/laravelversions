@@ -1,25 +1,21 @@
 {
     "private": true,
     "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
+        "dev": "vite",
+        "build": "vite build"
     },
     "devDependencies": {
         "autoprefixer": "^10.2.4",
-        "axios": "^0.21",
-        "laravel-mix": "^6.0.13",
+        "axios": "^0.25",
         "lodash": "^4.17.21",
         "postcss": "^8.2.6",
         "resolve-url-loader": "^5.0.0",
         "tailwindcss": "^2.0.3",
         "vue": "^2.6.12",
         "vue-loader": "^15.9.6",
-        "vue-template-compiler": "^2.6.12"
+        "vue-template-compiler": "^2.6.12",
+        "vite": "^3.0.2",
+        "laravel-vite-plugin": "^0.6.0"
     },
     "prettier": {
         "singleQuote": true,
@@ -33,12 +29,10 @@
         "prettier": "^2.2.1",
         "stylelint": "^13.11.0",
         "stylelint-config-standard": "^20.0.0",
-        "vue": "^2.6.12"
+        "vue": "^2.7.0",
+        "@vitejs/plugin-vue2": "^1.1.2"
     },
     "lint-staged": {
-        "*.php": [
-            "vendor/bin/php-cs-fixer fix --config=.php_cs.dist"
-        ],
         "*.(css|scss)": [
             "stylelint"
         ],
@@ -48,7 +42,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged && vendor/bin/tlint lint --diff"
+            "pre-commit": "lint-staged"
         }
     }
 }

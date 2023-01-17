@@ -42,7 +42,7 @@
                 <tr>
                     <th class="px-6 py-4 text-sm font-medium text-left text-gray-900 whitespace-nowrap">
                         {{
-                            $version->major < 6 
+                            $version->major < 6
                                 ? $version->major . '.' . $version->minor
                                 : $version->major
                         }} {{

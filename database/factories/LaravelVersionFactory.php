@@ -2,13 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\LaravelVersion;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LaravelVersionFactory extends Factory
 {
-    protected $model = LaravelVersion::class;
-
     public function definition()
     {
         $released_at = now()->subDays(rand(0, 1000));
