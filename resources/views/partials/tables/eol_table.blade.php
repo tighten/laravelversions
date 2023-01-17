@@ -37,28 +37,28 @@
                         @foreach ($inactiveVersions as $version)
                             <tr>
                                 <th class="px-6 py-4 text-sm font-medium text-left text-gray-900 whitespace-nowrap">
-                                    <a href="{{ $version->url }}" class="border-hover">{{ $version->major }}{{ 
+                                    <a href="{{ $version->url }}" class="border-hover">{{ $version->major }}{{
                                         $version->major < 6
                                             ? '.' . $version->minor
-                                            : '' 
+                                            : ''
                                     }}</a>
                                 </th>
                                 <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    {{ 
+                                    {{
                                         $version->released_at->translatedFormat(__('DateLongFormat')) }} {{ $version->released_at->gt(now())
                                             ? '(' . __('estimated') . ')'
                                             : ''
                                     }}
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    {{ 
+                                    {{
                                         $version->ends_bugfixes_at
                                             ? $version->ends_bugfixes_at->translatedFormat(__('DateLongFormat'))
                                             : ''
                                     }}
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    {{ 
+                                    {{
                                         $version->ends_securityfixes_at
                                             ? $version->ends_securityfixes_at->translatedFormat(__('DateLongFormat'))
                                             : ''

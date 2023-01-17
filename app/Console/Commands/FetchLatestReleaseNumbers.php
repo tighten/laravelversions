@@ -81,6 +81,7 @@ class FetchLatestReleaseNumbers extends Command
                     ]);
 
                     $this->info('Created Laravel version ' . $created);
+
                     return;
                 }
 
@@ -106,7 +107,7 @@ class FetchLatestReleaseNumbers extends Command
                 // Format the filters at runtime to include pagination
                 $filters = collect($this->defaultFilters)
                     ->map(function ($value, $key) {
-                        return "{$key}: $value";
+                        return "{$key}: {$value}";
                     })
                     ->implode(', ');
 

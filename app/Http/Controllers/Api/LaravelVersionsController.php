@@ -21,7 +21,7 @@ class LaravelVersionsController extends Controller
 
     public function show($path)
     {
-        [$version] = (new LaravelVersionFromPath())($path);
+        [$version] = (new LaravelVersionFromPath)($path);
 
         return new LaravelVersionResource($version);
     }

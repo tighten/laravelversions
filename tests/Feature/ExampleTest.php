@@ -13,8 +13,10 @@ class ExampleTest extends TestCase
      * A basic test example.
      *
      * @return void
+     *
+     * @test
      */
-    public function testBasicTest()
+    public function basicTest()
     {
         $response = $this->get('/en');
 
@@ -25,8 +27,10 @@ class ExampleTest extends TestCase
      * A basic test example.
      *
      * @return void
+     *
+     * @test
      */
-    public function testRedirectionTest()
+    public function redirectionTest()
     {
         $response = $this->get('/');
 
