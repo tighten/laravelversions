@@ -32,7 +32,7 @@ class LaravelVersionsController extends Controller
 
     public function show($path)
     {
-        [$version, $sanitizedPath, $segments] = (new LaravelVersionFromPath())($path);
+        [$version, $sanitizedPath, $segments] = (new LaravelVersionFromPath)($path);
 
         return view('versions.show', [
             'version' => $version,
