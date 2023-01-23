@@ -26,7 +26,39 @@ class TweetImportantDatesTest extends TestCase
         Artisan::call('tweet-important-dates');
 
         Http::assertSent(function (Request $request) use ($version) {
-            return Str::contains($request['text'], 'Laravel version ' . $version->major);
+            return Str::contains($request['text'], "Laravel version {$version->major} will stop receiving security fixes today.");
+        });
+    }
+
+    /** @test */
+    public function it_tweets_the_day_before_security_fixes_end()
+    {
+        Http::fake();
+
+        $version = LaravelVersion::factory()->create([
+            'ends_securityfixes_at' => now()->addDay()->startOfDay(),
+        ]);
+
+        Artisan::call('tweet-important-dates');
+
+        Http::assertSent(function (Request $request) use ($version) {
+            return Str::contains($request['text'], "Laravel version {$version->major} will stop receiving security fixes tomorrow.");
+        });
+    }
+
+    /** @test */
+    public function it_tweets_the_week_before_security_fixes_end()
+    {
+        Http::fake();
+
+        $version = LaravelVersion::factory()->create([
+            'ends_securityfixes_at' => now()->addWeek()->startOfDay(),
+        ]);
+
+        Artisan::call('tweet-important-dates');
+
+        Http::assertSent(function (Request $request) use ($version) {
+            return Str::contains($request['text'], "Laravel version {$version->major} will stop receiving security fixes in one week.");
         });
     }
 
@@ -42,7 +74,39 @@ class TweetImportantDatesTest extends TestCase
         Artisan::call('tweet-important-dates');
 
         Http::assertSent(function (Request $request) use ($version) {
-            return Str::contains($request['text'], 'Laravel version ' . $version->major);
+            return Str::contains($request['text'], "Laravel version {$version->major} will stop receiving bug fixes today.");
+        });
+    }
+
+    /** @test */
+    public function it_tweets_the_day_before_bug_fixes_end()
+    {
+        Http::fake();
+
+        $version = LaravelVersion::factory()->create([
+            'ends_bugfixes_at' => now()->addDay()->startOfDay(),
+        ]);
+
+        Artisan::call('tweet-important-dates');
+
+        Http::assertSent(function (Request $request) use ($version) {
+            return Str::contains($request['text'], "Laravel version {$version->major} will stop receiving bug fixes tomorrow.");
+        });
+    }
+
+    /** @test */
+    public function it_tweets_the_week_before_bug_fixes_end()
+    {
+        Http::fake();
+
+        $version = LaravelVersion::factory()->create([
+            'ends_bugfixes_at' => now()->addWeek()->startOfDay(),
+        ]);
+
+        Artisan::call('tweet-important-dates');
+
+        Http::assertSent(function (Request $request) use ($version) {
+            return Str::contains($request['text'], "Laravel version {$version->major} will stop receiving bug fixes in one week.");
         });
     }
 }
