@@ -12,7 +12,7 @@
         "bugsnag/bugsnag-laravel": "^2.24",
         "codezero/laravel-localized-routes": "^2.7",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^9.47",
+        "laravel/framework": "^9.49",
         "laravel/tinker": "^2.7",
         "silber/page-cache": "^1.0"
     },
