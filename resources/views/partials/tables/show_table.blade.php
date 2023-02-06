@@ -54,7 +54,7 @@
                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                         {{
                             $version->released_at->gt(now())
-                                ? $version->released_at->translatedFormat(__('DateLongFormat')) . ' (' . __('estimated') . ')'
+                                ? 'Q' . $version->released_at->quarter . ' ' . $version->released_at->year . ' (' . __('estimated') . ')'
                                 : $version->released_at->translatedFormat(__('DateLongFormat'))
                         }}
                     </td>
@@ -63,7 +63,7 @@
                             $version->ends_bugfixes_at
                                 ? (
                                     $version->released_at->gt(now())
-                                        ? $version->ends_bugfixes_at->translatedFormat(__('DateShortFormat')) . ' (' . __('estimated') . ')'
+                                        ? 'Q' . $version->ends_bugfixes_at->quarter . ' ' . $version->ends_bugfixes_at->year . ' (' . __('estimated') . ')'
                                         : $version->ends_bugfixes_at->translatedFormat(__('DateLongFormat'))
                                 )
                                 : ''
@@ -74,7 +74,7 @@
                             $version->ends_securityfixes_at
                                 ? (
                                     $version->released_at->gt(now())
-                                        ? $version->ends_securityfixes_at->translatedFormat(__('DateShortFormat')) . ' (' . __('estimated') . ')'
+                                        ? 'Q' . $version->ends_securityfixes_at->quarter . ' ' . $version->ends_securityfixes_at->year . ' (' . __('estimated') . ')'
                                         : $version->ends_securityfixes_at->translatedFormat(__('DateLongFormat'))
                                 )
                                 : ''
