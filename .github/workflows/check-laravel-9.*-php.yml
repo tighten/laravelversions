@@ -1,0 +1,46 @@
+name: 9.* Checks
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *'
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        laravel:
+        - ["9.*", "8.2"]
+        - ["9.*", "8.1"]
+        - ["9.*", "8.0"]
+        - ["9.*", "7.4"]
+        - ["9.*", "7.3"]
+        - ["9.*", "7.2"]
+        - ["9.*", "7.1"]
+        - ["9.*", "7.0"]
+        - ["9.*", "5.6"]
+        - ["9.*", "5.5"]
+        - ["9.*", "5.4"]
+
+    name: Laravel ${{ matrix.laravel[0] }} | PHP ${{ matrix.laravel[1] }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          path: ~/.composer/cache/files
+          key: laravel-${{ matrix.laravel[0] }}-php-${{ matrix.laravel[1] }}
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.laravel[1] }}
+      - run: |
+          composer create-project --no-install --no-scripts laravel/laravel="${{ matrix.laravel[0] }}" laravel
+          cd laravel
+          composer config --no-interaction allow-plugins.kylekatarnls/update-helper true
+          composer install
+          php -r "file_exists('.env') || copy('.env.example', '.env');"
+          php artisan key:generate --ansi
+          vendor/bin/phpunit
