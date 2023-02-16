@@ -102,8 +102,7 @@ EOT;
 
     private function generateMatrix(string $laravelVersion, array $phpVersions): string
     {
-        return "\n" . collect($phpVersions)->map(fn ($phpVersion) =>
-            "        - [\"{$laravelVersion}\", \"{$phpVersion}\"]"
+        return "\n" . collect($phpVersions)->map(fn ($phpVersion) => "        - [\"{$laravelVersion}\", \"{$phpVersion}\"]"
         )->implode("\n");
     }
 }
