@@ -91,6 +91,7 @@ jobs:
           composer create-project --no-install --no-scripts laravel/laravel="${{ matrix.laravel[0] }}" laravel
           cd laravel
           composer config --no-interaction allow-plugins.kylekatarnls/update-helper true
+          composer config --no-interaction allow-plugins.symfony/thanks true
           composer install
           php -r "file_exists('.env') || copy('.env.example', '.env');"
           php artisan key:generate --ansi
