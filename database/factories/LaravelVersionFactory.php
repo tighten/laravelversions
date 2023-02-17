@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LaravelVersionFactory extends Factory
 {
-    public function definition()
+    public function definition(): array
     {
         $released_at = now()->subDays(rand(0, 1000));
 

@@ -10,7 +10,7 @@ class ListVersionsTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_loads()
+    public function it_loads(): void
     {
         $response = $this->get(route('versions.index'));
 

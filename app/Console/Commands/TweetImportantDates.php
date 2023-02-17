@@ -12,7 +12,7 @@ class TweetImportantDates extends Command
 
     protected $description = 'Tweet out any important dates today.';
 
-    public function handle()
+    public function handle(): void
     {
         $this->versionsNeedingNotification()->each(function (LaravelVersion $version) {
             $this->tweetForVersion($version);

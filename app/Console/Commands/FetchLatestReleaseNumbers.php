@@ -20,7 +20,7 @@ class FetchLatestReleaseNumbers extends Command
         'orderBy' => '{field: TAG_COMMIT_DATE, direction: DESC}',
     ];
 
-    public function handle()
+    public function handle(): int
     {
         Log::info('Syncing Laravel Versions');
 

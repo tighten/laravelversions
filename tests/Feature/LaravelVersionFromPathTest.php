@@ -11,7 +11,7 @@ class LaravelVersionFromPathTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function non_version_shaped_path_throws_404()
+    public function non_version_shaped_path_throws_404(): void
     {
         $response = $this->get('/en/fancy.1.4');
 
@@ -19,7 +19,7 @@ class LaravelVersionFromPathTest extends TestCase
     }
 
     /** @test */
-    public function more_than_three_segments_redirects_to_three()
+    public function more_than_three_segments_redirects_to_three(): void
     {
         /**
          * From /en/1.1.1.14 does a redirect to the main one (without language) which is /1.1.1
@@ -36,7 +36,7 @@ class LaravelVersionFromPathTest extends TestCase
     }
 
     /** @test */
-    public function versions_after_five_dont_require_a_minor()
+    public function versions_after_five_dont_require_a_minor(): void
     {
         LaravelVersion::factory()->create([
             'major' => 7,
@@ -49,7 +49,7 @@ class LaravelVersionFromPathTest extends TestCase
     }
 
     /** @test */
-    public function versions_before_six_require_a_minor()
+    public function versions_before_six_require_a_minor(): void
     {
         LaravelVersion::factory()->create([
             'major' => 5,
@@ -61,7 +61,7 @@ class LaravelVersionFromPathTest extends TestCase
     }
 
     /** @test */
-    public function it_finds_versions_after_five()
+    public function it_finds_versions_after_five(): void
     {
         LaravelVersion::factory()->create([
             'major' => 7,
@@ -79,7 +79,7 @@ class LaravelVersionFromPathTest extends TestCase
     }
 
     /** @test */
-    public function it_finds_versions_before_six()
+    public function it_finds_versions_before_six(): void
     {
         LaravelVersion::factory()->create([
             'major' => 5,
@@ -94,7 +94,7 @@ class LaravelVersionFromPathTest extends TestCase
     }
 
     /** @test */
-    public function before_six_minor_is_required_to_match()
+    public function before_six_minor_is_required_to_match(): void
     {
         LaravelVersion::factory()->create([
             'major' => 5,
@@ -108,7 +108,7 @@ class LaravelVersionFromPathTest extends TestCase
     }
 
     /** @test */
-    public function it_404s_when_version_dne()
+    public function it_404s_when_version_dne(): void
     {
         $response = $this->get('/en/1.0.0');
 

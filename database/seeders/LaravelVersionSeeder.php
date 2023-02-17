@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class LaravelVersionSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         LaravelVersion::truncate();
 

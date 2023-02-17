@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\LaravelVersionFromPath;
 use App\Models\LaravelVersion;
 use Illuminate\Support\Facades\Cache;
@@ -30,7 +31,7 @@ class LaravelVersionsController extends Controller
         ]);
     }
 
-    public function show($path)
+    public function show($path): View
     {
         [$version, $sanitizedPath, $segments] = (new LaravelVersionFromPath)($path);
 

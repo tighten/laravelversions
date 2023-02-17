@@ -8,7 +8,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class LaravelVersionResource extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $minor_label = $this->major < 6 ? 'minor' : 'latest_minor';
         $segments = $request->segments();

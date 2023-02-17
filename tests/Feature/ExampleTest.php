@@ -16,7 +16,7 @@ class ExampleTest extends TestCase
      *
      * @test
      */
-    public function basicTest()
+    public function basicTest(): void
     {
         $response = $this->get('/en');
 
@@ -30,7 +30,7 @@ class ExampleTest extends TestCase
      *
      * @test
      */
-    public function redirectionTest()
+    public function redirectionTest(): void
     {
         $response = $this->get('/');
 
