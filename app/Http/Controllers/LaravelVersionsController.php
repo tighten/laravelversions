@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\LaravelVersionFromPath;
 use App\Models\LaravelVersion;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\View\View;
 
 class LaravelVersionsController extends Controller
 {
