@@ -10,8 +10,11 @@ class LaravelVersion extends Model
     use HasFactory;
 
     const STATUS_FUTURE = 'future';
+
     const STATUS_ACTIVE = 'active';
+
     const STATUS_SECURITY = 'security';
+
     const STATUS_ENDOFLIFE = 'end-of-life';
 
     protected $guarded = [];
@@ -63,7 +66,7 @@ class LaravelVersion extends Model
         $majorish = $this->major;
 
         if ($this->major < 6) {
-            $majorish .= '.' . $this->minor;
+            $majorish .= '.'.$this->minor;
         }
 
         return $majorish;

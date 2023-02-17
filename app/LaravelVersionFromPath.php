@@ -15,7 +15,7 @@ class LaravelVersionFromPath
         $sanitizedPath = implode('.', $segments);
 
         if ($path !== $sanitizedPath) {
-            throw FixableInvalidVersionException::toUrl('/' . $sanitizedPath);
+            throw FixableInvalidVersionException::toUrl('/'.$sanitizedPath);
         }
 
         if ((int) $segments[0] === 0) {
