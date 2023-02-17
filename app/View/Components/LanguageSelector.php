@@ -11,6 +11,7 @@ use Illuminate\View\Component;
 class LanguageSelector extends Component
 {
     public $current_language;
+
     public $formatted_languages;
 
     public function __construct()

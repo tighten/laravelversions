@@ -15,7 +15,7 @@ class TweetImportantDatesTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_tweets_on_the_day_security_fixes_end()
+    public function it_tweets_on_the_day_security_fixes_end(): void
     {
         Http::fake();
 
@@ -31,7 +31,7 @@ class TweetImportantDatesTest extends TestCase
     }
 
     /** @test */
-    public function it_tweets_the_day_before_security_fixes_end()
+    public function it_tweets_the_day_before_security_fixes_end(): void
     {
         Http::fake();
 
@@ -47,7 +47,7 @@ class TweetImportantDatesTest extends TestCase
     }
 
     /** @test */
-    public function it_tweets_the_week_before_security_fixes_end()
+    public function it_tweets_the_week_before_security_fixes_end(): void
     {
         Http::fake();
 
@@ -63,7 +63,7 @@ class TweetImportantDatesTest extends TestCase
     }
 
     /** @test */
-    public function it_tweets_on_the_day_bug_fixes_end()
+    public function it_tweets_on_the_day_bug_fixes_end(): void
     {
         Http::fake();
 
@@ -79,7 +79,7 @@ class TweetImportantDatesTest extends TestCase
     }
 
     /** @test */
-    public function it_tweets_the_day_before_bug_fixes_end()
+    public function it_tweets_the_day_before_bug_fixes_end(): void
     {
         Http::fake();
 
@@ -95,7 +95,7 @@ class TweetImportantDatesTest extends TestCase
     }
 
     /** @test */
-    public function it_tweets_the_week_before_bug_fixes_end()
+    public function it_tweets_the_week_before_bug_fixes_end(): void
     {
         Http::fake();
 

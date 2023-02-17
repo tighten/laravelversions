@@ -10,8 +10,11 @@ class LaravelVersion extends Model
     use HasFactory;
 
     const STATUS_FUTURE = 'future';
+
     const STATUS_ACTIVE = 'active';
+
     const STATUS_SECURITY = 'security';
+
     const STATUS_ENDOFLIFE = 'end-of-life';
 
     protected $guarded = [];

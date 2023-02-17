@@ -11,7 +11,7 @@ class NotificationTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function versions_need_notification_if_today_is_a_fix_end_date()
+    public function versions_need_notification_if_today_is_a_fix_end_date(): void
     {
         $bugfix = LaravelVersion::factory()->create([
             'ends_bugfixes_at' => now()->startOfDay(),
@@ -40,7 +40,7 @@ class NotificationTest extends TestCase
     }
 
     /** @test */
-    public function it_handles_null_fix_dates()
+    public function it_handles_null_fix_dates(): void
     {
         $null_security = LaravelVersion::factory()->create([
             'ends_securityfixes_at' => null,

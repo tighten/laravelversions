@@ -11,7 +11,7 @@ class ApiShowVersionTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_loads()
+    public function it_loads(): void
     {
         $version = LaravelVersion::factory()->create();
         $response = $this->get(route('api.versions.show', [$version->__toString()]));
@@ -20,7 +20,7 @@ class ApiShowVersionTest extends TestCase
     }
 
     /** @test */
-    public function it_loads_latest_version()
+    public function it_loads_latest_version(): void
     {
         $newest = LaravelVersion::factory()->create([
             'major' => 8,

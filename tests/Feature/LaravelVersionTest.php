@@ -11,7 +11,7 @@ class LaravelVersionTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_gets_only_released_versions()
+    public function it_gets_only_released_versions(): void
     {
         $no = LaravelVersion::factory()->create([
             'released_at' => now()->addYear(),

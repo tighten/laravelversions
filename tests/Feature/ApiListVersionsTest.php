@@ -11,7 +11,7 @@ class ApiListVersionsTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_loads()
+    public function it_loads(): void
     {
         $response = $this->get(route('api.versions.index'));
 
@@ -19,7 +19,7 @@ class ApiListVersionsTest extends TestCase
     }
 
     /** @test */
-    public function it_lists_valid_versions()
+    public function it_lists_valid_versions(): void
     {
         $version = LaravelVersion::factory()->create([
             'major' => 6,
@@ -29,7 +29,7 @@ class ApiListVersionsTest extends TestCase
     }
 
     /** @test */
-    public function it_doesnt_list_future_versions()
+    public function it_doesnt_list_future_versions(): void
     {
         LaravelVersion::factory()->create([
             'released_at' => now()->addDays(20),
@@ -40,7 +40,7 @@ class ApiListVersionsTest extends TestCase
     }
 
     /** @test */
-    public function entries_arent_given_specific_version_key()
+    public function entries_arent_given_specific_version_key(): void
     {
         LaravelVersion::factory()->create();
         $response = $this->get(route('api.versions.index'));

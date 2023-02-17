@@ -9,11 +9,10 @@ class ExampleTest extends TestCase
     /**
      * A basic test example.
      *
-     * @return void
      *
      * @test
      */
-    public function basicTest()
+    public function basicTest(): void
     {
         $this->assertTrue(true);
     }

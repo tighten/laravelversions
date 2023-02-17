@@ -11,7 +11,7 @@ class ShowVersionTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_loads()
+    public function it_loads(): void
     {
         $version = LaravelVersion::factory()->create([
             'ends_securityfixes_at' => now()->addYear(),
@@ -22,7 +22,7 @@ class ShowVersionTest extends TestCase
     }
 
     /** @test */
-    public function it_loads_when_bug_fixes_date_is_null()
+    public function it_loads_when_bug_fixes_date_is_null(): void
     {
         $this->seedLowestSupportedVersion();
 
@@ -35,7 +35,7 @@ class ShowVersionTest extends TestCase
     }
 
     /** @test */
-    public function it_loads_when_security_fixes_date_is_null()
+    public function it_loads_when_security_fixes_date_is_null(): void
     {
         $this->seedLowestSupportedVersion();
 
