@@ -38,7 +38,7 @@ class FetchLatestReleaseNumbers extends Command
             // Map into groups by release; pre-6, major/minor pair; post-6, major
             ->mapToGroups(function ($item) {
                 if ($item['major'] < 6) {
-                    return [$item['major'].'.'.$item['minor'] => $item];
+                    return [$item['major'] . '.' . $item['minor'] => $item];
                 }
 
                 return [$item['major'] => $item];
@@ -62,7 +62,7 @@ class FetchLatestReleaseNumbers extends Command
 
                     if ($version->patch < $item['patch']) {
                         $version->update(['patch' => $item['patch']]);
-                        $this->info('Updated Laravel version '.$version.' to use latest patch.');
+                        $this->info('Updated Laravel version ' . $version . ' to use latest patch.');
                     }
 
                     return;
@@ -80,7 +80,7 @@ class FetchLatestReleaseNumbers extends Command
                         'patch' => $item['patch'],
                     ]);
 
-                    $this->info('Created Laravel version '.$created);
+                    $this->info('Created Laravel version ' . $created);
 
                     return;
                 }
@@ -88,7 +88,7 @@ class FetchLatestReleaseNumbers extends Command
                 // Update the minor and patch if needed
                 if ($version->minor != $item['minor'] || $version->patch != $item['patch']) {
                     $version->update(['minor' => $item['minor'], 'patch' => $item['patch']]);
-                    $this->info('Updated Laravel version '.$version.' to use latest minor/patch.');
+                    $this->info('Updated Laravel version ' . $version . ' to use latest minor/patch.');
                 }
 
                 return $version;
@@ -137,7 +137,7 @@ class FetchLatestReleaseNumbers extends Command
                 $responseJson = $response->json();
 
                 if (! $response->ok()) {
-                    abort($response->getStatusCode(), 'Error connecting to GitHub: '.$responseJson['message']);
+                    abort($response->getStatusCode(), 'Error connecting to GitHub: ' . $responseJson['message']);
                 }
 
                 $tags->push(collect(data_get($responseJson, 'data.repository.refs.nodes')));
@@ -145,7 +145,7 @@ class FetchLatestReleaseNumbers extends Command
                 $nextPage = data_get($responseJson, 'data.repository.refs.pageInfo')['endCursor'];
 
                 if ($nextPage) {
-                    $this->defaultFilters['after'] = '"'.$nextPage.'"';
+                    $this->defaultFilters['after'] = '"' . $nextPage . '"';
                 }
             } while ($nextPage);
 

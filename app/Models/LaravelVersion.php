@@ -66,7 +66,7 @@ class LaravelVersion extends Model
         $majorish = $this->major;
 
         if ($this->major < 6) {
-            $majorish .= '.'.$this->minor;
+            $majorish .= '.' . $this->minor;
         }
 
         return $majorish;
