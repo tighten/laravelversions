@@ -68,7 +68,7 @@
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "lint": [
-            "vendor/bin/duster"
+            "vendor/bin/duster --lint"
         ],
         "fix": [
             "vendor/bin/duster --fix"
