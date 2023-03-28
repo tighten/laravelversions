@@ -10,7 +10,7 @@
     "require": {
         "php": "^8.1",
         "bugsnag/bugsnag-laravel": "^2.26",
-        "codezero/laravel-localized-routes": "^2.9",
+        "codezero/laravel-localized-routes": "^2.10",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.5",
         "laravel/tinker": "^2.8",
