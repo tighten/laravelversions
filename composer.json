@@ -24,7 +24,7 @@
         "nunomaduro/collision": "^7.0",
         "phpunit/phpunit": "^10.0",
         "spatie/laravel-ignition": "^2.0",
-        "tightenco/duster": "^0.5.5"
+        "tightenco/duster": "^2.0"
     },
     "config": {
         "optimize-autoloader": true,
@@ -68,10 +68,10 @@
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "lint": [
-            "vendor/bin/duster --lint"
+            "vendor/bin/duster lint"
         ],
         "fix": [
-            "vendor/bin/duster --fix"
+            "vendor/bin/duster fix"
         ]
     }
 }

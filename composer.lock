@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4fb71535792511fd17d26db356ef3cfb",
+    "content-hash": "b7636ac0ea9317028c841d3d18d05c5d",
     "packages": [
         {
             "name": "0.0.0/composer-include-files",
@@ -8443,32 +8443,27 @@
         },
         {
             "name": "tightenco/duster",
-            "version": "v0.5.7",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tighten/duster.git",
-                "reference": "0d06a8a55d4644dfd3771caecd96e8133981789f"
+                "reference": "ae429dbee9e8efad32488fd4ed34d591ecedeec1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tighten/duster/zipball/0d06a8a55d4644dfd3771caecd96e8133981789f",
-                "reference": "0d06a8a55d4644dfd3771caecd96e8133981789f",
+                "url": "https://api.github.com/repos/tighten/duster/zipball/ae429dbee9e8efad32488fd4ed34d591ecedeec1",
+                "reference": "ae429dbee9e8efad32488fd4ed34d591ecedeec1",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.0"
+                "php": "^8.1.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.12",
-                "laravel-zero/framework": "^9.2",
-                "laravel/pint": "^1.2",
-                "mockery/mockery": "^1.4.4",
-                "nunomaduro/larastan": "^2.2",
-                "nunomaduro/termwind": "^1.14",
-                "pestphp/pest": "^1.21.3",
-                "rector/rector": "^0.15.10",
+                "friendsofphp/php-cs-fixer": "^3.16.0",
+                "laravel-zero/framework": "^10.0.0",
+                "laravel/pint": "^1.9",
+                "nunomaduro/termwind": "^1.15.1",
                 "spatie/invade": "^1.1",
-                "spatie/laravel-ray": "^1.31",
                 "squizlabs/php_codesniffer": "^3.7",
                 "tightenco/tlint": "^8.0"
             },
@@ -8490,8 +8485,14 @@
             "authors": [
                 {
                     "name": "Matt Stauffer",
-                    "email": "matt@tighten.co",
-                    "homepage": "https://tighten.co",
+                    "email": "matt@tighten.com",
+                    "homepage": "https://tighten.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anthony Clark",
+                    "email": "anthony@tighten.com",
+                    "homepage": "https://tighten.com",
                     "role": "Developer"
                 }
             ],
@@ -8508,7 +8509,7 @@
                 "issues": "https://github.com/tighten/duster/issues",
                 "source": "https://github.com/tighten/duster"
             },
-            "time": "2023-01-23T18:53:55+00:00"
+            "time": "2023-04-18T18:55:32+00:00"
         }
     ],
     "aliases": [],
