@@ -23,8 +23,11 @@
 
         @endif
     </p>
-    <div class="mb-16 lg:mb-24">
+    <div class="">
         <h2 class="text-xl font-bold">{{ __('Latest Patch Release') }}:</h2>
-        <p>{{ $version }}</p>
+        @php
+            $latest = (count($releases)) ? $releases->first() : $version;
+        @endphp
+        <p class="mb-6 text-lg"><a href="#{{ $latest }}">{{ $latest }}</a></p>
     </div>
 </section>

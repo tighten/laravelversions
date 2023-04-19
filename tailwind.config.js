@@ -32,5 +32,7 @@ module.exports = {
       fontWeight: ['hover', 'focus'],
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

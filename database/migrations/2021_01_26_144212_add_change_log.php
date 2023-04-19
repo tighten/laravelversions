@@ -9,7 +9,7 @@ class AddChangeLog extends Migration
     public function up()
     {
         Schema::table('laravel_versions', function (Blueprint $table) {
-            $table->text('changelog')->nullable();
+            $table->longText('changelog')->nullable();
             $table->boolean('is_front')->default(false);
         });
     }

@@ -60,6 +60,8 @@ class FetchLatestReleaseNumbers extends Command
 
         $this->info('Finished saving Laravel versions.');
         Artisan::call('page-cache:clear');
+
+        return 0;
     }
 
     private function fetchVersionsFromGitHub()
