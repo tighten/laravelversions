@@ -22,7 +22,12 @@ jobs:
           coverage: none
 
     - name: Install dependencies
-      run: composer install --prefer-source --no-interaction
+      run: |
+        composer install --prefer-source --no-interaction
+        npm install --legacy-peer-deps --no-audit
+
+    - name: Build Assets
+      run: npm run build
 
     - name: Copy .env.example to .env
       run: cp .env.example .env
