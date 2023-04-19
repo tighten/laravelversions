@@ -60,30 +60,35 @@
 </template>
 
 <script>
+import { ref, onMounted } from 'vue';
+
 export default {
     props: ['languages', 'currentLanguage'],
 
-    mounted() {
-        this.selected = this.currentLanguage;
-    },
+    setup(props) {
+        const isOpen = ref(false);
+        const selected = ref(null);
 
-    data() {
-        return {
-            isOpen: false,
-            selected: null,
-        };
-    },
+        onMounted(() => {
+            selected.value = props.currentLanguage;
+        });
 
-    methods: {
-        handleSelect(languageObject) {
-            this.selected = languageObject.language_name_native;
+        const handleSelect = (languageObject) => {
+            selected.value = languageObject.language_name_native;
             window.location.href = languageObject.language_url;
-            this.isOpen = false;
-        },
+            isOpen.value = false;
+        };
 
-        hide() {
-            this.isOpen = false;
-        },
+        const hide = () => {
+            isOpen.value = false;
+        };
+
+        return {
+            isOpen,
+            selected,
+            handleSelect,
+            hide,
+        };
     },
 };
 </script>

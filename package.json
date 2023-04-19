@@ -5,16 +5,18 @@
         "build": "vite build"
     },
     "devDependencies": {
-        "autoprefixer": "^10.2.4",
+        "@tailwindcss/typography": "^0.5.9",
+        "@vitejs/plugin-vue": "^4.1.0",
+        "autoprefixer": "^10.4.14",
         "axios": "^0.25",
-        "laravel-vite-plugin": "^0.6.0",
+        "laravel-vite-plugin": "^0.7.4",
         "lodash": "^4.17.21",
-        "postcss": "^8.2.6",
+        "postcss": "^8.4.22",
         "resolve-url-loader": "^5.0.0",
-        "tailwindcss": "^2.0.3",
-        "vite": "^3.0.2",
-        "vue": "^2.6.12",
-        "vue-loader": "^15.9.6",
+        "tailwindcss": "^3.3.1",
+        "vite": "^4.2.2",
+        "vue": "^3.2.47",
+        "vue-loader": "^17.0.1",
         "vue-template-compiler": "^2.6.12"
     },
     "prettier": {
@@ -24,18 +26,18 @@
         "printWidth": 80
     },
     "dependencies": {
-        "@tailwindcss/typography": "^0.4.1",
-        "@vitejs/plugin-vue2": "^1.1.2",
-        "husky": "^4.3.8",
-        "lint-staged": "^10.5.4",
-        "prettier": "^2.2.1",
-        "stylelint": "^13.11.0",
-        "stylelint-config-standard": "^20.0.0",
-        "vue": "^2.7.0"
+        "husky": "^8.0.3",
+        "lint-staged": "^13.2.1",
+        "prettier": "^2.8.7",
+        "stylelint": "^15.5.0",
+        "stylelint-config-standard": "^33.0.0"
     },
     "lint-staged": {
+        "**/*.php*": [
+            "vendor/bin/duster lint"
+        ],
         "*.(css|scss)": [
-            "stylelint"
+            "stylelint --config=node_modules/stylelint-config-standard/index.js"
         ],
         "resources/**/*.(js|ts|tsx|css|vue)": [
             "node_modules/.bin/prettier --write"

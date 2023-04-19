@@ -1,29 +1,10 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
-import './bootstrap';
-
-import Vue from 'vue';
-
+import { createApp } from 'vue';
 import OutsideClick from './directives/OutsideClick';
 import LanguageSelect from './components/LanguageSelect.vue';
 
-/**
- * Directives
- */
-Vue.directive('outside-click', OutsideClick);
+const app = createApp({});
 
-/**
- * Components
- */
-Vue.component('language-select', LanguageSelect);
+app.component('language-select', LanguageSelect);
+app.directive('outside-click', OutsideClick);
 
-/**
- * Application instance
- */
-const app = new Vue({
-    el: '#app',
-});
+app.mount('#app');
