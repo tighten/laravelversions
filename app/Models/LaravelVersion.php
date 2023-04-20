@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,6 +35,13 @@ class LaravelVersion extends Model
             'tomorrow' => now()->addDay()->startOfDay(),
             'in one week' => now()->addWeek()->startOfDay(),
         ];
+    }
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope('front', function (Builder $builder) {
+            $builder->where('is_front', true);
+        });
     }
 
     public function scopeReleased($query)

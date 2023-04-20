@@ -13,7 +13,7 @@ class LaravelVersionsController extends Controller
     public function index(): View
     {
         $versions = Cache::remember('laravel-versions', 3600, function () {
-            return LaravelVersion::front()->orderBy('major', 'desc')->orderBy('minor', 'desc')->get();
+            return LaravelVersion::query()->orderBy('major', 'desc')->orderBy('minor', 'desc')->get();
         });
 
         $activeVersions = $versions->filter(function ($version) {

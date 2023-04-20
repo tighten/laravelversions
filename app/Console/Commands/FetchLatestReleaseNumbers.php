@@ -24,7 +24,7 @@ class FetchLatestReleaseNumbers extends Command
                 'refPrefix' => '"refs/tags/"',
                 'orderBy' => '{field: TAG_COMMIT_DATE, direction: DESC}',
             ],
-            'query' => <<<QUERY
+            'query' => <<<'QUERY'
                 {
                     repository(owner: "laravel", name: "framework") {
                         refs(__FILTERS__) {
@@ -54,7 +54,7 @@ class FetchLatestReleaseNumbers extends Command
                 'first' => '100',
                 'orderBy' => '{field: CREATED_AT, direction: DESC}',
             ],
-            'query' => <<<QUERY
+            'query' => <<<'QUERY'
                 {
                     repository(owner: "laravel", name: "framework") {
                         releases(__FILTERS__) {
@@ -93,11 +93,13 @@ class FetchLatestReleaseNumbers extends Command
                     'is_front' => $this->isFront($semver),
                 ];
 
-                $version = LaravelVersion::firstOrCreate([
-                    'major' => $semver->major,
-                    'minor' => $semver->minor,
-                    'patch' => $semver->patch,
-                ], $versionMeta)->fill($versionMeta);
+                $version = LaravelVersion::withoutGlobalScope('front')
+                    ->firstOrCreate([
+                        'major' => $semver->major,
+                        'minor' => $semver->minor,
+                        'patch' => $semver->patch,
+                    ], $versionMeta)
+                    ->fill($versionMeta);
 
                 if ($version->isDirty()) {
                     $version->save();
@@ -107,8 +109,6 @@ class FetchLatestReleaseNumbers extends Command
                 if ($version->wasRecentlyCreated) {
                     $this->info('Created Laravel version ' . $semver);
                 }
-
-                return $version;
             });
 
         $this->info('Finished saving Laravel versions.');
@@ -142,12 +142,12 @@ class FetchLatestReleaseNumbers extends Command
                     $carry = $carry->merge(
                         collect(data_get($responseJson, "data.repository.{$key}.nodes"))
                             ->map(fn ($item) => [
-                                'name' =>  $item['tagName'] ?? $item['name'],
+                                'name' => $item['tagName'] ?? $item['name'],
                                 'released_at' => $item['target']['committedDate'] ?? $item['createdAt'],
                                 'changelog' => $item['descriptionHTML'] ?? null,
                             ])
                             ->keyBy('name')
-                            ->reject(fn($item) => str($item['name'])->contains('-') || $item['name'] === '5.3')
+                            ->reject(fn ($item) => str($item['name'])->contains('-') || $item['name'] === '5.3')
                     );
 
                     $nextPage = data_get($responseJson, "data.repository.{$key}.pageInfo")['endCursor'];
