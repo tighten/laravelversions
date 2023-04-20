@@ -24,6 +24,7 @@ class LaravelVersion extends Model
         'ends_bugfixes_at' => 'date',
         'ends_securityfixes_at' => 'date',
         'is_lts' => 'bool',
+        'is_front' => 'bool',
     ];
 
     public static function notificationDays()

@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\LaravelVersion;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Http;
@@ -15,9 +16,67 @@ class FetchLatestReleaseNumbers extends Command
 
     protected $description = 'Pull the latest Laravel Version releases from GitHub into our application.';
 
-    private $defaultFilters = [
-        'first' => '100',
-        'orderBy' => '{field: CREATED_AT, direction: DESC}',
+    // Not all tags have releases - so we need to pull both.
+    private $gitHubQueries = [
+        'refs' => [
+            'filters' => [
+                'first' => '100',
+                'refPrefix' => '"refs/tags/"',
+                'orderBy' => '{field: TAG_COMMIT_DATE, direction: DESC}',
+            ],
+            'query' => <<<QUERY
+                {
+                    repository(owner: "laravel", name: "framework") {
+                        refs(__FILTERS__) {
+                            nodes {
+                                name
+                                target {
+                                ... on Commit {
+                                        committedDate
+                                    }
+                                }
+                            }
+                            pageInfo {
+                                endCursor
+                                hasNextPage
+                            }
+                        }
+                    }
+                    rateLimit {
+                        cost
+                        remaining
+                    }
+                }
+            QUERY,
+        ],
+        'releases' => [
+            'filters' => [
+                'first' => '100',
+                'orderBy' => '{field: CREATED_AT, direction: DESC}',
+            ],
+            'query' => <<<QUERY
+                {
+                    repository(owner: "laravel", name: "framework") {
+                        releases(__FILTERS__) {
+                            nodes {
+                                name
+                                createdAt
+                                descriptionHTML
+                                tagName
+                            }
+                            pageInfo {
+                                endCursor
+                                hasNextPage
+                            }
+                        }
+                    }
+                    rateLimit {
+                        cost
+                        remaining
+                    }
+                }
+            QUERY,
+        ],
     ];
 
     public function handle(): int
@@ -26,33 +85,27 @@ class FetchLatestReleaseNumbers extends Command
 
         $this->fetchVersionsFromGitHub()
             ->each(function ($item) {
-                $semver = new Version($item['tagName']);
-                $version = LaravelVersion::where([
+                $semver = new Version($item['name']);
+
+                $versionMeta = [
+                    'released_at' => Carbon::parse($item['released_at'])->format('Y-m-d'),
+                    'changelog' => $item['changelog'],
+                    'is_front' => $this->isFront($semver),
+                ];
+
+                $version = LaravelVersion::firstOrCreate([
                     'major' => $semver->major,
                     'minor' => $semver->minor,
                     'patch' => $semver->patch,
-                ])->first();
+                ], $versionMeta)->fill($versionMeta);
 
-                if (! $version) {
-                    // Create it if it doesn't exist
-                    $created = LaravelVersion::create([
-                        'major' => $semver->major,
-                        'minor' => $semver->minor,
-                        'patch' => $semver->patch,
-                        'released_at' => $item['createdAt'],
-                        'changelog' => $item['descriptionHTML'],
-                    ]);
-
-                    $this->info('Created Laravel version ' . $semver);
-
-                    return;
-                }
-                if (empty($version->changelog)) {
-                    $version->update([
-                        'released_at' => $item['createdAt'],
-                        'changelog' => $item['descriptionHTML'],
-                    ]);
+                if ($version->isDirty()) {
+                    $version->save();
                     $this->info('Updated Laravel version ' . $semver);
+                }
+
+                if ($version->wasRecentlyCreated) {
+                    $this->info('Created Laravel version ' . $semver);
                 }
 
                 return $version;
@@ -67,59 +120,51 @@ class FetchLatestReleaseNumbers extends Command
     private function fetchVersionsFromGitHub()
     {
         return cache()->remember('github::laravel-versions', 60 * 60, function () {
-            $releases = collect();
+            return collect($this->gitHubQueries)->reduce(function ($carry, $query, $key) {
+                do {
+                    // Format the filters at runtime to include pagination
+                    $filters = collect($query['filters'])
+                        ->map(fn ($value, $key) => "{$key}: {$value}")
+                        ->implode(', ');
 
-            do {
-                // Format the filters at runtime to include pagination
-                $filters = collect($this->defaultFilters)
-                    ->map(function ($value, $key) {
-                        return "{$key}: {$value}";
-                    })
-                    ->implode(', ');
+                    $response = Http::withToken(config('services.github.token'))
+                        ->post(
+                            'https://api.github.com/graphql',
+                            ['query' => str_replace('__FILTERS__', $filters, $query['query'])]
+                        );
 
-                $query = <<<QUERY
-                    {
-                        repository(owner: "laravel", name: "framework") {
-                            releases({$filters}) {
-                                nodes {
-                                    name
-                                    createdAt
-                                    descriptionHTML
-                                    tagName
-                                    url
-                                }
-                                pageInfo {
-                                    endCursor
-                                    hasNextPage
-                                }
-                            }
-                        }
-                        rateLimit {
-                            cost
-                            remaining
-                        }
+                    $responseJson = $response->json();
+
+                    if (! $response->ok()) {
+                        abort($response->getStatusCode(), 'Error connecting to GitHub: ' . $responseJson['message']);
                     }
-                QUERY;
 
-                $response = Http::withToken(config('services.github.token'))
-                    ->post('https://api.github.com/graphql', ['query' => $query]);
+                    $carry = $carry->merge(
+                        collect(data_get($responseJson, "data.repository.{$key}.nodes"))
+                            ->map(fn ($item) => [
+                                'name' =>  $item['tagName'] ?? $item['name'],
+                                'released_at' => $item['target']['committedDate'] ?? $item['createdAt'],
+                                'changelog' => $item['descriptionHTML'] ?? null,
+                            ])
+                            ->keyBy('name')
+                            ->reject(fn($item) => str($item['name'])->contains('-') || $item['name'] === '5.3')
+                    );
 
-                $responseJson = $response->json();
+                    $nextPage = data_get($responseJson, "data.repository.{$key}.pageInfo")['endCursor'];
 
-                if (! $response->ok()) {
-                    abort($response->getStatusCode(), 'Error connecting to GitHub: ' . $responseJson['message']);
-                }
+                    if ($nextPage) {
+                        $query['filters']['after'] = '"' . $nextPage . '"';
+                    }
+                } while ($nextPage);
 
-                $releases->push(data_get($responseJson, 'data.repository.releases.nodes'));
-
-                $nextPage = data_get($responseJson, 'data.repository.releases.pageInfo')['endCursor'];
-
-                if ($nextPage) {
-                    $this->defaultFilters['after'] = '"' . $nextPage . '"';
-                }
-            } while ($nextPage);
-
-            return $releases->flatten(1);
+                return $carry;
+            }, collect());
         });
+    }
+
+    private function isFront(Version $version): bool
+    {
+        return (collect([5, 4, 3])->contains($version->major) && $version->patch === 0)
+            || ($version->minor === 0 && $version->patch === 0);
     }
 }

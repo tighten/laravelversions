@@ -19,7 +19,11 @@
                     </div>
                     <div class="px-6 py-4 bg-white">
                         <div class="prose-sm prose">
-                            {!! $release->changelog !!}
+                            @if ($release->changelog)
+                                {!! $release->changelog !!}
+                            @else
+                                <p>No changelog available.</p>
+                            @endif
                         </div>
                     </div>
                 </div>
