@@ -19,7 +19,7 @@ class TweetImportantDatesTest extends TestCase
     {
         Http::fake();
 
-        $version = LaravelVersion::factory()->create([
+        $version = LaravelVersion::factory()->active()->create([
             'ends_securityfixes_at' => now()->startOfDay(),
         ]);
 
@@ -35,7 +35,7 @@ class TweetImportantDatesTest extends TestCase
     {
         Http::fake();
 
-        $version = LaravelVersion::factory()->create([
+        $version = LaravelVersion::factory()->active()->create([
             'ends_securityfixes_at' => now()->addDay()->startOfDay(),
         ]);
 
@@ -51,7 +51,7 @@ class TweetImportantDatesTest extends TestCase
     {
         Http::fake();
 
-        $version = LaravelVersion::factory()->create([
+        $version = LaravelVersion::factory()->active()->create([
             'ends_securityfixes_at' => now()->addWeek()->startOfDay(),
         ]);
 
@@ -67,7 +67,7 @@ class TweetImportantDatesTest extends TestCase
     {
         Http::fake();
 
-        $version = LaravelVersion::factory()->create([
+        $version = LaravelVersion::factory()->active()->create([
             'ends_bugfixes_at' => now()->startOfDay(),
         ]);
 
@@ -83,7 +83,7 @@ class TweetImportantDatesTest extends TestCase
     {
         Http::fake();
 
-        $version = LaravelVersion::factory()->create([
+        $version = LaravelVersion::factory()->active()->create([
             'ends_bugfixes_at' => now()->addDay()->startOfDay(),
         ]);
 
@@ -99,7 +99,7 @@ class TweetImportantDatesTest extends TestCase
     {
         Http::fake();
 
-        $version = LaravelVersion::factory()->create([
+        $version = LaravelVersion::factory()->active()->create([
             'ends_bugfixes_at' => now()->addWeek()->startOfDay(),
         ]);
 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -49,9 +50,13 @@ class LaravelVersion extends Model
         $query->where('released_at', '<=', now());
     }
 
-    public function scopeFront($query)
+    public function getReleases(): Collection
     {
-        $query->where('is_front', '=', true);
+        return static::withoutGlobalScope('front')
+            ->where('major', $this->major)
+            ->when($this->minor, fn ($query) => $query->where('minor', $this->minor))
+            ->orderBy('released_at', 'DESC')
+            ->get();
     }
 
     public function getStatusAttribute()
@@ -77,13 +82,14 @@ class LaravelVersion extends Model
      */
     public function getMajorishAttribute(): string
     {
-        $majorish = $this->major;
+        return $this->pre_semver
+            ? $this->major . '.' . $this->minor
+            : $this->major;
+    }
 
-        if ($this->major < 6) {
-            $majorish .= '.' . $this->minor;
-        }
-
-        return $majorish;
+    public function getPreSemverAttribute()
+    {
+        return $this->major < 6;
     }
 
     public function getUrlAttribute()

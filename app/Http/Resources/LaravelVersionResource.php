@@ -12,7 +12,7 @@ class LaravelVersionResource extends JsonResource
     {
         $minor_label = $this->major < 6 ? 'minor' : 'latest_minor';
         $segments = $request->segments();
-        $latest_version = LaravelVersion::released()->orderByDesc('major')->orderByDesc('minor')->orderByDesc('patch')->first();
+        $latest_version = LaravelVersion::withoutGlobalScope('front')->released()->orderByDesc('major')->orderByDesc('minor')->orderByDesc('patch')->first();
 
         return [
             'major' => $this->major,

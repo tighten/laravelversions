@@ -13,39 +13,29 @@ class LaravelVersionFromPathTest extends TestCase
     /** @test */
     public function non_version_shaped_path_throws_404(): void
     {
-        $response = $this->get('/en/fancy.1.4');
+        $this->get('/en/fancy.1.4')
+            ->assertNotFound();
 
-        $response->assertNotFound();
-    }
-
-    /** @test */
-    public function more_than_three_segments_redirects_to_three(): void
-    {
-        /**
-         * From /en/1.1.1.14 does a redirect to the main one (without language) which is /1.1.1
-         * Later, it checks the main language for the default language and redirects to the appropriate language,
-         * i.e. /en, that is /en/1.1.1
-         */
-        $response = $this->get('/en/1.1.1.14');
-
-        $response->assertRedirect('1.1.1');
-
-        $response = $this->get('1.1.1');
-
-        $response->assertRedirect('/en/1.1.1');
+        $this->get('/en/1.1.1.14')
+            ->assertNotFound();
     }
 
     /** @test */
     public function versions_after_five_dont_require_a_minor(): void
     {
         LaravelVersion::factory()->create([
-            'major' => 7,
+            'major' => 6,
+            'minor' => 0,
+            'patch' => 0,
+            'is_front' => true,
             'ends_securityfixes_at' => now()->addYear(),
         ]);
 
-        $response = $this->get('/en/7');
+        $this->get('/en/6')
+            ->assertOk();
 
-        $response->assertOk();
+        $this->get('/en/6.0')
+            ->assertOk();
     }
 
     /** @test */
@@ -53,58 +43,90 @@ class LaravelVersionFromPathTest extends TestCase
     {
         LaravelVersion::factory()->create([
             'major' => 5,
+            'minor' => 0,
+            'patch' => 0,
+            'is_front' => true,
+            'ends_securityfixes_at' => now()->addYear(),
         ]);
 
-        $response = $this->get('/en/5');
+        $this->get('/en/5')
+            ->assertNotFound();
 
-        $response->assertNotFound();
+        $this->get('/en/5.0')
+            ->assertOk();
     }
 
     /** @test */
     public function it_finds_versions_after_five(): void
     {
-        LaravelVersion::factory()->create([
-            'major' => 7,
-            'minor' => 9,
-            'patch' => 42,
-            'ends_securityfixes_at' => now()->addYear(),
-        ]);
+        collect(
+            [
+                ['major' => 10, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 9, 'minor' => 9, 'patch' => 42, 'is_front' => false],
+                ['major' => 9, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 8, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 7, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 6, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+            ]
+        )->each(fn ($version) => LaravelVersion::factory()->create($version));
 
-        $this->get('/en/7.9.42')->assertOk();
-        $this->get('/en/7.9')->assertOk();
+        $this->get('/en/10')->assertOk();
+        $this->get('/en/9.9.42')->assertOk();
+        $this->get('/en/9')->assertOk();
+        $this->get('/en/8')->assertOk();
         $this->get('/en/7')->assertOk();
-        $this->get('/en/7.2.0')->assertOk();
-        $this->get('/en/7.0.0')->assertOk();
-        $this->get('/en/7.5')->assertOk();
+        $this->get('/en/6')->assertOk();
     }
 
     /** @test */
     public function it_finds_versions_before_six(): void
     {
-        LaravelVersion::factory()->create([
-            'major' => 5,
-            'minor' => 3,
-            'patch' => 21,
-            'ends_securityfixes_at' => now()->addYear(),
-        ]);
+        collect(
+            [
+                ['major' => 6, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 5, 'minor' => 2, 'patch' => 1, 'is_front' => false],
+                ['major' => 5, 'minor' => 2, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 5, 'minor' => 1, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 5, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 4, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 4, 'minor' => 0, 'patch' => 1, 'is_front' => false],
+            ]
+        )->each(fn ($version) => LaravelVersion::factory()->create($version));
 
-        $this->get('/en/5.3.21')->assertOk();
-        $this->get('/en/5.3')->assertOk();
-        $this->get('/en/5.3.0')->assertOk();
+        $this->get('/en/6')->assertOk();
+        $this->get('/en/5.2.1')->assertOk();
+        $this->get('/en/5.2')->assertOk();
+        $this->get('/en/5.1')->assertOk();
+        $this->get('/en/5.0')->assertOk();
+        $this->get('/en/4.0.1')->assertOk();
+        $this->get('/en/4.0')->assertOk();
     }
 
     /** @test */
     public function before_six_minor_is_required_to_match(): void
     {
-        LaravelVersion::factory()->create([
-            'major' => 5,
-            'minor' => 3,
-            'patch' => 21,
-            'ends_securityfixes_at' => now()->addYear(),
-        ]);
+        collect(
+            [
+                ['major' => 5, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 5, 'minor' => 1, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 4, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 3, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 2, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 1, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+            ]
+        )->each(fn ($version) => LaravelVersion::factory()->create($version));
 
-        $this->get('/en/5.3.21')->assertOk();
-        $this->get('/en/5.2.21')->assertNotFound();
+        $this->get('/en/5')->assertNotFound();
+        $this->get('/en/5.0')->assertOk();
+        $this->get('/en/5.1')->assertOk();
+        $this->get('/en/4')->assertNotFound();
+        $this->get('/en/4.0')->assertOk();
+        $this->get('/en/3')->assertNotFound();
+        $this->get('/en/3.0')->assertOk();
+        $this->get('/en/2')->assertNotFound();
+        $this->get('/en/2.0')->assertOk();
+        $this->get('/en/1')->assertNotFound();
+        $this->get('/en/1.0')->assertOk();
     }
 
     /** @test */

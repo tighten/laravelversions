@@ -6,7 +6,6 @@ use App\LaravelVersionFromPath;
 use App\Models\LaravelVersion;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
-use PHLAK\SemVer\Version;
 
 class LaravelVersionsController extends Controller
 {
@@ -34,32 +33,17 @@ class LaravelVersionsController extends Controller
 
     public function show($path): View
     {
-        $laravelVersion = Cache::remember('laravel-versions-' . $path, 3600, function () use ($path) {
+        $version = Cache::remember('laravel-versions-' . $path, 3600, function () use ($path) {
             return (new LaravelVersionFromPath)($path);
         });
 
-        [$version, $sanitizedPath, $segments] = $laravelVersion;
-
-        $semver = new Version($version);
-
-        $releases = Cache::remember('laravel-versions-' . $semver . '-releases', 3600, function () use ($segments, $semver) {
-            $query = LaravelVersion::where('major', '=', $semver->major)->orderBy('released_at', 'DESC');
-
-            if (count($segments) >= 2) {
-                $query->where('minor', '=', $semver->minor);
-            }
-
-            if (count($segments) >= 3) {
-                $query->where('patch', '=', $semver->patch);
-            }
-
-            return $query->get();
+        $releases = Cache::remember('laravel-versions-' . $version . '-releases', 3600, function () use ($version) {
+            return $version->getReleases();
         });
 
         return view('versions.show', [
             'version' => $version,
-            'path' => $sanitizedPath,
-            'segments' => $segments,
+            'path' => (string) $version,
             'releases' => $releases,
         ]);
     }

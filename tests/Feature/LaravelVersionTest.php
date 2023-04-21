@@ -15,10 +15,12 @@ class LaravelVersionTest extends TestCase
     {
         $no = LaravelVersion::factory()->create([
             'released_at' => now()->addYear(),
+            'is_front' => true,
         ]);
 
         $yes = LaravelVersion::factory()->create([
             'released_at' => now()->subYear(),
+            'is_front' => true,
         ]);
 
         $released = LaravelVersion::released()->get();

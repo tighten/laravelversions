@@ -3,18 +3,24 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use PHLAK\SemVer\Version;
 
 class LaravelVersionFactory extends Factory
 {
     public function definition(): array
     {
-        $released_at = now()->subDays(rand(0, 1000));
+        $semver = new Version(implode('.', [rand(1, 11), rand(0, 20), rand(0, 80)]));
+
+        $released_at = now()
+            ->subYears(collect(range(1, 11))->reverse()->values()->get($semver->major - 1))
+            ->subDays($semver->minor);
 
         return [
-            'major' => rand(1, 8),
-            'minor' => rand(0, 10),
-            'patch' => rand(0, 80),
+            'major' => $semver->major,
+            'minor' => $semver->minor,
+            'patch' => $semver->patch,
             'is_lts' => false,
+            'is_front' => $semver->major > 6 || $semver->patch == 0,
             'released_at' => $released_at,
             'ends_bugfixes_at' => $released_at->clone()->addYear(),
             'ends_securityfixes_at' => $released_at->clone()->addYears(2),
@@ -28,6 +34,9 @@ class LaravelVersionFactory extends Factory
 
             return [
                 'major' => 99999,
+                'minor' => 0,
+                'patch' => 0,
+                'is_front' => true,
                 'ends_bugfixes_at' => $futureDate,
                 'ends_securityfixes_at' => $futureDate,
             ];

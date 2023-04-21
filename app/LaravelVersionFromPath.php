@@ -4,43 +4,31 @@ namespace App;
 
 use App\Exceptions\FixableInvalidVersionException;
 use App\Models\LaravelVersion;
+use Exception;
+use PHLAK\SemVer\Version;
 
 class LaravelVersionFromPath
 {
     public function __invoke($path)
     {
-        // @todo regex this with someone who's smarter at regex-ing... this is obviously super dumb
-        $segments = explode('.', $path);
-        $segments = array_slice($segments, 0, 3);
-        $sanitizedPath = implode('.', $segments);
-
-        if ($path !== $sanitizedPath) {
-            throw FixableInvalidVersionException::toUrl('/' . $sanitizedPath);
-        }
-
-        if ((int) $segments[0] === 0) {
+        try {
+            $semver = new Version(str($path)->explode('.')->pad(3, 0)->implode('.'));
+        } catch (Exception) {
             abort(404);
         }
 
-        if ($segments[0] < 6) {
-            if (! isset($segments[1])) {
-                abort(404);
-            }
+        $validPaths = collect([
+            $semver->major > 5 ? "{$semver->major}" : null,
+            "{$semver->major}.{$semver->minor}",
+            "{$semver->major}.{$semver->minor}.{$semver->patch}"
+        ])->filter();
 
-            $version = LaravelVersion::where([
-                'major' => $segments[0],
-                'minor' => $segments[1],
-            ])->firstOrFail();
-        } else {
-            $version = LaravelVersion::where([
-                'major' => $segments[0],
-            ])->firstOrFail();
-        }
+        abort_unless($validPaths->containsStrict($path),404);
 
-        return [
-            $version,
-            $sanitizedPath,
-            $segments,
-        ];
+        return LaravelVersion::withoutGlobalScope('front')->where([
+            'major' => $semver->major,
+            'minor' => $semver->minor,
+            'patch' => $semver->patch,
+        ])->firstOrFail();
     }
 }

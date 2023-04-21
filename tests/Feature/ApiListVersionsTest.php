@@ -21,9 +21,7 @@ class ApiListVersionsTest extends TestCase
     /** @test */
     public function it_lists_valid_versions(): void
     {
-        $version = LaravelVersion::factory()->create([
-            'major' => 6,
-        ]);
+        LaravelVersion::factory()->active()->create();
         $response = $this->get(route('api.versions.index'));
         $this->assertCount(1, $response->json()['data']);
     }
@@ -42,7 +40,7 @@ class ApiListVersionsTest extends TestCase
     /** @test */
     public function entries_arent_given_specific_version_key(): void
     {
-        LaravelVersion::factory()->create();
+        LaravelVersion::factory()->active()->create();
         $response = $this->get(route('api.versions.index'));
         $entry = $response->json()['data'][0];
 
