@@ -17,13 +17,9 @@ class LaravelVersionFromPath
             abort(404);
         }
 
-        $validPaths = collect([
-            $semver->major > 5 ? "{$semver->major}" : null,
-            "{$semver->major}.{$semver->minor}",
-            "{$semver->major}.{$semver->minor}.{$semver->patch}"
-        ])->filter();
-
-        abort_unless($validPaths->containsStrict($path),404);
+        if ($semver->major < 6 && (string) $semver->major === $path){
+            throw FixableInvalidVersionException::toUrl("/{$semver->major}.{$semver->minor}");
+        }
 
         return LaravelVersion::withoutGlobalScope('front')->where([
             'major' => $semver->major,
