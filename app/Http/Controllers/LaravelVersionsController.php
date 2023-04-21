@@ -37,7 +37,7 @@ class LaravelVersionsController extends Controller
             return (new LaravelVersionFromPath)($path);
         });
 
-        $releases = Cache::remember('laravel-versions-' . $version . '-releases', 3600, function () use ($version) {
+        $releases = Cache::remember('laravel-versions-' . $version->majorish . '-releases', 3600, function () use ($version) {
             return $version->getReleases();
         });
 

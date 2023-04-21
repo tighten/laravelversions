@@ -54,7 +54,7 @@ class LaravelVersion extends Model
     {
         return static::withoutGlobalScope('front')
             ->where('major', $this->major)
-            ->when($this->minor, fn ($query) => $query->where('minor', $this->minor))
+            ->when($this->pre_semver, fn ($query) => $query->where('minor', $this->minor))
             ->orderBy('released_at', 'DESC')
             ->get();
     }

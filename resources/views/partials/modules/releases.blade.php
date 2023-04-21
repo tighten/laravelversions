@@ -5,7 +5,15 @@
     <div class="flex flex-wrap items-stretch mb-6 space-x-2 space-y-2">
         <span></span><!-- This is a hack to fix issue with first release height -->
         @foreach ($releases as $release)
-            <a href="#{{ $release }}" class="rounded bg-gray-200 px-2 py-0.5 text-xs text-gray-700">{{ $release }}</a>
+            <a href="#{{ $release }}"
+                @class([
+                    'rounded px-2 py-0.5 text-xs',
+                    'text-gray-700 bg-gray-200' => $release != $path,
+                    'font-bold bg-gray-700 text-gray-200' => $release == $path
+                ])
+            >
+                {{ $release }}
+            </a>
         @endforeach
     </div>
 
