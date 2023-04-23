@@ -86,11 +86,18 @@ class FetchLatestReleaseNumbers extends Command
         $this->fetchVersionsFromGitHub()
             ->each(function ($item) {
                 $semver = new Version($item['name']);
+                $firstReleasedVersion = $semver->major < 6 ? $semver->major . '.' . $semver->minor . '0' : $semver->major . '.0.0';
+                $firstRelease = LaravelVersion::where('first_release', $firstReleasedVersion)->first();
 
                 $versionMeta = [
-                    'released_at' => Carbon::parse($item['released_at'])->format('Y-m-d'),
-                    'changelog' => $item['changelog'],
+                    'semver' => (string) $semver,
+                    'first_release' => $firstReleasedVersion,
                     'is_front' => $this->isFront($semver),
+                    'changelog' => $item['changelog'],
+                    'order' => $semver->major * 1000000 + $semver->minor * 1000 + $semver->patch,
+                    'released_at' => Carbon::parse($item['released_at'])->format('Y-m-d'),
+                    'ends_bugfixes_at' => $firstRelease?->ends_bugfixes_at,
+                    'ends_securityfixes_at' => $firstRelease?->ends_securityfixes_at,
                 ];
 
                 $version = LaravelVersion::withoutGlobalScope('front')
@@ -158,7 +165,34 @@ class FetchLatestReleaseNumbers extends Command
                 } while ($nextPage);
 
                 return $carry;
-            }, collect());
+            }, collect())
+            ->push(
+                [
+                    'name' => '3.2.0',
+                    'changelog' => null,
+                    'released_at' => '2012-05-22',
+                ],
+                [
+                    'name' => '3.1.0',
+                    'changelog' => null,
+                    'released_at' => '2012-03-27',
+                ],
+                [
+                    'name' => '3.0.0',
+                    'changelog' => null,
+                    'released_at' => '2012-02-22',
+                ],
+                [
+                    'name' => '2.0.0',
+                    'changelog' => null,
+                    'released_at' => '2011-09-01',
+                ],
+                [
+                    'name' => '1.0.0',
+                    'changelog' => null,
+                    'released_at' => '2011-06-01',
+                ]
+            );
         });
     }
 

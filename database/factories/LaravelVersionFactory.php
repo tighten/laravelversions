@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\LaravelVersion;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use PHLAK\SemVer\Version;
 
@@ -19,8 +20,12 @@ class LaravelVersionFactory extends Factory
             'major' => $semver->major,
             'minor' => $semver->minor,
             'patch' => $semver->patch,
+            'semver' => $semver,
+            'first_release' => $semver,
             'is_lts' => false,
             'is_front' => $semver->major > 6 || $semver->patch == 0,
+            'changelog' => null,
+            'order' => 0,
             'released_at' => $released_at,
             'ends_bugfixes_at' => $released_at->clone()->addYear(),
             'ends_securityfixes_at' => $released_at->clone()->addYears(2),

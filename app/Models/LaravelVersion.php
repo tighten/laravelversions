@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class LaravelVersion extends Model
 {
@@ -43,6 +44,18 @@ class LaravelVersion extends Model
         static::addGlobalScope('front', function (Builder $builder) {
             $builder->where('is_front', true);
         });
+    }
+
+    public function firstRelease(): HasOne
+    {
+        return $this->hasOne(static::class, 'semver', 'first_release');
+    }
+
+    public function lastRelease(): HasOne
+    {
+        return $this->hasOne(static::class, 'first_release', 'first_release')
+            ->withoutGlobalScope('front')
+            ->ofMany(['order' => 'MAX']);
     }
 
     public function scopeReleased($query)
@@ -104,7 +117,7 @@ class LaravelVersion extends Model
 
     public function getLatestPatchApiUrlAttribute()
     {
-        return route('api.versions.show', [$this->__toString()]);
+        return route('api.versions.show', [$this->lastRelease->semver]);
     }
 
     public function needsNotification()

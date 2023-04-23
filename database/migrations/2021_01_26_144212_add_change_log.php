@@ -9,16 +9,22 @@ class AddChangeLog extends Migration
     public function up()
     {
         Schema::table('laravel_versions', function (Blueprint $table) {
-            $table->longText('changelog')->nullable();
-            $table->boolean('is_front')->default(false);
+            $table->string('semver')->nullable()->after('patch');
+            $table->string('first_release')->nullable()->after('semver');
+            $table->boolean('is_front')->default(false)->after('is_lts');
+            $table->longText('changelog')->nullable()->after('is_front');
+            $table->integer('order')->default(0)->after('changelog');
         });
     }
 
     public function down()
     {
         Schema::table('laravel_versions', function (Blueprint $table) {
-            $table->dropColumn('changelog');
+            $table->dropColumn('semver');
+            $table->dropColumn('first_release');
             $table->dropColumn('is_front');
+            $table->dropColumn('changelog');
+            $table->dropColumn('order');
         });
     }
 }

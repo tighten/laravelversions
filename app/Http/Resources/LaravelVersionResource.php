@@ -11,14 +11,13 @@ class LaravelVersionResource extends JsonResource
     public function toArray($request): array
     {
         $minor_label = $this->major < 6 ? 'minor' : 'latest_minor';
-        $segments = $request->segments();
-        $latest_version = LaravelVersion::withoutGlobalScope('front')->released()->orderByDesc('major')->orderByDesc('minor')->orderByDesc('patch')->first();
+        $latest_version = LaravelVersion::withoutGlobalScope('front')->released()->orderByDesc('order')->first();
 
         return [
-            'major' => $this->major,
-            $minor_label => $this->minor,
-            'latest_patch' => $this->patch,
-            'latest' => sprintf('%s.%s.%s', $this->major, $this->minor, $this->patch),
+            'major' => $this->lastRelease->major,
+            $minor_label => $this->lastRelease->minor,
+            'latest_patch' => $this->lastRelease->patch,
+            'latest' => $this->lastRelease->semver,
             'is_lts' => $this->is_lts,
             'released_at' => $this->released_at,
             'ends_bugfixes_at' => $this->ends_bugfixes_at,
@@ -26,7 +25,7 @@ class LaravelVersionResource extends JsonResource
             'status' => $this->status,
             $this->mergeWhen($this->specificVersionProvided($request), [
                 'specific_version' => [
-                    'provided' => end($segments),
+                    'provided' => $this->semver,
                     'needs_patch' => $request->url() !== $this->latest_patch_api_url,
                     'needs_major_upgrade' => $this->status === 'end-of-life',
                 ],
