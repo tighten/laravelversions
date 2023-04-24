@@ -7,8 +7,7 @@
     "indentation": 4,
     "at-rule-no-unknown": [ true, {
       "ignoreAtRules": [
-        "tailwind",
-        "screen"
+        "tailwind"
       ]
     }],
     "no-eol-whitespace": [ true, {
