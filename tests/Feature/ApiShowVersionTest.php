@@ -13,8 +13,13 @@ class ApiShowVersionTest extends TestCase
     /** @test */
     public function it_loads(): void
     {
-        $version = LaravelVersion::factory()->create();
-        $response = $this->get(route('api.versions.show', [$version->__toString()]));
+        $version = $this->seedVersions(
+            majorCount: 1,
+            minorCount: 1,
+            patchCount: 1
+        )->first();
+
+        $response = $this->get($version->api_url);
 
         $response->assertStatus(200);
     }
@@ -22,27 +27,19 @@ class ApiShowVersionTest extends TestCase
     /** @test */
     public function it_loads_latest_version(): void
     {
-        $newest = LaravelVersion::factory()->create([
-            'major' => 8,
-            'is_lts' => false,
-        ]);
+        $this->seedVersions(
+            majorCount: 2,
+            minorCount: 5,
+            patchCount: 2
+        );
 
-        // older patch
-        LaravelVersion::factory()->create([
-            'major' => $newest->major,
-            'minor' => $newest->minor,
-            'patch' => $newest->minor - 1,
-        ]);
+        $newest = LaravelVersion::withoutGlobalScope('front')->latest('order')->first();
+        $older = LaravelVersion::where('major', $newest->major - 1)->first();
 
-        //older major version
-        $oldest = LaravelVersion::factory()->create([
-            'major' => $newest->major - 1,
-        ]);
-
-        $this->getJson(route('api.versions.show', [$oldest->__toString()]))
+        $this->getJson($older->api_url)
             ->assertJsonFragment([
-                'latest_version' => $newest->__toString(),
-                'latest_version_is_lts' => false,
+                'latest_version' => $newest->semver,
+                'latest_version_is_lts' => $newest->is_lts,
             ]);
     }
 }
