@@ -25,7 +25,7 @@ class LaravelVersionFactory extends Factory
             'is_lts' => false,
             'is_front' => $semver->major > 6 || $semver->patch == 0,
             'changelog' => null,
-            'order' => 0,
+            'order' => LaravelVersion::calculateOrder($semver->major, $semver->minor, $semver->patch),
             'released_at' => $released_at,
             'ends_bugfixes_at' => $released_at->clone()->addYear(),
             'ends_securityfixes_at' => $released_at->clone()->addYears(2),
@@ -42,6 +42,7 @@ class LaravelVersionFactory extends Factory
                 'minor' => 0,
                 'patch' => 0,
                 'is_front' => true,
+                'order' => LaravelVersion::calculateOrder(99999, 0, 0),
                 'ends_bugfixes_at' => $futureDate,
                 'ends_securityfixes_at' => $futureDate,
             ];

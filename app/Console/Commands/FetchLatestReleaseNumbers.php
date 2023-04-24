@@ -94,7 +94,7 @@ class FetchLatestReleaseNumbers extends Command
                     'first_release' => $firstReleasedVersion,
                     'is_front' => $this->isFront($semver),
                     'changelog' => $item['changelog'],
-                    'order' => $semver->major * 1000000 + $semver->minor * 1000 + $semver->patch,
+                    'order' => LaravelVersion::calculateOrder($semver->major, $semver->minor, $semver->patch),
                     'released_at' => Carbon::parse($item['released_at'])->format('Y-m-d'),
                     'ends_bugfixes_at' => $firstRelease?->ends_bugfixes_at,
                     'ends_securityfixes_at' => $firstRelease?->ends_securityfixes_at,

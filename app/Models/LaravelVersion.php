@@ -39,6 +39,11 @@ class LaravelVersion extends Model
         ];
     }
 
+    public static function calculateOrder($major, $minor, $patch): int
+    {
+        return (int) ($major * 1000000 + $minor * 1000 + $patch);
+    }
+
     protected static function booted(): void
     {
         static::addGlobalScope('front', function (Builder $builder) {
