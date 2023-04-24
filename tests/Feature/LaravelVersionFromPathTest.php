@@ -50,7 +50,7 @@ class LaravelVersionFromPathTest extends TestCase
         ]);
 
         $this->get('/en/5')
-            ->assertRedirect('5.0');
+            ->assertRedirect('/en/5.0');
 
         $this->get('/5.0')
             ->assertRedirect('/en/5.0');
@@ -119,20 +119,20 @@ class LaravelVersionFromPathTest extends TestCase
             ]
         )->each(fn ($version) => LaravelVersion::factory()->create($version));
 
-        $this->get('/en/5')->assertRedirect('5.0');
+        $this->get('/en/5')->assertRedirect('/en/5.0');
         $this->get('/5.0')->assertRedirect('/en/5.0');
         $this->get('/en/5.0')->assertOk();
         $this->get('/en/5.1')->assertOk();
-        $this->get('/en/4')->assertRedirect('4.0');
+        $this->get('/en/4')->assertRedirect('/en/4.0');
         $this->get('/4.0')->assertRedirect('/en/4.0');
         $this->get('/en/4.0')->assertOk();
-        $this->get('/en/3')->assertRedirect('3.0');
+        $this->get('/en/3')->assertRedirect('/en/3.0');
         $this->get('/3.0')->assertRedirect('/en/3.0');
         $this->get('/en/3.0')->assertOk();
-        $this->get('/en/2')->assertRedirect('2.0');
+        $this->get('/en/2')->assertRedirect('/en/2.0');
         $this->get('/2.0')->assertRedirect('/en/2.0');
         $this->get('/en/2.0')->assertOk();
-        $this->get('/en/1')->assertRedirect('1.0');
+        $this->get('/en/1')->assertRedirect('/en/1.0');
         $this->get('/1.0')->assertRedirect('/en/1.0');
         $this->get('/en/1.0')->assertOk();
     }

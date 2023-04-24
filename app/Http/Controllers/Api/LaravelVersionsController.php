@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\LaravelVersionResource;
 use App\LaravelVersionFromPath;
 use App\Models\LaravelVersion;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class LaravelVersionsController extends Controller
