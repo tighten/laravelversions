@@ -118,12 +118,14 @@ Potential statuses:
     ```bash
     php artisan key:generate
     ```
+1. Create a [GitHub Personal Access Token](https://github.com/settings/tokens) and update the  `GITHUB_TOKEN` key in your `.env` file.
 1. Create a database and point the `DB_DATABASE` to it in the `.env` file.
-1. [Run database migrations](http://laravel.com/docs/9.x/migrations#running-migrations). If you want to include seed data, add a `--seed` flag.
+1. [Run database migrations](http://laravel.com/docs/9.x/migrations#running-migrations) and populate with initial seed data.
 
     ```bash
-    php artisan migrate
+    php artisan migrate --seed
     ```
+1. Run `php artisan fetch-laravel-versions` to pull in the latest releases.
 1. [Install frontend dependencies](https://docs.npmjs.com/cli/install) with `npm install`
 1. Build frontend assets with `npm run dev`
 1. Configure a web server, such as the [built-in PHP web server](http://php.net/manual/en/features.commandline.webserver.php), to use the `public` directory as the document root.
