@@ -8,8 +8,8 @@
             <a href="#{{ $release }}"
                 @class([
                     'rounded px-2 py-0.5 text-xs',
-                    'text-gray-700 bg-gray-200' => $release != $path,
-                    'font-bold bg-gray-700 text-gray-200' => $release == $path
+                    'text-gray-700 bg-gray-200' => $release != $version->semver,
+                    'font-bold bg-gray-700 text-gray-200' => $release == $version->semver
                 ])
             >
                 {{ $release }}
