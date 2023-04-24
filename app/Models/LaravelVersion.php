@@ -120,11 +120,6 @@ class LaravelVersion extends Model
         return route('api.versions.show', $this->is_front ? $this->majorish : $this->semver);
     }
 
-    public function getLatestPatchApiUrlAttribute()
-    {
-        return route('api.versions.show', [$this->lastRelease->semver]);
-    }
-
     public function getNeedsPatchAttribute(): bool
     {
         return $this->lastRelease->semver !== $this->semver;
