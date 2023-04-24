@@ -26,8 +26,8 @@ class LaravelVersionResource extends JsonResource
             $this->mergeWhen($this->specificVersionProvided($request), [
                 'specific_version' => [
                     'provided' => $this->semver,
-                    'needs_patch' => $request->url() !== $this->latest_patch_api_url,
-                    'needs_major_upgrade' => $this->status === 'end-of-life',
+                    'needs_patch' => $this->needs_patch,
+                    'needs_major_upgrade' => $this->needs_major_upgrade,
                 ],
             ]),
             'links' => $this->links($request),
@@ -40,39 +40,26 @@ class LaravelVersionResource extends JsonResource
 
     public function specificVersionProvided(Request $request): bool
     {
-        return ($this->api_url !== $request->url()) && ! $request->routeIs('api.versions.index');
+        return ! $this->is_front && ! $request->routeIs('api.versions.index');
     }
 
     public function links(Request $request): array
     {
-        if ($this->specificVersionProvided($request)) {
-            $base = [
-                [
-                    'type' => 'GET',
-                    'rel' => 'major',
-                    'href' => $this->api_url,
-                ],
-                [
-                    'type' => 'GET',
-                    'rel' => 'self',
-                    'href' => $request->url(),
-                ],
-            ];
-        } else {
-            $base = [
-                [
-                    'type' => 'GET',
-                    'rel' => 'self',
-                    'href' => $this->api_url,
-                ],
-            ];
-        }
-
-        return array_merge($base, [
+        return array_filter([
+            $this->specificVersionProvided($request) ? [
+                'type' => 'GET',
+                'rel' => 'major',
+                'href' => $this->firstRelease->api_url,
+            ] : null,
+            [
+                'type' => 'GET',
+                'rel' => 'self',
+                'href' => $this->api_url,
+            ],
             [
                 'type' => 'GET',
                 'rel' => 'latest',
-                'href' => $this->latest_patch_api_url,
+                'href' => $this->lastRelease->api_url,
             ],
         ]);
     }

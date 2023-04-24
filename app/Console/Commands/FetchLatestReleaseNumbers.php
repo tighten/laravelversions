@@ -166,33 +166,33 @@ class FetchLatestReleaseNumbers extends Command
 
                 return $carry;
             }, collect())
-            ->push(
-                [
-                    'name' => '3.2.0',
-                    'changelog' => null,
-                    'released_at' => '2012-05-22',
-                ],
-                [
-                    'name' => '3.1.0',
-                    'changelog' => null,
-                    'released_at' => '2012-03-27',
-                ],
-                [
-                    'name' => '3.0.0',
-                    'changelog' => null,
-                    'released_at' => '2012-02-22',
-                ],
-                [
-                    'name' => '2.0.0',
-                    'changelog' => null,
-                    'released_at' => '2011-09-01',
-                ],
-                [
-                    'name' => '1.0.0',
-                    'changelog' => null,
-                    'released_at' => '2011-06-01',
-                ]
-            );
+                ->push(
+                    [
+                        'name' => '3.2.0',
+                        'changelog' => null,
+                        'released_at' => '2012-05-22',
+                    ],
+                    [
+                        'name' => '3.1.0',
+                        'changelog' => null,
+                        'released_at' => '2012-03-27',
+                    ],
+                    [
+                        'name' => '3.0.0',
+                        'changelog' => null,
+                        'released_at' => '2012-02-22',
+                    ],
+                    [
+                        'name' => '2.0.0',
+                        'changelog' => null,
+                        'released_at' => '2011-09-01',
+                    ],
+                    [
+                        'name' => '1.0.0',
+                        'changelog' => null,
+                        'released_at' => '2011-06-01',
+                    ]
+                );
         });
     }
 

@@ -17,7 +17,7 @@ class LaravelVersionFromPath
             abort(404);
         }
 
-        if ($semver->major < 6 && (string) $semver->major === $path){
+        if ($semver->major < 6 && (string) $semver->major === $path) {
             throw FixableInvalidVersionException::toUrl("/{$semver->major}.{$semver->minor}");
         }
 

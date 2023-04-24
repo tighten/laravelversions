@@ -112,17 +112,27 @@ class LaravelVersion extends Model
 
     public function getUrlAttribute()
     {
-        return route('versions.show', [$this->majorish]);
+        return route('versions.show', $this->is_front ? $this->majorish : $this->semver);
     }
 
     public function getApiUrlAttribute()
     {
-        return route('api.versions.show', [$this->majorish]);
+        return route('api.versions.show', $this->is_front ? $this->majorish : $this->semver);
     }
 
     public function getLatestPatchApiUrlAttribute()
     {
         return route('api.versions.show', [$this->lastRelease->semver]);
+    }
+
+    public function getNeedsPatchAttribute(): bool
+    {
+        return $this->lastRelease->semver !== $this->semver;
+    }
+
+    public function getNeedsMajorUpgradeAttribute(): bool
+    {
+        return $this->status === 'end-of-life';
     }
 
     public function needsNotification()

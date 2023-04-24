@@ -157,7 +157,7 @@ class LaravelVersionSeeder extends Seeder
         ])->map(function ($version) {
             $version['minor'] = $version['minor'] ?? 0;
             $version['patch'] = $version['patch'] ?? 0;
-            $semver = $version['major'] . "." . $version['minor'] . "." . $version['patch'];
+            $semver = $version['major'] . '.' . $version['minor'] . '.' . $version['patch'];
 
             return array_merge($version, [
                 'semver' => $semver,
