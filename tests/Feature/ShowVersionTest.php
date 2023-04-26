@@ -16,7 +16,7 @@ class ShowVersionTest extends TestCase
         $version = LaravelVersion::factory()->create([
             'ends_securityfixes_at' => now()->addYear(),
         ]);
-        $response = $this->get(route('versions.show', [$version->__toString()]));
+        $response = $this->get($version->url);
 
         $response->assertStatus(200);
     }
@@ -29,7 +29,7 @@ class ShowVersionTest extends TestCase
         $version = LaravelVersion::factory()->create([
             'ends_bugfixes_at' => null,
         ]);
-        $response = $this->get(route('versions.show', [$version->__toString()]));
+        $response = $this->get($version->url);
 
         $response->assertStatus(200);
     }
@@ -42,7 +42,7 @@ class ShowVersionTest extends TestCase
         $version = LaravelVersion::factory()->create([
             'ends_securityfixes_at' => null,
         ]);
-        $response = $this->get(route('versions.show', [$version->__toString()]));
+        $response = $this->get($version->url);
 
         $response->assertStatus(200);
     }

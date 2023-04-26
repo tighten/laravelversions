@@ -1,11 +1,11 @@
-<x-app-layout :title="$path">
+<x-app-layout :title="$version->semver">
     <h1 class="block mb-4 font-bold sm:test-5xl">
         {{ __('Laravel Version') }}:
         <span>
-            {{ $path }}
+            {{ $version->semver }}
         </span>
     </h1>
-    <div class="flex flex-col h-screen">
+    <div class="flex flex-col min-h-screen">
         @include('partials/modules/show_status')
         @include('partials/modules/show_recommendations')
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -13,5 +13,6 @@
                 @include('partials/tables/show_table')
             </div>
         </div>
+        @include('partials/modules/releases')
     </div>
 </x-app-layout>

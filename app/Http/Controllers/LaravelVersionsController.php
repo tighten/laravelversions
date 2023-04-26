@@ -9,7 +9,7 @@ use Illuminate\View\View;
 
 class LaravelVersionsController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $versions = Cache::remember('laravel-versions', 3600, function () {
             return LaravelVersion::orderBy('major', 'desc')->orderBy('minor', 'desc')->get();
@@ -33,12 +33,17 @@ class LaravelVersionsController extends Controller
 
     public function show($path): View
     {
-        [$version, $sanitizedPath, $segments] = (new LaravelVersionFromPath)($path);
+        $version = Cache::remember('laravel-versions-' . $path, 3600, function () use ($path) {
+            return (new LaravelVersionFromPath)($path);
+        });
+
+        $releases = Cache::remember('laravel-versions-' . $version->majorish . '-releases', 3600, function () use ($version) {
+            return $version->getReleases();
+        });
 
         return view('versions.show', [
             'version' => $version,
-            'path' => $sanitizedPath,
-            'segments' => $segments,
+            'releases' => $releases,
         ]);
     }
 }

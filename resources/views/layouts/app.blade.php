@@ -29,8 +29,7 @@
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:image" content="https://laravelversions.com/og.png">
 
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased bg-gray-100">
         <div id="app">

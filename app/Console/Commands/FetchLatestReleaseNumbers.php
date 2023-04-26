@@ -3,10 +3,12 @@
 namespace App\Console\Commands;
 
 use App\Models\LaravelVersion;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use PHLAK\SemVer\Version;
 
 class FetchLatestReleaseNumbers extends Command
 {
@@ -14,10 +16,67 @@ class FetchLatestReleaseNumbers extends Command
 
     protected $description = 'Pull the latest Laravel Version releases from GitHub into our application.';
 
-    private $defaultFilters = [
-        'first' => '100',
-        'refPrefix' => '"refs/tags/"',
-        'orderBy' => '{field: TAG_COMMIT_DATE, direction: DESC}',
+    // Not all tags have releases - so we need to pull both.
+    private $gitHubQueries = [
+        'refs' => [
+            'filters' => [
+                'first' => '100',
+                'refPrefix' => '"refs/tags/"',
+                'orderBy' => '{field: TAG_COMMIT_DATE, direction: DESC}',
+            ],
+            'query' => <<<'QUERY'
+                {
+                    repository(owner: "laravel", name: "framework") {
+                        refs(__FILTERS__) {
+                            nodes {
+                                name
+                                target {
+                                ... on Commit {
+                                        committedDate
+                                    }
+                                }
+                            }
+                            pageInfo {
+                                endCursor
+                                hasNextPage
+                            }
+                        }
+                    }
+                    rateLimit {
+                        cost
+                        remaining
+                    }
+                }
+            QUERY,
+        ],
+        'releases' => [
+            'filters' => [
+                'first' => '100',
+                'orderBy' => '{field: CREATED_AT, direction: DESC}',
+            ],
+            'query' => <<<'QUERY'
+                {
+                    repository(owner: "laravel", name: "framework") {
+                        releases(__FILTERS__) {
+                            nodes {
+                                name
+                                createdAt
+                                descriptionHTML
+                                tagName
+                            }
+                            pageInfo {
+                                endCursor
+                                hasNextPage
+                            }
+                        }
+                    }
+                    rateLimit {
+                        cost
+                        remaining
+                    }
+                }
+            QUERY,
+        ],
     ];
 
     public function handle(): int
@@ -25,131 +84,112 @@ class FetchLatestReleaseNumbers extends Command
         Log::info('Syncing Laravel Versions');
 
         $this->fetchVersionsFromGitHub()
-            // Map into arrays containing major, minor, and patch numbers
-            ->map(function ($item) {
-                $pieces = explode('.', ltrim($item['name'], 'v'));
-
-                return [
-                    'major' => $pieces[0],
-                    'minor' => $pieces[1],
-                    'patch' => $pieces[2] ?? null,
-                ];
-            })
-            // Map into groups by release; pre-6, major/minor pair; post-6, major
-            ->mapToGroups(function ($item) {
-                if ($item['major'] < 6) {
-                    return [$item['major'] . '.' . $item['minor'] => $item];
-                }
-
-                return [$item['major'] => $item];
-            })
-            // Take the highest patch or minor/patch number from each release
-            ->map(function ($item) {
-                if ($item->first()['major'] < 6) {
-                    // Take the highest patch
-                    return $item->sortByDesc('patch')->first();
-                }
-
-                // Take the highest minor, then its highest patch
-                return $item->sortBy([['minor', 'desc'], ['patch', 'desc']])->first();
-            })
             ->each(function ($item) {
-                if ($item['major'] < 6) {
-                    $version = LaravelVersion::where([
-                        'major' => $item['major'],
-                        'minor' => $item['minor'],
-                    ])->first();
+                $semver = new Version($item['name']);
+                $firstReleaseSemver = $semver->major > 5 ? $semver->major . '.0.0' : $semver->major . '.' . $semver->minor . '.0';
+                $firstRelease = LaravelVersion::where('first_release', $firstReleaseSemver)->first();
 
-                    if ($version->patch < $item['patch']) {
-                        $version->update(['patch' => $item['patch']]);
-                        $this->info('Updated Laravel version ' . $version . ' to use latest patch.');
-                    }
+                $versionMeta = [
+                    'changelog' => $item['changelog'],
+                    'order' => LaravelVersion::calculateOrder($semver->major, $semver->minor, $semver->patch),
+                    'released_at' => Carbon::parse($item['released_at'])->format('Y-m-d'),
+                    'ends_bugfixes_at' => $firstRelease?->ends_bugfixes_at,
+                    'ends_securityfixes_at' => $firstRelease?->ends_securityfixes_at,
+                ];
 
-                    return;
+                $version = LaravelVersion::withoutGlobalScope('first')
+                    ->firstOrCreate([
+                        'major' => $semver->major,
+                        'minor' => $semver->minor,
+                        'patch' => $semver->patch,
+                    ], $versionMeta)
+                    ->fill($versionMeta);
+
+                if ($version->isDirty()) {
+                    $version->save();
+                    $this->info('Updated Laravel version ' . $semver);
                 }
 
-                $version = LaravelVersion::where([
-                    'major' => $item['major'],
-                ])->first();
-
-                if (! $version) {
-                    // Create it if it doesn't exist
-                    $created = LaravelVersion::create([
-                        'major' => $item['major'],
-                        'minor' => $item['minor'],
-                        'patch' => $item['patch'],
-                    ]);
-
-                    $this->info('Created Laravel version ' . $created);
-
-                    return;
+                if ($version->wasRecentlyCreated) {
+                    $this->info('Created Laravel version ' . $semver);
                 }
-
-                // Update the minor and patch if needed
-                if ($version->minor != $item['minor'] || $version->patch != $item['patch']) {
-                    $version->update(['minor' => $item['minor'], 'patch' => $item['patch']]);
-                    $this->info('Updated Laravel version ' . $version . ' to use latest minor/patch.');
-                }
-
-                return $version;
             });
 
         $this->info('Finished saving Laravel versions.');
         Artisan::call('page-cache:clear');
+
+        return 0;
     }
 
     private function fetchVersionsFromGitHub()
     {
         return cache()->remember('github::laravel-versions', 60 * 60, function () {
-            $tags = collect();
+            return collect($this->gitHubQueries)->reduce(function ($carry, $query, $key) {
+                do {
+                    // Format the filters at runtime to include pagination
+                    $filters = collect($query['filters'])
+                        ->map(fn ($value, $key) => "{$key}: {$value}")
+                        ->implode(', ');
 
-            do {
-                // Format the filters at runtime to include pagination
-                $filters = collect($this->defaultFilters)
-                    ->map(function ($value, $key) {
-                        return "{$key}: {$value}";
-                    })
-                    ->implode(', ');
+                    $response = Http::withToken(config('services.github.token'))
+                        ->post(
+                            'https://api.github.com/graphql',
+                            ['query' => str_replace('__FILTERS__', $filters, $query['query'])]
+                        );
 
-                $query = <<<QUERY
-                    {
-                        repository(owner: "laravel", name: "framework") {
-                            refs({$filters}) {
-                                nodes {
-                                    name
-                                }
-                                pageInfo {
-                                    endCursor
-                                    hasNextPage
-                                }
-                            }
-                        }
-                        rateLimit {
-                            cost
-                            remaining
-                        }
+                    $responseJson = $response->json();
+
+                    if (! $response->ok()) {
+                        abort($response->getStatusCode(), 'Error connecting to GitHub: ' . $responseJson['message']);
                     }
-                QUERY;
 
-                $response = Http::withToken(config('services.github.token'))
-                    ->post('https://api.github.com/graphql', ['query' => $query]);
+                    $carry = $carry->merge(
+                        collect(data_get($responseJson, "data.repository.{$key}.nodes"))
+                            ->map(fn ($item) => [
+                                'name' => $item['tagName'] ?? $item['name'],
+                                'released_at' => $item['target']['committedDate'] ?? $item['createdAt'],
+                                'changelog' => $item['descriptionHTML'] ?? null,
+                            ])
+                            ->keyBy('name')
+                            ->reject(fn ($item) => str($item['name'])->contains('-') || $item['name'] === '5.3')
+                    );
 
-                $responseJson = $response->json();
+                    $nextPage = data_get($responseJson, "data.repository.{$key}.pageInfo")['endCursor'];
 
-                if (! $response->ok()) {
-                    abort($response->getStatusCode(), 'Error connecting to GitHub: ' . $responseJson['message']);
-                }
+                    if ($nextPage) {
+                        $query['filters']['after'] = '"' . $nextPage . '"';
+                    }
+                } while ($nextPage);
 
-                $tags->push(collect(data_get($responseJson, 'data.repository.refs.nodes')));
-
-                $nextPage = data_get($responseJson, 'data.repository.refs.pageInfo')['endCursor'];
-
-                if ($nextPage) {
-                    $this->defaultFilters['after'] = '"' . $nextPage . '"';
-                }
-            } while ($nextPage);
-
-            return $tags->flatten(1);
+                return $carry;
+            }, collect())
+                ->push(
+                    [
+                        'name' => '3.2.0',
+                        'changelog' => null,
+                        'released_at' => '2012-05-22',
+                    ],
+                    [
+                        'name' => '3.1.0',
+                        'changelog' => null,
+                        'released_at' => '2012-03-27',
+                    ],
+                    [
+                        'name' => '3.0.0',
+                        'changelog' => null,
+                        'released_at' => '2012-02-22',
+                    ],
+                    [
+                        'name' => '2.0.0',
+                        'changelog' => null,
+                        'released_at' => '2011-09-01',
+                    ],
+                    [
+                        'name' => '1.0.0',
+                        'changelog' => null,
+                        'released_at' => '2011-06-01',
+                    ]
+                );
         });
     }
 }

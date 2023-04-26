@@ -6,9 +6,10 @@
 
 import './bootstrap';
 
-window.Vue = require('vue').default;
+import Vue from 'vue';
 
 import OutsideClick from './directives/OutsideClick';
+import LanguageSelect from './components/LanguageSelect.vue';
 
 /**
  * Directives
@@ -18,10 +19,7 @@ Vue.directive('outside-click', OutsideClick);
 /**
  * Components
  */
-Vue.component(
-    'language-select',
-    require('./components/LanguageSelect.vue').default
-);
+Vue.component('language-select', LanguageSelect);
 
 /**
  * Application instance
