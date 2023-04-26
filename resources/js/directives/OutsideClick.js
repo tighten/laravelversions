@@ -1,25 +1,26 @@
 export default {
-    bind(el, binding, vnode) {
-        const outsideClickHandler = (e) => {
+    mounted(el, binding) {
+        el.clickOutsideEvent = (e) => {
             const { handleClose, ignore } = binding.value;
             let clickedIgnoredElement = false;
 
             ignore.forEach((refName) => {
                 if (!clickedIgnoredElement) {
-                    const ignoredElement = vnode.context.$refs[refName];
+                    const ignoredElement = binding.instance.$refs[refName];
                     clickedIgnoredElement = ignoredElement.contains(e.target);
                 }
             });
+
             if (!el.contains(e.target) && !clickedIgnoredElement) {
-                vnode.context[handleClose]();
+                binding.instance[handleClose]();
             }
         };
-        document.addEventListener('click', outsideClickHandler);
-        document.addEventListener('touchstart', outsideClickHandler);
-    },
 
-    unbind() {
-        document.removeEventListener('click', outsideClickHandler);
-        document.removeEventListener('touchstart', outsideClickHandler);
+        document.addEventListener('click', el.clickOutsideEvent);
+        document.addEventListener('touchstart', el.clickOutsideEvent);
+    },
+    unmounted: function (el) {
+        document.removeEventListener('click', el.el.clickOutsideEvent);
+        document.removeEventListener('touchstart', el.clickOutsideEvent);
     },
 };

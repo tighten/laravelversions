@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import vue from '@vitejs/plugin-vue2';
+import vue from '@vitejs/plugin-vue';
 
-export default defineConfig(({command}) => ({
+export default defineConfig({
     plugins: [
         laravel({
             input: [
@@ -22,9 +22,7 @@ export default defineConfig(({command}) => ({
     ],
     resolve: {
         alias: {
-            vue: command === 'serve'
-                ? 'node_modules/vue/dist/vue.esm.browser.js'
-                : 'node_modules/vue/dist/vue.esm.browser.min.js',
+            vue: 'vue/dist/vue.esm-bundler.js',
         },
     },
-}));
+});
