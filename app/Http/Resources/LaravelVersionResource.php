@@ -11,7 +11,7 @@ class LaravelVersionResource extends JsonResource
     public function toArray($request): array
     {
         $minor_label = $this->major < 6 ? 'minor' : 'latest_minor';
-        $latest_version = LaravelVersion::withoutGlobalScope('front')->released()->orderByDesc('order')->first();
+        $latest_version = LaravelVersion::withoutGlobalScope('first')->released()->orderByDesc('order')->first();
 
         return [
             'major' => $this->last->major,
@@ -40,7 +40,7 @@ class LaravelVersionResource extends JsonResource
 
     public function specificVersionProvided(Request $request): bool
     {
-        return ! $this->is_front && ! $request->routeIs('api.versions.index');
+        return ! $this->is_first && ! $request->routeIs('api.versions.index');
     }
 
     public function links(Request $request): array

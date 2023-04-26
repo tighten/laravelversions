@@ -71,7 +71,7 @@ class ApiListVersionsTest extends TestCase
             patchCount: 2
         );
 
-        LaravelVersion::withoutGlobalScope('front')
+        LaravelVersion::withoutGlobalScope('first')
             ->get()->each(function ($version) {
                 $response = $this->get($version->api_url);
                 $this->assertJsonStringEqualsJsonString($this->getVersionJsonResponse($version), $response->getContent());
@@ -84,8 +84,8 @@ class ApiListVersionsTest extends TestCase
             'ends_bugfixes_at' => $version->ends_bugfixes_at,
             'ends_securityfixes_at' => $version->ends_securityfixes_at,
             'global' => [
-                'latest_version' => LaravelVersion::withoutGlobalScope('front')->latest('order')->first()->semver,
-                'latest_version_is_lts' => LaravelVersion::withoutGlobalScope('front')->latest('order')->first()->is_lts,
+                'latest_version' => LaravelVersion::withoutGlobalScope('first')->latest('order')->first()->semver,
+                'latest_version_is_lts' => LaravelVersion::withoutGlobalScope('first')->latest('order')->first()->is_lts,
             ],
             'is_lts' => $version->is_lts,
             'latest' => $version->last->semver,
@@ -115,7 +115,7 @@ class ApiListVersionsTest extends TestCase
         $versionResponse = json_decode($this->getVersionsJsonResponse(collect([$version])))->data[0];
 
         $versionResponse->links = array_values(array_filter([
-            $version->is_front ? [] : [
+            $version->is_first ? [] : [
                 'type' => 'GET',
                 'rel' => 'major',
                 'href' => $version->first->api_url,
@@ -132,7 +132,7 @@ class ApiListVersionsTest extends TestCase
             ],
         ]));
 
-        if (! $version->is_front) {
+        if (! $version->is_first) {
             $versionResponse->specific_version = [
                 'needs_major_upgrade' => $version->needs_major_upgrade,
                 'needs_patch' => $version->needs_patch,

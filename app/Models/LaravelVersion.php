@@ -46,12 +46,12 @@ class LaravelVersion extends Model
 
     protected static function booted(): void
     {
-        static::addGlobalScope('front', function (Builder $builder) {
+        static::addGlobalScope('first', function (Builder $builder) {
             $builder->whereRaw('first_release = ' . DB::concat('major', "'.'", 'minor', "'.'", 'patch')->getValue(DB::connection()->getQueryGrammar()));
         });
 
         static::saving(function (self $version) {
-            $version->first_release = $version->is_front
+            $version->first_release = $version->is_first
                 ? $version->semver
                 : str($version->majorish)->explode('.')->pad(3, 0)->implode('.');
 
@@ -72,7 +72,7 @@ class LaravelVersion extends Model
     public function last(): HasOne
     {
         return $this->hasOne(static::class, 'first_release', 'first_release')
-            ->withoutGlobalScope('front')
+            ->withoutGlobalScope('first')
             ->ofMany(['order' => 'MAX']);
     }
 
@@ -83,14 +83,14 @@ class LaravelVersion extends Model
 
     public function getReleases(): Collection
     {
-        return static::withoutGlobalScope('front')
+        return static::withoutGlobalScope('first')
             ->where('major', $this->major)
             ->when($this->pre_semver, fn ($query) => $query->where('minor', $this->minor))
             ->orderBy('released_at', 'DESC')
             ->get();
     }
 
-    public function getIsFrontAttribute(): bool
+    public function getIsFirstAttribute(): bool
     {
         return (collect([5, 4, 3])->contains($this->major) && $this->patch === 0)
             || ($this->minor === 0 && $this->patch === 0);
@@ -136,12 +136,12 @@ class LaravelVersion extends Model
 
     public function getUrlAttribute()
     {
-        return route('versions.show', $this->is_front ? $this->majorish : $this->semver);
+        return route('versions.show', $this->is_first ? $this->majorish : $this->semver);
     }
 
     public function getApiUrlAttribute()
     {
-        return route('api.versions.show', $this->is_front ? $this->majorish : $this->semver);
+        return route('api.versions.show', $this->is_first ? $this->majorish : $this->semver);
     }
 
     public function getNeedsPatchAttribute(): bool

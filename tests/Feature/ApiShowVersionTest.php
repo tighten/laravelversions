@@ -33,7 +33,7 @@ class ApiShowVersionTest extends TestCase
             patchCount: 2
         );
 
-        $newest = LaravelVersion::withoutGlobalScope('front')->latest('order')->first();
+        $newest = LaravelVersion::withoutGlobalScope('first')->latest('order')->first();
         $older = LaravelVersion::where('major', $newest->major - 1)->first();
 
         $this->getJson($older->api_url)

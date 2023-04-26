@@ -96,7 +96,7 @@ class FetchLatestReleaseNumbers extends Command
                     'ends_securityfixes_at' => $firstRelease?->ends_securityfixes_at,
                 ];
 
-                $version = LaravelVersion::withoutGlobalScope('front')
+                $version = LaravelVersion::withoutGlobalScope('first')
                     ->firstOrCreate([
                         'major' => $semver->major,
                         'minor' => $semver->minor,

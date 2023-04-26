@@ -23,7 +23,7 @@ class LaravelVersionFromPath
             throw FixableInvalidVersionException::toUrl(route($routeName, "{$semver->major}.{$semver->minor}"));
         }
 
-        return LaravelVersion::withoutGlobalScope('front')->where([
+        return LaravelVersion::withoutGlobalScope('first')->where([
             'major' => $semver->major,
             'minor' => $semver->minor,
             'patch' => $semver->patch,
