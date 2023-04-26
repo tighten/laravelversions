@@ -91,6 +91,7 @@ class FetchLatestReleaseNumbers extends Command
 
                 $versionMeta = [
                     'changelog' => $item['changelog'],
+                    'order' => LaravelVersion::calculateOrder($semver->major, $semver->minor, $semver->patch),
                     'released_at' => Carbon::parse($item['released_at'])->format('Y-m-d'),
                     'ends_bugfixes_at' => $firstRelease?->ends_bugfixes_at,
                     'ends_securityfixes_at' => $firstRelease?->ends_securityfixes_at,
