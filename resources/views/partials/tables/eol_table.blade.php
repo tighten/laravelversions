@@ -25,9 +25,6 @@
                                 {{ __('Security Fixes Until') }}
                             </th>
                             <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                {{ __('LTS?') }}
-                            </th>
-                            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                 {{ __('Status') }}
                             </th>
                         </tr>
@@ -63,9 +60,6 @@
                                             ? $version->ends_securityfixes_at->translatedFormat(__('DateLongFormat'))
                                             : ''
                                     }}
-                                </td>
-                                <td class="py-4 pl-6 text-sm text-gray-500 lg:pl-8 whitespace-nowrap">
-                                    {{ $version->is_lts ? '✓' : '' }}
                                 </td>
                                 <td scope="col">
                                     <div class="{{ $statusClassMap[$version->status] }}">

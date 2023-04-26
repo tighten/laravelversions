@@ -19,7 +19,6 @@ class LaravelVersionFactory extends Factory
             'major' => $semver->major,
             'minor' => $semver->minor,
             'patch' => $semver->patch,
-            'is_lts' => false,
             'changelog' => null,
             'released_at' => $released_at,
             'ends_bugfixes_at' => $released_at->clone()->addYear(),

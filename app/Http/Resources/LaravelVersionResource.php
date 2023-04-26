@@ -18,7 +18,6 @@ class LaravelVersionResource extends JsonResource
             $minor_label => $this->last->minor,
             'latest_patch' => $this->last->patch,
             'latest' => $this->last->semver,
-            'is_lts' => $this->is_lts,
             'released_at' => $this->released_at,
             'ends_bugfixes_at' => $this->ends_bugfixes_at,
             'ends_securityfixes_at' => $this->ends_securityfixes_at,
@@ -33,7 +32,6 @@ class LaravelVersionResource extends JsonResource
             'links' => $this->links($request),
             'global' => [
                 'latest_version' => (string) $latest_version,
-                'latest_version_is_lts' => $latest_version->is_lts,
             ],
         ];
     }

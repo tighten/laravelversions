@@ -41,7 +41,7 @@
     "To learn more about Laravel's versioning strategy, check out the :link.": "To learn more about Laravel's versioning strategy, check out the :link.",
     "To upgrade, follow the instructions in the docs or use :link-laravelshifts to upgrade automatically.": "To upgrade, follow the instructions in the docs or use :link-laravelshifts to upgrade automatically.",
     "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>": "Update <em>at least</em> to a security-maintained version <strong>as soon as possible!</strong>",
-    "Update to the latest major or LTS release.": "Update to the latest major or LTS release.",
+    "Update to the latest major or LTS release.": "Update to the latest major.",
     "Version": "Version",
     "You can also find a list of all of the security advisories for Laravel here: :link": "You can also find a list of all of the security advisories for Laravel here: :link"
 }

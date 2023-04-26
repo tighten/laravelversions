@@ -15,9 +15,6 @@
                 {{ __('Security Fixes Until') }}
             </th>
             <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
-                {{ __('LTS?') }}
-            </th>
-            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
                 {{ __('Status') }}
             </th>
             </tr>
@@ -79,9 +76,6 @@
                                 )
                                 : ''
                         }}
-                    </td>
-                    <td class="py-4 pl-6 text-sm text-gray-500 whitespace-nowrap">
-                        {{ $version->is_lts ? '✓' : '' }}
                     </td>
                     <td scope="col">
                         <div class="{{ $statusClassMap[$version->status] }}">

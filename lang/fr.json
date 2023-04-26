@@ -20,7 +20,6 @@
     "Laravel Version": "Version de Laravel",
     "Laravel Versions": "Versions de Laravel",
     "Latest Patch Release": "Dernier Correctif Publié",
-    "LTS?": "LTS ?",
     "Major Version": "Version Majeure",
     "Need help upgrading your app? Try :link-laravelshift for automated upgrades or :link-tighten if you need more than just upgrades.": "Besoin d'aide pour mettre à jour votre application ? Essayez :link-laravelshift pour les mises à niveau automatisées ou :link-tighten si vous avez besoin de plus que de simples mises à niveau.",
     "No longer receiving security updates!": "Ne reçoivent plus de mises à jour de sécurité !",

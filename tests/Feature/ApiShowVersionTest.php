@@ -39,7 +39,6 @@ class ApiShowVersionTest extends TestCase
         $this->getJson($older->api_url)
             ->assertJsonFragment([
                 'latest_version' => $newest->semver,
-                'latest_version_is_lts' => $newest->is_lts,
             ]);
     }
 }

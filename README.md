@@ -17,7 +17,6 @@ https://laravelversions.com/api/versions
       "latest_minor":47,
       "latest_patch":0,
       "latest":"9.47.0",
-      "is_lts":false,
       "released_at":"2022-02-08T00:00:00.000000Z",
       "ends_bugfixes_at":"2023-08-08T00:00:00.000000Z",
       "ends_securityfixes_at":"2024-02-08T00:00:00.000000Z",
@@ -36,7 +35,6 @@ https://laravelversions.com/api/versions
       ],
       "global":{
         "latest_version":"9.47.0",
-        "latest_version_is_lts":false
       }
     },
     {}
@@ -61,7 +59,6 @@ If you request a minor/patch version (e.g. `/8.1` or `/8.1.0`) you'll see an add
         "latest_minor": 24,
         "latest_patch": 0,
         "latest": "8.24.0",
-        "is_lts": false,
         "released_at": "2020-09-08T00:00:00.000000Z",
         "ends_bugfixes_at": "2021-04-21T00:00:00.000000Z",
         "ends_securityfixes_at": "2021-09-08T00:00:00.000000Z",
