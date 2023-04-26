@@ -85,9 +85,7 @@ class ApiListVersionsTest extends TestCase
             'ends_securityfixes_at' => $version->ends_securityfixes_at,
             'global' => [
                 'latest_version' => LaravelVersion::withoutGlobalScope('first')->latest('order')->first()->semver,
-                'latest_version_is_lts' => LaravelVersion::withoutGlobalScope('first')->latest('order')->first()->is_lts,
             ],
-            'is_lts' => $version->is_lts,
             'latest' => $version->last->semver,
             $version->major < 6 ? 'minor' : 'latest_minor' => $version->last->minor,
             'latest_patch' => $version->last->patch,
