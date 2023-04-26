@@ -118,7 +118,7 @@ Potential statuses:
     ```bash
     php artisan key:generate
     ```
-1. Create a [GitHub Personal Access Token](https://github.com/settings/tokens) and update the  `GITHUB_TOKEN` key in your `.env` file.
+1. Create a "classic" [GitHub Personal Access Token](https://github.com/settings/tokens) and update the  `GITHUB_TOKEN` key in your `.env` file.
 1. Create a database and point the `DB_DATABASE` to it in the `.env` file.
 1. [Run database migrations](http://laravel.com/docs/9.x/migrations#running-migrations) and populate with initial seed data.
 
