@@ -65,28 +65,17 @@ class ApiListVersionsTest extends TestCase
     /** @test */
     public function it_lists_specific_version_in_expected_format()
     {
-        $versions = $this->seedVersions(
+        $this->seedVersions(
             majorCount: 10,
             minorCount: 5,
             patchCount: 2
         );
 
         LaravelVersion::withoutGlobalScope('front')
-            ->whereIn('semver', [
-                '10.0.0',
-                '10.1.1',
-                '6.0.0',
-                '6.1.0',
-                '6.1.1',
-                '5.8.0',
-                '5.8.1',
-                '5.0.0',
-            ]
-                )->get()->each(function ($version) {
-                    $response = $this->get(route('api.versions.show', $version->semver));
-
-                    $this->assertJsonStringEqualsJsonString($this->getVersionJsonResponse($version), $response->getContent());
-                });
+            ->get()->each(function ($version) {
+                $response = $this->get($version->api_url);
+                $this->assertJsonStringEqualsJsonString($this->getVersionJsonResponse($version), $response->getContent());
+            });
     }
 
     private function getVersionsJsonResponse(Collection $versions): string
@@ -99,16 +88,16 @@ class ApiListVersionsTest extends TestCase
                 'latest_version_is_lts' => LaravelVersion::withoutGlobalScope('front')->latest('order')->first()->is_lts,
             ],
             'is_lts' => $version->is_lts,
-            'latest' => $version->lastRelease->semver,
-            $version->major < 6 ? 'minor' : 'latest_minor' => $version->lastRelease->minor,
-            'latest_patch' => $version->lastRelease->patch,
+            'latest' => $version->last->semver,
+            $version->major < 6 ? 'minor' : 'latest_minor' => $version->last->minor,
+            'latest_patch' => $version->last->patch,
             'links' => [
                 [
                     'href' => $version->api_url,
                     'rel' => 'self',
                     'type' => 'GET',
                 ], [
-                    'href' => $version->lastRelease->api_url,
+                    'href' => $version->last->api_url,
                     'rel' => 'latest',
                     'type' => 'GET',
                 ],
@@ -129,7 +118,7 @@ class ApiListVersionsTest extends TestCase
             $version->is_front ? [] : [
                 'type' => 'GET',
                 'rel' => 'major',
-                'href' => $version->firstRelease->api_url,
+                'href' => $version->first->api_url,
             ],
             [
                 'type' => 'GET',
@@ -139,7 +128,7 @@ class ApiListVersionsTest extends TestCase
             [
                 'type' => 'GET',
                 'rel' => 'latest',
-                'href' => $version->lastRelease->api_url,
+                'href' => $version->last->api_url,
             ],
         ]));
 

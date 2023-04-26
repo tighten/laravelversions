@@ -5,7 +5,6 @@ namespace App;
 use App\Exceptions\FixableInvalidVersionException;
 use App\Models\LaravelVersion;
 use Exception;
-use Illuminate\Http\Request;
 use PHLAK\SemVer\Version;
 
 class LaravelVersionFromPath
@@ -19,7 +18,7 @@ class LaravelVersionFromPath
         }
 
         if ($semver->major < 6 && (string) $semver->major === $path) {
-            $routeName = request()->route()->getPrefix() === 'api'? 'api.versions.show' : 'versions.show';
+            $routeName = request()->route()->getPrefix() === 'api' ? 'api.versions.show' : 'versions.show';
 
             throw FixableInvalidVersionException::toUrl(route($routeName, "{$semver->major}.{$semver->minor}"));
         }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\DB;
 
 class LaravelVersion extends Model
 {
@@ -27,7 +28,6 @@ class LaravelVersion extends Model
         'ends_bugfixes_at' => 'date',
         'ends_securityfixes_at' => 'date',
         'is_lts' => 'bool',
-        'is_front' => 'bool',
     ];
 
     public static function notificationDays()
@@ -47,16 +47,29 @@ class LaravelVersion extends Model
     protected static function booted(): void
     {
         static::addGlobalScope('front', function (Builder $builder) {
-            $builder->where('is_front', true);
+            $builder->whereRaw('first_release = ' . DB::concat('major', "'.'", 'minor', "'.'", 'patch')->getValue(DB::connection()->getQueryGrammar()));
+        });
+
+        static::saving(function (self $version) {
+            $version->first_release = $version->is_front
+                ? $version->semver
+                : str($version->majorish)->explode('.')->pad(3, 0)->implode('.');
+
+            $version->order = static::calculateOrder($version->major, $version->minor, $version->patch);
         });
     }
 
-    public function firstRelease(): HasOne
+    public function first(): HasOne
     {
-        return $this->hasOne(static::class, 'semver', 'first_release');
+        return new HasOne(
+            (new static)->newQuery(),
+            $this,
+            DB::concat('major', '"."', 'minor', '"."', 'patch'),
+            'first_release'
+        );
     }
 
-    public function lastRelease(): HasOne
+    public function last(): HasOne
     {
         return $this->hasOne(static::class, 'first_release', 'first_release')
             ->withoutGlobalScope('front')
@@ -75,6 +88,17 @@ class LaravelVersion extends Model
             ->when($this->pre_semver, fn ($query) => $query->where('minor', $this->minor))
             ->orderBy('released_at', 'DESC')
             ->get();
+    }
+
+    public function getIsFrontAttribute(): bool
+    {
+        return (collect([5, 4, 3])->contains($this->major) && $this->patch === 0)
+            || ($this->minor === 0 && $this->patch === 0);
+    }
+
+    public function getSemverAttribute(): string
+    {
+        return "{$this->major}.{$this->minor}.{$this->patch}";
     }
 
     public function getStatusAttribute()
@@ -122,7 +146,7 @@ class LaravelVersion extends Model
 
     public function getNeedsPatchAttribute(): bool
     {
-        return $this->lastRelease->semver !== $this->semver;
+        return $this->last->semver !== $this->semver;
     }
 
     public function getNeedsMajorUpgradeAttribute(): bool

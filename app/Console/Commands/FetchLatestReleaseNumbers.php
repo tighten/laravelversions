@@ -86,15 +86,11 @@ class FetchLatestReleaseNumbers extends Command
         $this->fetchVersionsFromGitHub()
             ->each(function ($item) {
                 $semver = new Version($item['name']);
-                $firstReleasedVersion = $semver->major < 6 ? $semver->major . '.' . $semver->minor . '0' : $semver->major . '.0.0';
-                $firstRelease = LaravelVersion::where('first_release', $firstReleasedVersion)->first();
+                $firstReleaseSemver = $semver->major > 5 ? $semver->major . '.0.0' : $semver->major . '.' . $semver->minor . '.0';
+                $firstRelease = LaravelVersion::where('first_release', $firstReleaseSemver)->first();
 
                 $versionMeta = [
-                    'semver' => (string) $semver,
-                    'first_release' => $firstReleasedVersion,
-                    'is_front' => $this->isFront($semver),
                     'changelog' => $item['changelog'],
-                    'order' => LaravelVersion::calculateOrder($semver->major, $semver->minor, $semver->patch),
                     'released_at' => Carbon::parse($item['released_at'])->format('Y-m-d'),
                     'ends_bugfixes_at' => $firstRelease?->ends_bugfixes_at,
                     'ends_securityfixes_at' => $firstRelease?->ends_securityfixes_at,
@@ -194,11 +190,5 @@ class FetchLatestReleaseNumbers extends Command
                     ]
                 );
         });
-    }
-
-    private function isFront(Version $version): bool
-    {
-        return (collect([5, 4, 3])->contains($version->major) && $version->patch === 0)
-            || ($version->minor === 0 && $version->patch === 0);
     }
 }

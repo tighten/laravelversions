@@ -109,7 +109,6 @@ class LaravelVersionSeeder extends Seeder
             ],
             [
                 'major' => 5,
-                'minor' => 0,
                 'released_at' => '2015-02-04',
                 'ends_bugfixes_at' => '2015-08-04',
                 'ends_securityfixes_at' => '2016-02-04',
@@ -126,7 +125,6 @@ class LaravelVersionSeeder extends Seeder
             ],
             [
                 'major' => 4,
-                'minor' => 0,
                 'released_at' => '2013-05-28',
             ],
             [
@@ -141,30 +139,21 @@ class LaravelVersionSeeder extends Seeder
             ],
             [
                 'major' => 3,
-                'minor' => 0,
                 'released_at' => '2012-02-22',
             ],
             [
                 'major' => 2,
-                'minor' => 0,
                 'released_at' => '2011-09-01',
             ],
             [
                 'major' => 1,
-                'minor' => 0,
                 'released_at' => '2011-06-01',
             ],
         ])->map(function ($version) {
             $version['minor'] = $version['minor'] ?? 0;
             $version['patch'] = $version['patch'] ?? 0;
-            $semver = $version['major'] . '.' . $version['minor'] . '.' . $version['patch'];
 
-            return array_merge($version, [
-                'semver' => $semver,
-                'first_release' => $semver,
-                'is_front' => true,
-                'order' => LaravelVersion::calculateOrder($version['major'], $version['minor'], $version['patch']),
-            ]);
+            return $version;
         });
     }
 }

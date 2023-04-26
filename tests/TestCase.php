@@ -5,39 +5,47 @@ namespace Tests;
 use App\Models\LaravelVersion;
 use Database\Seeders\LaravelVersionSeeder;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Support\Collection;
 
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->withoutMiddleware(ThrottleRequests::class);
+    }
+
     protected function seedVersions($majorCount = 1, $minorCount = 1, $patchCount = 1): Collection
     {
         return (new LaravelVersionSeeder)->versions()->slice(0, $majorCount)->map(function ($version) use ($minorCount, $patchCount) {
             $front = LaravelVersion::factory()->create($version);
 
-            collect(range(1, $minorCount))->each(function ($minor) use ($version, $front, $patchCount) {
-                LaravelVersion::factory()->create(array_merge($version, [
-                    'minor' => $minor,
-                    'semver' => "{$front->major}.{$minor}.0",
-                    'first_release' => $front->semver,
-                    'is_front' => false,
-                    'order' => LaravelVersion::calculateOrder($front->major, $minor, 0),
-                ]));
-
-                collect(range(1, $patchCount))->each(function ($patch) use ($version, $front, $minor) {
-                    LaravelVersion::factory()->create(array_merge($version, [
-                        'minor' => $minor,
-                        'patch' => $patch,
-                        'semver' => "{$front->major}.{$minor}.{$patch}",
-                        'first_release' => $front->semver,
-                        'is_front' => false,
-                        'order' => LaravelVersion::calculateOrder($front->major, $minor, $patch),
-                    ]));
-                });
-            });
+            if ($front->pre_semver) {
+                $this->seedPatchesForVersion($patchCount, $front->replicate());
+            } else {
+                $this->seedMinorsForVersion($minorCount, $front->replicate())
+                    ->each(fn ($minor) => $this->seedPatchesForVersion($patchCount, $minor));
+            }
 
             return $front;
         });
+    }
+
+    private function seedMinorsForVersion(int $minorCount, LaravelVersion $version): Collection
+    {
+        return collect(range(1, $minorCount))
+            ->map(fn ($minor) => LaravelVersion::factory()
+                ->create(tap($version, fn ($version) => $version->minor = $minor)->makeHidden('id')->toArray()));
+    }
+
+    private function seedPatchesForVersion(int $patchCount, LaravelVersion $version): Collection
+    {
+        return collect(range(1, $patchCount))
+            ->map(fn ($patch) => LaravelVersion::factory()
+                ->create(tap($version, fn ($version) => $version->patch = $patch)->makeHidden('id')->toArray()));
     }
 }

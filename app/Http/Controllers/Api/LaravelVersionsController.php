@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\LaravelVersionResource;
 use App\LaravelVersionFromPath;
 use App\Models\LaravelVersion;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class LaravelVersionsController extends Controller
@@ -15,7 +14,6 @@ class LaravelVersionsController extends Controller
     {
         $versions = Cache::remember('laravel-versions--released', 3600, function () {
             return LaravelVersion::released()
-                ->with(['firstRelease', 'lastRelease'])
                 ->orderBy('order', 'desc')
                 ->get();
         });

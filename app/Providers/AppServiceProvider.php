@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        DB::macro('concat', function (...$parts) {
+            switch (config('database.default')) {
+                case 'sqlite':
+                    return DB::raw(implode(' || ', $parts));
+                default:
+                    return DB::raw('CONCAT(' . implode(', ', $parts) . ')');
+            }
+        });
     }
 }

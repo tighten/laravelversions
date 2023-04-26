@@ -14,10 +14,10 @@ class LaravelVersionResource extends JsonResource
         $latest_version = LaravelVersion::withoutGlobalScope('front')->released()->orderByDesc('order')->first();
 
         return [
-            'major' => $this->lastRelease->major,
-            $minor_label => $this->lastRelease->minor,
-            'latest_patch' => $this->lastRelease->patch,
-            'latest' => $this->lastRelease->semver,
+            'major' => $this->last->major,
+            $minor_label => $this->last->minor,
+            'latest_patch' => $this->last->patch,
+            'latest' => $this->last->semver,
             'is_lts' => $this->is_lts,
             'released_at' => $this->released_at,
             'ends_bugfixes_at' => $this->ends_bugfixes_at,
@@ -49,7 +49,7 @@ class LaravelVersionResource extends JsonResource
             $this->specificVersionProvided($request) ? [
                 'type' => 'GET',
                 'rel' => 'major',
-                'href' => $this->firstRelease->api_url,
+                'href' => $this->first->api_url,
             ] : null,
             [
                 'type' => 'GET',
@@ -59,7 +59,7 @@ class LaravelVersionResource extends JsonResource
             [
                 'type' => 'GET',
                 'rel' => 'latest',
-                'href' => $this->lastRelease->api_url,
+                'href' => $this->last->api_url,
             ],
         ]);
     }

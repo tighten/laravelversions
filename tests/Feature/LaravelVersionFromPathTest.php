@@ -27,7 +27,6 @@ class LaravelVersionFromPathTest extends TestCase
             'major' => 6,
             'minor' => 0,
             'patch' => 0,
-            'is_front' => true,
             'ends_securityfixes_at' => now()->addYear(),
         ]);
 
@@ -45,7 +44,6 @@ class LaravelVersionFromPathTest extends TestCase
             'major' => 5,
             'minor' => 0,
             'patch' => 0,
-            'is_front' => true,
             'ends_securityfixes_at' => now()->addYear(),
         ]);
 
@@ -64,12 +62,12 @@ class LaravelVersionFromPathTest extends TestCase
     {
         collect(
             [
-                ['major' => 10, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
-                ['major' => 9, 'minor' => 9, 'patch' => 42, 'is_front' => false],
-                ['major' => 9, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
-                ['major' => 8, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
-                ['major' => 7, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
-                ['major' => 6, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 10, 'minor' => 0, 'patch' => 0, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 9, 'minor' => 9, 'patch' => 42],
+                ['major' => 9, 'minor' => 0, 'patch' => 0, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 8, 'minor' => 0, 'patch' => 0, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 7, 'minor' => 0, 'patch' => 0, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 6, 'minor' => 0, 'patch' => 0, 'ends_securityfixes_at' => now()->addYear()],
             ]
         )->each(fn ($version) => LaravelVersion::factory()->create($version));
 
@@ -86,13 +84,13 @@ class LaravelVersionFromPathTest extends TestCase
     {
         collect(
             [
-                ['major' => 6, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
-                ['major' => 5, 'minor' => 2, 'patch' => 1, 'is_front' => false],
-                ['major' => 5, 'minor' => 2, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
-                ['major' => 5, 'minor' => 1, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
-                ['major' => 5, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
-                ['major' => 4, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
-                ['major' => 4, 'minor' => 0, 'patch' => 1, 'is_front' => false],
+                ['major' => 6, 'minor' => 0, 'patch' => 0, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 5, 'minor' => 2, 'patch' => 1],
+                ['major' => 5, 'minor' => 2, 'patch' => 0, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 5, 'minor' => 1, 'patch' => 0, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 5, 'minor' => 0, 'patch' => 0, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 4, 'minor' => 0, 'patch' => 0, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 4, 'minor' => 0, 'patch' => 1],
             ]
         )->each(fn ($version) => LaravelVersion::factory()->create($version));
 
@@ -110,12 +108,12 @@ class LaravelVersionFromPathTest extends TestCase
     {
         collect(
             [
-                ['major' => 5, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
-                ['major' => 5, 'minor' => 1, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
-                ['major' => 4, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
-                ['major' => 3, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
-                ['major' => 2, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
-                ['major' => 1, 'minor' => 0, 'patch' => 0, 'is_front' => true, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 5, 'minor' => 0, 'patch' => 0, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 5, 'minor' => 1, 'patch' => 0, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 4, 'minor' => 0, 'patch' => 0, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 3, 'minor' => 0, 'patch' => 0, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 2, 'minor' => 0, 'patch' => 0, 'ends_securityfixes_at' => now()->addYear()],
+                ['major' => 1, 'minor' => 0, 'patch' => 0, 'ends_securityfixes_at' => now()->addYear()],
             ]
         )->each(fn ($version) => LaravelVersion::factory()->create($version));
 
