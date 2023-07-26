@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cfadb0e902d9e346c6311c0879e8da06",
+    "content-hash": "042c9fc3f2335dcb84883ff7ffc3b7bf",
     "packages": [
         {
             "name": "0.0.0/composer-include-files",
@@ -1515,16 +1515,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.15.0",
+            "version": "v10.16.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "c7599dc92e04532824bafbd226c2936ce6a905b8"
+                "reference": "5c93d2795c393b462481179ce42dedfb30cc19b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/c7599dc92e04532824bafbd226c2936ce6a905b8",
-                "reference": "c7599dc92e04532824bafbd226c2936ce6a905b8",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/5c93d2795c393b462481179ce42dedfb30cc19b5",
+                "reference": "5c93d2795c393b462481179ce42dedfb30cc19b5",
                 "shasum": ""
             },
             "require": {
@@ -1711,20 +1711,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-07-11T13:43:52+00:00"
+            "time": "2023-07-26T03:30:46+00:00"
         },
         {
             "name": "laravel/serializable-closure",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/serializable-closure.git",
-                "reference": "f23fe9d4e95255dacee1bf3525e0810d1a1b0f37"
+                "reference": "e5a3057a5591e1cfe8183034b0203921abe2c902"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/f23fe9d4e95255dacee1bf3525e0810d1a1b0f37",
-                "reference": "f23fe9d4e95255dacee1bf3525e0810d1a1b0f37",
+                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/e5a3057a5591e1cfe8183034b0203921abe2c902",
+                "reference": "e5a3057a5591e1cfe8183034b0203921abe2c902",
                 "shasum": ""
             },
             "require": {
@@ -1771,7 +1771,7 @@
                 "issues": "https://github.com/laravel/serializable-closure/issues",
                 "source": "https://github.com/laravel/serializable-closure"
             },
-            "time": "2023-01-30T18:31:20+00:00"
+            "time": "2023-07-14T13:56:28+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -6510,37 +6510,33 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.6.2",
+            "version": "1.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "13a7fa2642c76c58fa2806ef7f565344c817a191"
+                "reference": "d1413755e26fe56a63455f7753221c86cbb88f66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/13a7fa2642c76c58fa2806ef7f565344c817a191",
-                "reference": "13a7fa2642c76c58fa2806ef7f565344c817a191",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/d1413755e26fe56a63455f7753221c86cbb88f66",
+                "reference": "d1413755e26fe56a63455f7753221c86cbb88f66",
                 "shasum": ""
             },
             "require": {
                 "hamcrest/hamcrest-php": "^2.0.1",
                 "lib-pcre": ">=7.0",
-                "php": "^7.4 || ^8.0"
+                "php": ">=7.4,<8.3"
             },
             "conflict": {
                 "phpunit/phpunit": "<8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5 || ^9.3",
-                "psalm/plugin-phpunit": "^0.18",
-                "vimeo/psalm": "^5.9"
+                "psalm/plugin-phpunit": "^0.18.4",
+                "symplify/easy-coding-standard": "^11.5.0",
+                "vimeo/psalm": "^5.13.1"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.6.x-dev"
-                }
-            },
             "autoload": {
                 "files": [
                     "library/helpers.php",
@@ -6558,12 +6554,20 @@
                 {
                     "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
-                    "homepage": "http://blog.astrumfutura.com"
+                    "homepage": "https://github.com/padraic",
+                    "role": "Author"
                 },
                 {
                     "name": "Dave Marshall",
                     "email": "dave.marshall@atstsolutions.co.uk",
-                    "homepage": "http://davedevelopment.co.uk"
+                    "homepage": "https://davedevelopment.co.uk",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Nathanael Esayeas",
+                    "email": "nathanael.esayeas@protonmail.com",
+                    "homepage": "https://github.com/ghostwriter",
+                    "role": "Lead Developer"
                 }
             ],
             "description": "Mockery is a simple yet flexible PHP mock object framework",
@@ -6581,10 +6585,13 @@
                 "testing"
             ],
             "support": {
+                "docs": "https://docs.mockery.io/",
                 "issues": "https://github.com/mockery/mockery/issues",
-                "source": "https://github.com/mockery/mockery/tree/1.6.2"
+                "rss": "https://github.com/mockery/mockery/releases.atom",
+                "security": "https://github.com/mockery/mockery/security/advisories",
+                "source": "https://github.com/mockery/mockery"
             },
-            "time": "2023-06-07T09:07:52+00:00"
+            "time": "2023-07-19T15:51:02+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -7783,16 +7790,16 @@
         },
         {
             "name": "sebastian/global-state",
-            "version": "6.0.0",
+            "version": "6.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/global-state.git",
-                "reference": "aab257c712de87b90194febd52e4d184551c2d44"
+                "reference": "7ea9ead78f6d380d2a667864c132c2f7b83055e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/aab257c712de87b90194febd52e4d184551c2d44",
-                "reference": "aab257c712de87b90194febd52e4d184551c2d44",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/7ea9ead78f6d380d2a667864c132c2f7b83055e4",
+                "reference": "7ea9ead78f6d380d2a667864c132c2f7b83055e4",
                 "shasum": ""
             },
             "require": {
@@ -7832,7 +7839,8 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/global-state/issues",
-                "source": "https://github.com/sebastianbergmann/global-state/tree/6.0.0"
+                "security": "https://github.com/sebastianbergmann/global-state/security/policy",
+                "source": "https://github.com/sebastianbergmann/global-state/tree/6.0.1"
             },
             "funding": [
                 {
@@ -7840,7 +7848,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-03T07:07:38+00:00"
+            "time": "2023-07-19T07:19:23+00:00"
         },
         {
             "name": "sebastian/lines-of-code",
@@ -8613,16 +8621,16 @@
         },
         {
             "name": "tightenco/duster",
-            "version": "v2.1.1",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tighten/duster.git",
-                "reference": "bfc0bc0c69956b9381d9ed8d3eff01b6ec3e8a37"
+                "reference": "39287961c750f726785e2d027ea090be121c7223"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tighten/duster/zipball/bfc0bc0c69956b9381d9ed8d3eff01b6ec3e8a37",
-                "reference": "bfc0bc0c69956b9381d9ed8d3eff01b6ec3e8a37",
+                "url": "https://api.github.com/repos/tighten/duster/zipball/39287961c750f726785e2d027ea090be121c7223",
+                "reference": "39287961c750f726785e2d027ea090be121c7223",
                 "shasum": ""
             },
             "require": {
@@ -8679,7 +8687,7 @@
                 "issues": "https://github.com/tighten/duster/issues",
                 "source": "https://github.com/tighten/duster"
             },
-            "time": "2023-07-13T20:41:25+00:00"
+            "time": "2023-07-20T21:28:34+00:00"
         }
     ],
     "aliases": [],
