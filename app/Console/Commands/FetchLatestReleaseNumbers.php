@@ -84,7 +84,6 @@ class FetchLatestReleaseNumbers extends Command
     {
         Log::info('Syncing Laravel Versions');
 
-        // @todo: Check manual-version-info here to import dates and PHP versions here
         $manualData = $this->getManualData();
 
         $this->fetchVersionsFromGitHub()
@@ -100,7 +99,7 @@ class FetchLatestReleaseNumbers extends Command
                     'released_at' => Carbon::parse($item['released_at'])->format('Y-m-d'),
                     'ends_bugfixes_at' => $firstRelease ? $firstRelease->ends_bugfixes_at : $manualMajor->ends_bugfixes_at,
                     'ends_securityfixes_at' => $firstRelease ? $firstRelease->ends_securityfixes_at : $manualMajor->ends_securityfixes_at,
-                    // @todo how do we add php? to ALL of them?
+                    // @todo: Add a "supported_php" property in a migration, and I GUESS just add it to all of them here
                 ];
 
                 $version = LaravelVersion::withoutGlobalScope('first')
