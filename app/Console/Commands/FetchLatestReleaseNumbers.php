@@ -6,6 +6,7 @@ use App\Models\LaravelVersion;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use PHLAK\SemVer\Version;
@@ -83,18 +84,23 @@ class FetchLatestReleaseNumbers extends Command
     {
         Log::info('Syncing Laravel Versions');
 
+        // @todo: Check manual-version-info here to import dates and PHP versions here
+        $manualData = $this->getManualData();
+
         $this->fetchVersionsFromGitHub()
-            ->each(function ($item) {
+            ->each(function ($item) use ($manualData) {
                 $semver = new Version($item['name']);
                 $firstReleaseSemver = $semver->major > 5 ? $semver->major . '.0.0' : $semver->major . '.' . $semver->minor . '.0';
                 $firstRelease = LaravelVersion::where('first_release', $firstReleaseSemver)->first();
+                $manualMajor = $manualData[$semver->major > 5 ? $semver->major : $semver->major . '.' . $semver->minor];
 
                 $versionMeta = [
                     'changelog' => $item['changelog'],
                     'order' => LaravelVersion::calculateOrder($semver->major, $semver->minor, $semver->patch),
                     'released_at' => Carbon::parse($item['released_at'])->format('Y-m-d'),
-                    'ends_bugfixes_at' => $firstRelease?->ends_bugfixes_at,
-                    'ends_securityfixes_at' => $firstRelease?->ends_securityfixes_at,
+                    'ends_bugfixes_at' => $firstRelease ? $firstRelease->ends_bugfixes_at : $manualMajor->ends_bugfixes_at,
+                    'ends_securityfixes_at' => $firstRelease ? $firstRelease->ends_securityfixes_at : $manualMajor->ends_securityfixes_at,
+                    // @todo how do we add php? to ALL of them?
                 ];
 
                 $version = LaravelVersion::withoutGlobalScope('first')
@@ -190,6 +196,15 @@ class FetchLatestReleaseNumbers extends Command
                         'released_at' => '2011-06-01',
                     ]
                 );
+        });
+    }
+
+    private function getManualData()
+    {
+        $import = json_decode(File::get(base_path('manual-version-info.json')));
+
+        return collect($import)->mapWithKeys(function ($item) {
+            return [$item->release => $item];
         });
     }
 }

@@ -1,101 +1,134 @@
 [
     {
         "release": "10",
-        "release_date": "2023-02-14",
-        "fixes_until": "2024-08-07",
-        "security_until": "2025-02-07",
+        "ends_bugfixes_at": "2024-08-07",
+        "ends_securityfixes_at": "2025-02-07",
         "php_versions": "8.1, 8.2, (8.3)"
     },
     {
         "release": "9",
-        "release_date": "2022-02-08",
-        "fixes_until": "2023-08-08",
-        "security_until": "2024-02-08",
+        "ends_bugfixes_at": "2023-08-08",
+        "ends_securityfixes_at": "2024-02-08",
         "php_versions": "8.0, 8.1, 8.2, (8.3)"
     },
     {
         "release": "8",
-        "release_date": "2020-09-08",
-        "fixes_until": "2022-07-26",
-        "security_until": "2023-01-24",
+        "ends_bugfixes_at": "2022-07-26",
+        "ends_securityfixes_at": "2023-01-24",
         "php_versions": "7.3, 7.4, 8.0"
     },
     {
         "release": "7",
-        "release_date": "2020-03-03",
-        "fixes_until": "2020-10-06",
-        "security_until": "2021-03-03",
+        "ends_bugfixes_at": "2020-10-06",
+        "ends_securityfixes_at": "2021-03-03",
         "php_versions": "7.2, 7.3, 7.4, 8.0"
     },
     {
         "release": "6",
-        "release_date": "2019-09-03",
-        "fixes_until": "2021-09-07",
-        "security_until": "2022-09-06",
+        "ends_bugfixes_at": "2021-09-07",
+        "ends_securityfixes_at": "2022-09-06",
         "php_versions": "7.2, 7.3, 7.4"
     },
     {
         "release": "5.8",
-        "release_date": "2019-02-26",
-        "fixes_until": "2019-02-26",
-        "security_until": "2019-08-26",
-        "php_min": "2020-02-26",
-        "php_max": "7.1, 7.2, 7.3 (maybe 7.4)"
+        "ends_bugfixes_at": "2019-08-26",
+        "ends_securityfixes_at": "2020-02-26",
+        "php_versions": "7.1, 7.2, 7.3 (maybe 7.4)"
     },
     {
         "release": "5.7",
-        "release_date": "2018-09-04",
-        "fixes_until": "2019-03-04",
-        "security_until": "2019-09-04",
+        "ends_bugfixes_at": "2019-03-04",
+        "ends_securityfixes_at": "2019-09-04",
         "php_versions": "7.1, 7.2, 7.3 (maybe 7.4)"
     },
     {
-        "major": "5.6",
-        "release_date": "2018-02-07",
-        "fixes_until": "2018-08-07",
-        "security_until": "2019-02-07",
+        "release": "5.6",
+        "ends_bugfixes_at": "2018-08-07",
+        "ends_securityfixes_at": "2019-02-07",
         "php_versions": "7.1, 7.2, 7.3 (maybe 7.4)"
     },
     {
-        "major": "5.5",
-        "release_date": "2017-08-30",
-        "fixes_until": "2019-08-30",
-        "security_until": "2020-08-30",
+        "release": "5.5",
+        "ends_bugfixes_at": "2019-08-30",
+        "ends_securityfixes_at": "2020-08-30",
         "php_versions": "7.0, 7.1, 7.2"
     },
     {
-        "major": "5.4",
-        "release_date": "2017-01-24",
-        "fixes_until": "2017-07-24",
-        "security_until": "2018-01-24",
+        "release": "5.4",
+        "ends_bugfixes_at": "2017-07-24",
+        "ends_securityfixes_at": "2018-01-24",
         "php_versions": "5.6, 7.0, 7.1"
     },
     {
-        "major": "5.3",
-        "release_date": "2016-08-23",
-        "fixes_until": "2017-02-23",
-        "security_until": "2017-08-23",
+        "release": "5.3",
+        "ends_bugfixes_at": "2017-02-23",
+        "ends_securityfixes_at": "2017-08-23",
         "php_versions": "5.6, 7.0"
     },
     {
-        "major": "5.2",
-        "release_date": "2015-12-21",
-        "fixes_until": "2016-06-21",
-        "security_until": "2016-12-12",
+        "release": "5.2",
+        "ends_bugfixes_at": "2016-06-21",
+        "ends_securityfixes_at": "2016-12-12",
         "php_versions": "5.5, 5.6, 7.0"
     },
     {
-        "major": "5.1",
-        "release_date": "2015-06-09",
-        "fixes_until": "2017-06-09",
-        "security_until": "2018-06-09",
+        "release": "5.1",
+        "ends_bugfixes_at": "2017-06-09",
+        "ends_securityfixes_at": "2018-06-09",
         "php_versions": "5.5, 5.6 (maybe 7.0)"
     },
     {
-        "major": "5.0",
-        "release_date": "2015-02-04",
-        "fixes_until": "2015-08-04",
-        "security_until": "2016-02-04",
+        "release": "5.0",
+        "ends_bugfixes_at": "2015-08-04",
+        "ends_securityfixes_at": "2016-02-04",
         "php_versions": "5.4, 5.5, 5.6"
+    },
+    {
+        "release": "4.2",
+        "ends_bugfixes_at": null,
+        "ends_securityfixes_at": null,
+        "php_versions": ""
+    },
+    {
+        "release": "4.1",
+        "ends_bugfixes_at": null,
+        "ends_securityfixes_at": null,
+        "php_versions": ""
+    },
+    {
+        "release": "4.0",
+        "ends_bugfixes_at": null,
+        "ends_securityfixes_at": null,
+        "php_versions": ""
+    },
+    {
+        "release": "3.2",
+        "ends_bugfixes_at": null,
+        "ends_securityfixes_at": null,
+        "php_versions": ""
+    },
+    {
+        "release": "3.1",
+        "ends_bugfixes_at": null,
+        "ends_securityfixes_at": null,
+        "php_versions": ""
+    },
+    {
+        "release": "3.0",
+        "ends_bugfixes_at": null,
+        "ends_securityfixes_at": null,
+        "php_versions": ""
+    },
+    {
+        "release": "2.0",
+        "ends_bugfixes_at": null,
+        "ends_securityfixes_at": null,
+        "php_versions": ""
+    },
+    {
+        "release": "1.0",
+        "ends_bugfixes_at": null,
+        "ends_securityfixes_at": null,
+        "php_versions": ""
     }
 ]
