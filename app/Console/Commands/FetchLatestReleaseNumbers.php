@@ -89,17 +89,15 @@ class FetchLatestReleaseNumbers extends Command
         $this->fetchVersionsFromGitHub()
             ->each(function ($item) use ($manualData) {
                 $semver = new Version($item['name']);
-                $firstReleaseSemver = $semver->major > 5 ? $semver->major . '.0.0' : $semver->major . '.' . $semver->minor . '.0';
-                $firstRelease = LaravelVersion::where('first_release', $firstReleaseSemver)->first();
                 $manualMajor = $manualData[$semver->major > 5 ? $semver->major : $semver->major . '.' . $semver->minor];
 
                 $versionMeta = [
                     'changelog' => $item['changelog'],
                     'order' => LaravelVersion::calculateOrder($semver->major, $semver->minor, $semver->patch),
                     'released_at' => Carbon::parse($item['released_at'])->format('Y-m-d'),
-                    'ends_bugfixes_at' => $firstRelease ? $firstRelease->ends_bugfixes_at : $manualMajor->ends_bugfixes_at,
-                    'ends_securityfixes_at' => $firstRelease ? $firstRelease->ends_securityfixes_at : $manualMajor->ends_securityfixes_at,
-                    // @todo: Add a "supported_php" property in a migration, and I GUESS just add it to all of them here
+                    'ends_bugfixes_at' => $manualMajor->ends_bugfixes_at,
+                    'ends_securityfixes_at' => $manualMajor->ends_securityfixes_at,
+                    'supported_php' => $manualMajor->supported_php,
                 ];
 
                 $version = LaravelVersion::withoutGlobalScope('first')

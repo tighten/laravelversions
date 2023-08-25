@@ -83,6 +83,7 @@ class ApiListVersionsTest extends TestCase
         $versions = $versions->map(fn ($version) => [
             'ends_bugfixes_at' => $version->ends_bugfixes_at,
             'ends_securityfixes_at' => $version->ends_securityfixes_at,
+            'supported_php' => explode(', ', $version->supported_php),
             'global' => [
                 'latest_version' => LaravelVersion::withoutGlobalScope('first')->latest('order')->first()->semver,
             ],

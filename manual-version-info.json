@@ -3,132 +3,132 @@
         "release": "10",
         "ends_bugfixes_at": "2024-08-07",
         "ends_securityfixes_at": "2025-02-07",
-        "php_versions": "8.1, 8.2, (8.3)"
+        "supported_php": "8.1, 8.2, (8.3)"
     },
     {
         "release": "9",
         "ends_bugfixes_at": "2023-08-08",
         "ends_securityfixes_at": "2024-02-08",
-        "php_versions": "8.0, 8.1, 8.2, (8.3)"
+        "supported_php": "8.0, 8.1, 8.2, (8.3)"
     },
     {
         "release": "8",
         "ends_bugfixes_at": "2022-07-26",
         "ends_securityfixes_at": "2023-01-24",
-        "php_versions": "7.3, 7.4, 8.0"
+        "supported_php": "7.3, 7.4, 8.0"
     },
     {
         "release": "7",
         "ends_bugfixes_at": "2020-10-06",
         "ends_securityfixes_at": "2021-03-03",
-        "php_versions": "7.2, 7.3, 7.4, 8.0"
+        "supported_php": "7.2, 7.3, 7.4, 8.0"
     },
     {
         "release": "6",
         "ends_bugfixes_at": "2021-09-07",
         "ends_securityfixes_at": "2022-09-06",
-        "php_versions": "7.2, 7.3, 7.4"
+        "supported_php": "7.2, 7.3, 7.4"
     },
     {
         "release": "5.8",
         "ends_bugfixes_at": "2019-08-26",
         "ends_securityfixes_at": "2020-02-26",
-        "php_versions": "7.1, 7.2, 7.3 (maybe 7.4)"
+        "supported_php": "7.1, 7.2, 7.3, 7.4?"
     },
     {
         "release": "5.7",
         "ends_bugfixes_at": "2019-03-04",
         "ends_securityfixes_at": "2019-09-04",
-        "php_versions": "7.1, 7.2, 7.3 (maybe 7.4)"
+        "supported_php": "7.1, 7.2, 7.3, 7.4?"
     },
     {
         "release": "5.6",
         "ends_bugfixes_at": "2018-08-07",
         "ends_securityfixes_at": "2019-02-07",
-        "php_versions": "7.1, 7.2, 7.3 (maybe 7.4)"
+        "supported_php": "7.1, 7.2, 7.3, 7.4?"
     },
     {
         "release": "5.5",
         "ends_bugfixes_at": "2019-08-30",
         "ends_securityfixes_at": "2020-08-30",
-        "php_versions": "7.0, 7.1, 7.2"
+        "supported_php": "7.0, 7.1, 7.2"
     },
     {
         "release": "5.4",
         "ends_bugfixes_at": "2017-07-24",
         "ends_securityfixes_at": "2018-01-24",
-        "php_versions": "5.6, 7.0, 7.1"
+        "supported_php": "5.6, 7.0, 7.1"
     },
     {
         "release": "5.3",
         "ends_bugfixes_at": "2017-02-23",
         "ends_securityfixes_at": "2017-08-23",
-        "php_versions": "5.6, 7.0"
+        "supported_php": "5.6, 7.0"
     },
     {
         "release": "5.2",
         "ends_bugfixes_at": "2016-06-21",
         "ends_securityfixes_at": "2016-12-12",
-        "php_versions": "5.5, 5.6, 7.0"
+        "supported_php": "5.5, 5.6, 7.0"
     },
     {
         "release": "5.1",
         "ends_bugfixes_at": "2017-06-09",
         "ends_securityfixes_at": "2018-06-09",
-        "php_versions": "5.5, 5.6 (maybe 7.0)"
+        "supported_php": "5.5, 5.6, 7.0?"
     },
     {
         "release": "5.0",
         "ends_bugfixes_at": "2015-08-04",
         "ends_securityfixes_at": "2016-02-04",
-        "php_versions": "5.4, 5.5, 5.6"
+        "supported_php": "5.4, 5.5, 5.6"
     },
     {
         "release": "4.2",
         "ends_bugfixes_at": null,
         "ends_securityfixes_at": null,
-        "php_versions": ""
+        "supported_php": ""
     },
     {
         "release": "4.1",
         "ends_bugfixes_at": null,
         "ends_securityfixes_at": null,
-        "php_versions": ""
+        "supported_php": ""
     },
     {
         "release": "4.0",
         "ends_bugfixes_at": null,
         "ends_securityfixes_at": null,
-        "php_versions": ""
+        "supported_php": ""
     },
     {
         "release": "3.2",
         "ends_bugfixes_at": null,
         "ends_securityfixes_at": null,
-        "php_versions": ""
+        "supported_php": ""
     },
     {
         "release": "3.1",
         "ends_bugfixes_at": null,
         "ends_securityfixes_at": null,
-        "php_versions": ""
+        "supported_php": ""
     },
     {
         "release": "3.0",
         "ends_bugfixes_at": null,
         "ends_securityfixes_at": null,
-        "php_versions": ""
+        "supported_php": ""
     },
     {
         "release": "2.0",
         "ends_bugfixes_at": null,
         "ends_securityfixes_at": null,
-        "php_versions": ""
+        "supported_php": ""
     },
     {
         "release": "1.0",
         "ends_bugfixes_at": null,
         "ends_securityfixes_at": null,
-        "php_versions": ""
+        "supported_php": ""
     }
 ]
