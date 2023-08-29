@@ -27,7 +27,7 @@
 
     <div class="mt-6 text-center">
         {!! __('A list of currently supported PHP versions can be found here: :link', [
-                'link' => '<a class="text-blue-600 underline" href="https://www.php.net/supported-versions.php">https://www.php.net/supported-versions.php</a>'
+                'link' => '<a class="text-blue-600 underline" href="https://phpreleases.com/">https://phpreleases.com/</a>'
             ]);
         !!}
     </div>

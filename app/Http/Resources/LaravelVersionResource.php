@@ -21,6 +21,7 @@ class LaravelVersionResource extends JsonResource
             'released_at' => $this->released_at,
             'ends_bugfixes_at' => $this->ends_bugfixes_at,
             'ends_securityfixes_at' => $this->ends_securityfixes_at,
+            'supported_php' => explode(', ', $this->supported_php),
             'status' => $this->status,
             $this->mergeWhen($this->specificVersionProvided($request), [
                 'specific_version' => [

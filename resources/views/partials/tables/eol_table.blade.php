@@ -12,17 +12,20 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead>
                         <tr class="bg-gray-50">
-                            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
+                            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                 {{ __('Version') }}
                             </th>
-                            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
+                            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                 {{ __('Release date') }}
                             </th>
-                            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
+                            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                 {{ __('Bug Fixes Until') }}
                             </th>
-                            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
+                            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                 {{ __('Security Fixes Until') }}
+                            </th>
+                            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                {{ __('PHP Versions') }}
                             </th>
                             <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                 {{ __('Status') }}
@@ -32,41 +35,44 @@
                     <tbody class="bg-white divide-y divide-gray-200">
 
                         @foreach ($inactiveVersions as $version)
-                            <tr>
-                                <th class="px-6 py-4 text-sm font-medium text-left text-gray-900 whitespace-nowrap">
-                                    <a href="{{ $version->url }}" class="border-hover">{{ $version->major }}{{
+                        <tr>
+                            <th class="px-6 py-4 text-sm font-medium text-left text-gray-900 whitespace-nowrap">
+                                <a href="{{ $version->url }}" class="border-hover">{{ $version->major }}{{
                                         $version->major < 6
                                             ? '.' . $version->minor
                                             : ''
                                     }}</a>
-                                </th>
-                                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    {{
+                            </th>
+                            <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                {{
                                         $version->released_at->translatedFormat(__('DateLongFormat')) }} {{ $version->released_at->gt(now())
                                             ? '(' . __('estimated') . ')'
                                             : ''
                                     }}
-                                </td>
-                                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    {{
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                {{
                                         $version->ends_bugfixes_at
                                             ? $version->ends_bugfixes_at->translatedFormat(__('DateLongFormat'))
                                             : ''
                                     }}
-                                </td>
-                                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    {{
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                {{
                                         $version->ends_securityfixes_at
                                             ? $version->ends_securityfixes_at->translatedFormat(__('DateLongFormat'))
                                             : ''
                                     }}
-                                </td>
-                                <td scope="col">
-                                    <div class="{{ $statusClassMap[$version->status] }}">
-                                        <span>{{ $statusTextMap[$version->status] }}</span>
-                                    </div>
-                                </td>
-                            </tr>
+                            </td>
+                            <td class="py-4 pl-6 text-sm text-gray-500 lg:pl-6 whitespace-nowrap">
+                                {{ $version->supported_php }}
+                            </td>
+                            <td scope="col">
+                                <div class="{{ $statusClassMap[$version->status] }}">
+                                    <span>{{ $statusTextMap[$version->status] }}</span>
+                                </div>
+                            </td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>

@@ -2,17 +2,20 @@
     <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">
             <tr>
-            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
+            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                 {{ __('Major Version') }}
             </th>
-            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
+            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                 {{ __('Release date') }}
             </th>
-            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
+            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                 {{ __('Bug Fixes Until') }}
             </th>
-            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
+            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                 {{ __('Security Fixes Until') }}
+            </th>
+            <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                {{ __('PHP Versions') }}
             </th>
             <th scope="col" class="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-500 uppercase lg:pl-8">
                 {{ __('Status') }}
@@ -76,6 +79,9 @@
                                 )
                                 : ''
                         }}
+                    </td>
+                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                        {{ $version->supported_php }}
                     </td>
                     <td scope="col">
                         <div class="{{ $statusClassMap[$version->status] }}">
