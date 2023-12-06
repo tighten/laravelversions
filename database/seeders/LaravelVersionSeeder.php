@@ -19,7 +19,7 @@ class LaravelVersionSeeder extends Seeder
     {
         return collect(json_decode(\File::get(base_path('manual-version-info.json')), true))->map(function ($version) {
             $release = str_contains($version['release'], '.') ? $version['release'] : $version['release'] . '.0';
-            [$major, $minor] = EXPLODE('.', $release);
+            [$major, $minor] = explode('.', $release);
             unset($version['release']);
             $version['major'] = $major;
             $version['minor'] = $minor;
