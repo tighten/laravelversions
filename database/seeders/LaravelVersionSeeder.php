@@ -25,6 +25,7 @@ class LaravelVersionSeeder extends Seeder
             $version['major'] = $major;
             $version['minor'] = $minor;
             $version['patch'] = 0;
+
             return $version;
         });
     }
