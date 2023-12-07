@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\LaravelVersion;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\File;
 
 class LaravelVersionSeeder extends Seeder
 {
@@ -17,12 +18,13 @@ class LaravelVersionSeeder extends Seeder
 
     public function versions(): Collection
     {
-        return collect(json_decode(\File::get(base_path('manual-version-info.json')), true))->map(function ($version) {
+        return collect(json_decode(File::get(base_path('manual-version-info.json')), true))->map(function ($version) {
             $release = str_contains($version['release'], '.') ? $version['release'] : $version['release'] . '.0';
             [$major, $minor] = explode('.', $release);
             unset($version['release']);
             $version['major'] = $major;
             $version['minor'] = $minor;
+            $version['patch'] = 0;
             return $version;
         });
     }
