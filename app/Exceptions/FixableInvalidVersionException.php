@@ -8,7 +8,7 @@ class FixableInvalidVersionException extends Exception
 {
     public $redirectTo;
 
-    public function __construct($message, $code = 0, Exception $previous = null, $redirectTo = '/')
+    public function __construct($message, $code = 0, ?Exception $previous = null, $redirectTo = '/')
     {
         $this->redirectTo = $redirectTo;
 
