@@ -59,7 +59,7 @@ class ApiListVersionsTest extends TestCase
 
         $response = $this->get(route('api.versions.index'));
 
-        $this->assertJsonStringEqualsJsonString($this->getVersionsJsonResponse($versions), $response->getContent());
+        $this->assertJsonStringEqualsJsonString($this->getVersionsJsonResponse(LaravelVersion::all()), $response->getContent());
     }
 
     /** @test */
