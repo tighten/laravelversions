@@ -25,7 +25,7 @@
         "nunomaduro/collision": "^7.0",
         "phpunit/phpunit": "^10.0",
         "spatie/laravel-ignition": "^2.3",
-        "tightenco/duster": "^2.4"
+        "tightenco/duster": "2.7.1"
     },
     "config": {
         "optimize-autoloader": true,
