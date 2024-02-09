@@ -10,7 +10,7 @@
         "release": "9",
         "released_at" : "2022-02-08",
         "ends_bugfixes_at": "2023-08-08",
-        "ends_securityfixes_at": "2024-02-08",
+        "ends_securityfixes_at": "2024-02-06",
         "supported_php": "8.0, 8.1, 8.2, (8.3)"
     },
     {
