@@ -8,6 +8,7 @@ return [
     'supported-locales' => [
         'en',
         'de',
+        'nl',
         'es',
         'fr',
         'id',
@@ -34,6 +35,7 @@ return [
     'locales-name-native' => [
         'en' => 'English',
         'de' => 'Deutsch',
+        'nl' => 'Nederlands',
         'es' => 'Español',
         'fr' => 'Français',
         'id' => 'Bahasa Indonesia',
