@@ -1,24 +1,31 @@
 [
     {
+        "release": "11",
+        "released_at" : "2024-03-12",
+        "ends_bugfixes_at": "2025-08-05",
+        "ends_securityfixes_at": "2026-02-03",
+        "supported_php": "8.2, 8.3"
+    },
+    {
         "release": "10",
         "released_at" : "2023-02-14",
         "ends_bugfixes_at": "2024-08-07",
         "ends_securityfixes_at": "2025-02-07",
-        "supported_php": "8.1, 8.2, (8.3)"
+        "supported_php": "8.1, 8.2, 8.3"
     },
     {
         "release": "9",
         "released_at" : "2022-02-08",
         "ends_bugfixes_at": "2023-08-08",
         "ends_securityfixes_at": "2024-02-06",
-        "supported_php": "8.0, 8.1, 8.2, (8.3)"
+        "supported_php": "8.0, 8.1, 8.2"
     },
     {
         "release": "8",
         "released_at" : "2020-09-08",
         "ends_bugfixes_at": "2022-07-26",
         "ends_securityfixes_at": "2023-01-24",
-        "supported_php": "7.3, 7.4, 8.0"
+        "supported_php": "7.3, 7.4, 8.0, 8.1"
     },
     {
         "release": "7",
