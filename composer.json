@@ -9,7 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "bugsnag/bugsnag-laravel": "^2.27",
+        "bugsnag/bugsnag-laravel": "^2.28",
         "codezero/laravel-localized-routes": "^2.9",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.48",
