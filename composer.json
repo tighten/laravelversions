@@ -9,13 +9,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "bugsnag/bugsnag-laravel": "^2.27",
         "codezero/laravel-localized-routes": "^2.9",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.48",
         "laravel/tinker": "^2.8",
         "phlak/semver": "^4.1",
-        "silber/page-cache": "^1.0"
+        "silber/page-cache": "^1.0",
+        "spatie/laravel-ignition": "^2.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",
@@ -24,7 +24,6 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
         "phpunit/phpunit": "^10.1",
-        "spatie/laravel-ignition": "^2.3",
         "tightenco/duster": "2.7.1"
     },
     "config": {
