@@ -23,15 +23,6 @@ class LaravelVersion extends Model
 
     protected $guarded = [];
 
-    protected function casts(): array
-    {
-        return [
-            'released_at' => 'date',
-            'ends_bugfixes_at' => 'date',
-            'ends_securityfixes_at' => 'date',
-        ];
-    }
-
     public static function notificationDays(): array
     {
         return [
@@ -166,6 +157,15 @@ class LaravelVersion extends Model
         }
 
         return false;
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'released_at' => 'date',
+            'ends_bugfixes_at' => 'date',
+            'ends_securityfixes_at' => 'date',
+        ];
     }
 
     public function __toString()

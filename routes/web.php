@@ -10,5 +10,4 @@ Route::localized(function () {
     Route::get('{version}', [LaravelVersionsController::class, 'show'])->name('versions.show');
 });
 
-
 Route::fallback(FallbackController::class)->middleware(SetLocale::class);
