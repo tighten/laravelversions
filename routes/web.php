@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\LaravelVersionsController;
-use CodeZero\LocalizedRoutes\Controller\FallbackController;
+use CodeZero\LocalizedRoutes\Controllers\FallbackController;
 use CodeZero\LocalizedRoutes\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
 

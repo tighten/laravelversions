@@ -9,9 +9,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "codezero/laravel-localized-routes": "^2.9",
+        "codezero/laravel-localized-routes": "^4.0",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^10.48",
+        "laravel/framework": "^v11.0",
         "laravel/tinker": "^2.8",
         "phlak/semver": "^4.1",
         "silber/page-cache": "^1.0",
@@ -19,10 +19,11 @@
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",
+        "brianium/paratest": "^7.4",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.25",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^7.0",
+        "nunomaduro/collision": "^8.1",
         "phpunit/phpunit": "^10.1",
         "tightenco/duster": "2.7.1"
     },
@@ -31,7 +32,8 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "0.0.0/composer-include-files": true
+            "0.0.0/composer-include-files": true,
+            "codezero/composer-preload-files": true
         }
     },
     "extra": {
