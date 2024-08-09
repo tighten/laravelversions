@@ -5,7 +5,7 @@ return [
     /**
      * The locales you wish to support.
      */
-    'supported-locales' => [
+    'supported_locales' => [
         'en',
         'de',
         'nl',
@@ -55,7 +55,6 @@ return [
         'bn' => 'বাংলা',
         'fa' => 'فارسی',
         'ar' => 'عربي',
-
     ],
 
     /**
