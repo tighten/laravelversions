@@ -10,8 +10,6 @@ use Illuminate\Support\Collection;
 
 abstract class TestCase extends BaseTestCase
 {
-    use CreatesApplication;
-
     protected function setUp(): void
     {
         parent::setUp();

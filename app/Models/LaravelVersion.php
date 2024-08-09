@@ -23,13 +23,16 @@ class LaravelVersion extends Model
 
     protected $guarded = [];
 
-    protected $casts = [
-        'released_at' => 'date',
-        'ends_bugfixes_at' => 'date',
-        'ends_securityfixes_at' => 'date',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'released_at' => 'date',
+            'ends_bugfixes_at' => 'date',
+            'ends_securityfixes_at' => 'date',
+        ];
+    }
 
-    public static function notificationDays()
+    public static function notificationDays(): array
     {
         return [
             'today' => now()->startOfDay(),

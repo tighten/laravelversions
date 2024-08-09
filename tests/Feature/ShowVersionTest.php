@@ -16,6 +16,7 @@ class ShowVersionTest extends TestCase
         $version = LaravelVersion::factory()->create([
             'ends_securityfixes_at' => now()->addYear(),
         ]);
+
         $response = $this->get($version->url);
 
         $response->assertStatus(200);
