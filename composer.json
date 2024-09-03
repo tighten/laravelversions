@@ -14,8 +14,8 @@
         "laravel/framework": "^11.22",
         "laravel/tinker": "^2.9",
         "phlak/semver": "^4.1",
-        "silber/page-cache": "^1.0",
-        "spatie/laravel-ignition": "^2.0"
+        "silber/page-cache": "^1.1",
+        "spatie/laravel-ignition": "^2.8"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",
