@@ -11,7 +11,7 @@
         "php": "^8.2",
         "codezero/laravel-localized-routes": "^4.0",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^v11.0",
+        "laravel/framework": "^11.23",
         "laravel/tinker": "^2.8",
         "phlak/semver": "^4.1",
         "silber/page-cache": "^1.0",
