@@ -2,8 +2,8 @@
     {
         "release": "11",
         "released_at" : "2024-03-12",
-        "ends_bugfixes_at": "2025-08-05",
-        "ends_securityfixes_at": "2026-02-03",
+        "ends_bugfixes_at": "2025-09-03",
+        "ends_securityfixes_at": "2026-03-12",
         "supported_php": "8.2, 8.3, 8.4"
     },
     {
