@@ -1,7 +1,7 @@
 <header class="py-8 bg-gray-700">
     <div class="flex flex-col max-w-screen-xl px-4 mx-auto sm:items-center sm:justify-between sm:flex-row-reverse sm:px-6 lg:px-8">
 
-        @if (Config::has('localized-routes.supported-locales'))
+        @if (Config::has('localized-routes.supported_locales'))
             <x-language-selector />
         @endif
 
