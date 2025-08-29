@@ -124,8 +124,8 @@ Potential statuses:
     ```
 1. Run `php artisan fetch-laravel-versions` to pull in the latest releases.
 1. [Install frontend dependencies](https://docs.npmjs.com/cli/install) with `npm install`
-1. Build frontend assets with `npm run dev`
-1. Configure a web server, such as the [built-in PHP web server](http://php.net/manual/en/features.commandline.webserver.php), to use the `public` directory as the document root.
+1. Build frontend assets with `npm run build`
+1. If you're not running a tool like Valet or Herd, configure a web server, such as the [built-in PHP web server](http://php.net/manual/en/features.commandline.webserver.php), to use the `public` directory as the document root.
 
     ```bash
     php -S localhost:8080 -t public
