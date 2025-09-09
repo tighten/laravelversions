@@ -10,7 +10,7 @@
     "require": {
         "php": "^8.2",
         "codezero/laravel-localized-routes": "^4.0.1",
-        "guzzlehttp/guzzle": "^7.9.2",
+        "guzzlehttp/guzzle": "^7.10",
         "laravel/framework": "^11.46",
         "laravel/tinker": "^2.10",
         "phlak/semver": "^4.1",
