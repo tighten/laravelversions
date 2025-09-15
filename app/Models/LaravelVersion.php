@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -69,7 +70,8 @@ class LaravelVersion extends Model
             ->ofMany(['order' => 'MAX']);
     }
 
-    public function scopeReleased($query)
+    #[Scope]
+    protected function released($query)
     {
         $query->where('released_at', '<=', now());
     }
