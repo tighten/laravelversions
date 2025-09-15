@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::table('laravel_versions', function (Blueprint $table) {
             $table->string('first_release')->nullable()->after('patch');
@@ -15,7 +15,7 @@ return new class extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::table('laravel_versions', function (Blueprint $table) {
             $table->dropColumn('first_release');

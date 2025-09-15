@@ -49,7 +49,7 @@ class ApiListVersionsTest extends TestCase
     }
 
     /** @test */
-    public function it_lists_versions_in_expected_format()
+    public function it_lists_versions_in_expected_format(): void
     {
         $versions = $this->seedVersions(
             majorCount: 10,
@@ -63,7 +63,7 @@ class ApiListVersionsTest extends TestCase
     }
 
     /** @test */
-    public function it_lists_specific_version_in_expected_format()
+    public function it_lists_specific_version_in_expected_format(): void
     {
         $this->seedVersions(
             majorCount: 10,
