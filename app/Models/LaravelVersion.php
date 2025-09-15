@@ -41,7 +41,7 @@ class LaravelVersion extends Model
     protected static function booted(): void
     {
         static::addGlobalScope('first', function (Builder $builder) {
-            $builder->whereRaw('first_release = '.DB::concat('major', "'.'", 'minor', "'.'", 'patch')->getValue(DB::connection()->getQueryGrammar()));
+            $builder->whereRaw('first_release = ' . DB::concat('major', "'.'", 'minor', "'.'", 'patch')->getValue(DB::connection()->getQueryGrammar()));
         });
 
         static::saving(function (self $version) {
@@ -68,12 +68,6 @@ class LaravelVersion extends Model
         return $this->hasOne(static::class, 'first_release', 'first_release')
             ->withoutGlobalScope('first')
             ->ofMany(['order' => 'MAX']);
-    }
-
-    #[Scope]
-    protected function released($query)
-    {
-        $query->where('released_at', '<=', now());
     }
 
     public function getReleases(): Collection
@@ -120,7 +114,7 @@ class LaravelVersion extends Model
     public function getMajorishAttribute(): string
     {
         return $this->pre_semver
-            ? $this->major.'.'.$this->minor
+            ? $this->major . '.' . $this->minor
             : $this->major;
     }
 
@@ -159,6 +153,12 @@ class LaravelVersion extends Model
         }
 
         return false;
+    }
+
+    #[Scope]
+    protected function released($query)
+    {
+        $query->where('released_at', '<=', now());
     }
 
     protected function casts(): array
