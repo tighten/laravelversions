@@ -99,8 +99,8 @@ Potential statuses:
 ## Instructions for hosting/installing yourself
 ### Requirements
 
-* PHP >= 8.1 with [the extensions listed in the Laravel docs](https://laravel.com/docs/9.x/deployment#server-requirements)
-* A [supported relational database](http://laravel.com/docs/9.x/database#introduction) and corresponding PHP extension
+* PHP >= 8.4 with [the extensions listed in the Laravel docs](https://laravel.com/docs/12.x/deployment#server-requirements)
+* A [supported relational database](http://laravel.com/docs/12.x/database#introduction) and corresponding PHP extension
 * [Composer](https://getcomposer.org/download/)
 * [NPM](https://nodejs.org/)
 

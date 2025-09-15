@@ -8,10 +8,10 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
-        "codezero/laravel-localized-routes": "^4.0.1",
+        "php": "^8.4",
         "laravel/framework": "^12.28",
         "laravel/tinker": "^2.10.1",
+        "opgginc/codezero-laravel-localized-routes": "^5.1",
         "phlak/semver": "^4.1",
         "silber/page-cache": "^1.1",
         "spatie/laravel-ignition": "^2.9"
