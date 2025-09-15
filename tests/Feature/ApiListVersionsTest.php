@@ -5,13 +5,14 @@ namespace Tests\Feature;
 use App\Models\LaravelVersion;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class ApiListVersionsTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_loads(): void
     {
         $response = $this->get(route('api.versions.index'));
@@ -19,7 +20,7 @@ class ApiListVersionsTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function it_lists_valid_versions(): void
     {
         LaravelVersion::factory()->active()->create();
@@ -27,7 +28,7 @@ class ApiListVersionsTest extends TestCase
         $this->assertCount(1, $response->json()['data']);
     }
 
-    /** @test */
+    #[Test]
     public function it_doesnt_list_future_versions(): void
     {
         LaravelVersion::factory()->create([
@@ -38,7 +39,7 @@ class ApiListVersionsTest extends TestCase
         $this->assertEmpty($response->json()['data']);
     }
 
-    /** @test */
+    #[Test]
     public function entries_arent_given_specific_version_key(): void
     {
         LaravelVersion::factory()->active()->create();
@@ -48,8 +49,8 @@ class ApiListVersionsTest extends TestCase
         $this->assertFalse(array_key_exists('specific_version', $entry));
     }
 
-    /** @test */
-    public function it_lists_versions_in_expected_format()
+    #[Test]
+    public function it_lists_versions_in_expected_format(): void
     {
         $versions = $this->seedVersions(
             majorCount: 10,
@@ -62,8 +63,8 @@ class ApiListVersionsTest extends TestCase
         $this->assertJsonStringEqualsJsonString($this->getVersionsJsonResponse(LaravelVersion::all()), $response->getContent());
     }
 
-    /** @test */
-    public function it_lists_specific_version_in_expected_format()
+    #[Test]
+    public function it_lists_specific_version_in_expected_format(): void
     {
         $this->seedVersions(
             majorCount: 10,

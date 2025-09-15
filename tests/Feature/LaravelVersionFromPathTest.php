@@ -4,13 +4,14 @@ namespace Tests\Feature;
 
 use App\Models\LaravelVersion;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class LaravelVersionFromPathTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function non_version_shaped_path_throws_404(): void
     {
         $this->get('/en/fancy.1.4')
@@ -20,7 +21,7 @@ class LaravelVersionFromPathTest extends TestCase
             ->assertNotFound();
     }
 
-    /** @test */
+    #[Test]
     public function versions_after_five_dont_require_a_minor(): void
     {
         LaravelVersion::factory()->create([
@@ -37,7 +38,7 @@ class LaravelVersionFromPathTest extends TestCase
             ->assertOk();
     }
 
-    /** @test */
+    #[Test]
     public function versions_before_six_require_a_minor(): void
     {
         LaravelVersion::factory()->create([
@@ -57,7 +58,7 @@ class LaravelVersionFromPathTest extends TestCase
             ->assertOk();
     }
 
-    /** @test */
+    #[Test]
     public function it_finds_versions_after_five(): void
     {
         collect(
@@ -79,7 +80,7 @@ class LaravelVersionFromPathTest extends TestCase
         $this->get('/en/6')->assertOk();
     }
 
-    /** @test */
+    #[Test]
     public function it_finds_versions_before_six(): void
     {
         collect(
@@ -103,7 +104,7 @@ class LaravelVersionFromPathTest extends TestCase
         $this->get('/en/4.0')->assertOk();
     }
 
-    /** @test */
+    #[Test]
     public function before_six_minor_is_required_to_match(): void
     {
         collect(
@@ -135,7 +136,7 @@ class LaravelVersionFromPathTest extends TestCase
         $this->get('/en/1.0')->assertOk();
     }
 
-    /** @test */
+    #[Test]
     public function it_404s_when_version_dne(): void
     {
         $response = $this->get('/en/1.0.0');

@@ -4,13 +4,14 @@ namespace Tests\Feature;
 
 use App\Models\LaravelVersion;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class ShowVersionTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_loads(): void
     {
         $version = LaravelVersion::factory()->create([
@@ -22,7 +23,7 @@ class ShowVersionTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function it_loads_when_bug_fixes_date_is_null(): void
     {
         $this->seedLowestSupportedVersion();
@@ -35,7 +36,7 @@ class ShowVersionTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function it_loads_when_security_fixes_date_is_null(): void
     {
         $this->seedLowestSupportedVersion();

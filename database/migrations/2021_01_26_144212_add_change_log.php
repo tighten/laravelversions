@@ -4,9 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddChangeLog extends Migration
+return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::table('laravel_versions', function (Blueprint $table) {
             $table->string('first_release')->nullable()->after('patch');
@@ -15,7 +15,7 @@ class AddChangeLog extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::table('laravel_versions', function (Blueprint $table) {
             $table->dropColumn('first_release');
@@ -23,4 +23,4 @@ class AddChangeLog extends Migration
             $table->dropColumn('order');
         });
     }
-}
+};

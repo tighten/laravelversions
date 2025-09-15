@@ -4,13 +4,14 @@ namespace Tests\Feature;
 
 use App\Models\LaravelVersion;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class NotificationTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function versions_need_notification_if_today_is_a_fix_end_date(): void
     {
         $bugfix = LaravelVersion::factory()->create([
@@ -39,7 +40,7 @@ class NotificationTest extends TestCase
         $this->assertFalse($none->needsNotification());
     }
 
-    /** @test */
+    #[Test]
     public function it_handles_null_fix_dates(): void
     {
         $null_security = LaravelVersion::factory()->create([

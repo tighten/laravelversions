@@ -8,13 +8,14 @@ use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class TweetImportantDatesTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_tweets_on_the_day_security_fixes_end(): void
     {
         Http::fake();
@@ -30,7 +31,7 @@ class TweetImportantDatesTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_tweets_the_day_before_security_fixes_end(): void
     {
         Http::fake();
@@ -46,7 +47,7 @@ class TweetImportantDatesTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_tweets_the_week_before_security_fixes_end(): void
     {
         Http::fake();
@@ -62,7 +63,7 @@ class TweetImportantDatesTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_tweets_on_the_day_bug_fixes_end(): void
     {
         Http::fake();
@@ -78,7 +79,7 @@ class TweetImportantDatesTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_tweets_the_day_before_bug_fixes_end(): void
     {
         Http::fake();
@@ -94,7 +95,7 @@ class TweetImportantDatesTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_tweets_the_week_before_bug_fixes_end(): void
     {
         Http::fake();
