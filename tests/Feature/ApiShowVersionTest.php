@@ -4,13 +4,14 @@ namespace Tests\Feature;
 
 use App\Models\LaravelVersion;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class ApiShowVersionTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_loads(): void
     {
         $version = $this->seedVersions(
@@ -24,7 +25,7 @@ class ApiShowVersionTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function it_loads_latest_version(): void
     {
         $this->seedVersions(

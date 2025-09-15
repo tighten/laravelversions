@@ -4,13 +4,14 @@ namespace Tests\Feature;
 
 use App\Models\LaravelVersion;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class LaravelVersionTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_gets_only_released_versions(): void
     {
         LaravelVersion::factory()->create([

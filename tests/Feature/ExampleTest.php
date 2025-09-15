@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
@@ -11,10 +12,8 @@ class ExampleTest extends TestCase
 
     /**
      * A basic test example.
-     *
-     *
-     * @test
      */
+    #[Test]
     public function basic_test(): void
     {
         $response = $this->get('/en');
@@ -24,10 +23,8 @@ class ExampleTest extends TestCase
 
     /**
      * A basic test example.
-     *
-     *
-     * @test
      */
+    #[Test]
     public function redirection_test(): void
     {
         $response = $this->get('/');
