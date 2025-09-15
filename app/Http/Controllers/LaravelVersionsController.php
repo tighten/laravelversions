@@ -33,11 +33,11 @@ class LaravelVersionsController extends Controller
 
     public function show($path): View
     {
-        $version = Cache::remember('laravel-versions-' . $path, 3600, function () use ($path) {
+        $version = Cache::remember('laravel-versions-'.$path, 3600, function () use ($path) {
             return (new LaravelVersionFromPath)($path);
         });
 
-        $releases = Cache::remember('laravel-versions-' . $version->majorish . '-releases', 3600, function () use ($version) {
+        $releases = Cache::remember('laravel-versions-'.$version->majorish.'-releases', 3600, function () use ($version) {
             return $version->getReleases();
         });
 

@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
         DB::macro('concat', function (...$parts) {
             return match (config('database.default')) {
                 'sqlite' => DB::raw(implode(' || ', $parts)),
-                default => DB::raw('CONCAT(' . implode(', ', $parts) . ')'),
+                default => DB::raw('CONCAT('.implode(', ', $parts).')'),
             };
         });
     }

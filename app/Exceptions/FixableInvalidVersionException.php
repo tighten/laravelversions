@@ -18,7 +18,7 @@ class FixableInvalidVersionException extends Exception
     public static function toUrl($redirectTo)
     {
         return new static(
-            'Redirect to ' . $redirectTo,
+            'Redirect to '.$redirectTo,
             0,
             null,
             $redirectTo

@@ -89,7 +89,7 @@ class FetchLatestReleaseNumbers extends Command
         $this->fetchVersionsFromGitHub()
             ->each(function ($item) use ($manualData) {
                 $semver = new Version($item['name']);
-                $manualMajor = $manualData[$semver->major > 5 ? $semver->major : $semver->major . '.' . $semver->minor];
+                $manualMajor = $manualData[$semver->major > 5 ? $semver->major : $semver->major.'.'.$semver->minor];
 
                 $versionMeta = [
                     'changelog' => $item['changelog'],
@@ -110,11 +110,11 @@ class FetchLatestReleaseNumbers extends Command
 
                 if ($version->isDirty()) {
                     $version->save();
-                    $this->info('Updated Laravel version ' . $semver);
+                    $this->info('Updated Laravel version '.$semver);
                 }
 
                 if ($version->wasRecentlyCreated) {
-                    $this->info('Created Laravel version ' . $semver);
+                    $this->info('Created Laravel version '.$semver);
                 }
             });
 
@@ -143,7 +143,7 @@ class FetchLatestReleaseNumbers extends Command
                     $responseJson = $response->json();
 
                     if (! $response->ok()) {
-                        abort($response->getStatusCode(), 'Error connecting to GitHub: ' . $responseJson['message']);
+                        abort($response->getStatusCode(), 'Error connecting to GitHub: '.$responseJson['message']);
                     }
 
                     $carry = $carry->merge(
@@ -160,7 +160,7 @@ class FetchLatestReleaseNumbers extends Command
                     $nextPage = data_get($responseJson, "data.repository.{$key}.pageInfo")['endCursor'];
 
                     if ($nextPage) {
-                        $query['filters']['after'] = '"' . $nextPage . '"';
+                        $query['filters']['after'] = '"'.$nextPage.'"';
                     }
                 } while ($nextPage);
 
