@@ -4,7 +4,7 @@
         "released_at" : "2025-02-24",
         "ends_bugfixes_at": "2026-08-13",
         "ends_securityfixes_at": "2027-02-04",
-        "supported_php": "8.2, 8.3, 8.4"
+        "supported_php": "8.2, 8.3, 8.4, 8.5"
     },
     {
         "release": "11",
