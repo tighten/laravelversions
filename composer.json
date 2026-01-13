@@ -9,7 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.4",
-        "laravel/framework": "^12.42",
+        "laravel/framework": "^12.47",
         "laravel/tinker": "^2.10.1",
         "opgginc/codezero-laravel-localized-routes": "^5.1",
         "phlak/semver": "^4.1",
