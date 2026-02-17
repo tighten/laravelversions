@@ -32,6 +32,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased bg-gray-100">
+        <x-community-banner />
         <div id="app">
             @include('partials/modules/header')
             <div class="max-w-screen-xl px-4 pt-12 mx-auto sm:px-6 lg:px-8">

@@ -18,6 +18,7 @@ module.exports = {
         'blue-500': '#1381BE',
         'blue-600': '#0D6A9B',
         'white': '#FFFFFF',
+        'black': '#000000',
       },
       fontSize: {
         '4xl': '2.25rem',
