@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * A basic test example.
  */

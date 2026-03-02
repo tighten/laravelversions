@@ -92,7 +92,7 @@ function getVersionsJsonResponse(Collection $versions): string
 
 function getVersionJsonResponse($version)
 {
-    $versionResponse = json_decode(test()->getVersionsJsonResponse(collect([$version])))->data[0];
+    $versionResponse = json_decode(getVersionsJsonResponse(collect([$version])))->data[0];
 
     $versionResponse->links = array_values(array_filter([
         $version->is_first ? [] : [
