@@ -1,9 +1,6 @@
 <?php
 
 use App\Models\LaravelVersion;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-
 
 test('non version shaped path throws 404', function () {
     $this->get('/en/fancy.1.4')

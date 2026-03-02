@@ -1,9 +1,6 @@
 <?php
 
 use App\Models\LaravelVersion;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-
 
 test('versions need notification if today is a fix end date', function () {
     $bugfix = LaravelVersion::factory()->create([

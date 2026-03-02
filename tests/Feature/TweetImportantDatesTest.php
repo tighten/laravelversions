@@ -1,13 +1,10 @@
 <?php
 
 use App\Models\LaravelVersion;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
-use Tests\TestCase;
-
 
 it('tweets on the day security fixes end', function () {
     Http::fake();

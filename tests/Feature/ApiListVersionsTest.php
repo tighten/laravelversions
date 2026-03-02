@@ -1,10 +1,7 @@
 <?php
 
 use App\Models\LaravelVersion;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Collection;
-use Tests\TestCase;
-
 
 it('loads', function () {
     $response = $this->get(route('api.versions.index'));
