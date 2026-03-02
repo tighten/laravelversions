@@ -1,4 +1,4 @@
-<section class="max-w-screen-xl mb-8">
+<section class="max-w-(--breakpoint-xl) mb-8">
     <label for="status" class="inline-block mb-3 font-bold">{{ __('Status') }}</label>
     <ul class="w-full sm:flex sm:flex-wrap">
         <li class="flex items-center px-3 py-2 mb-2 mr-2 bg-green-300 rounded-md">

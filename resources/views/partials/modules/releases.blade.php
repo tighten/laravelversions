@@ -7,7 +7,7 @@
         @foreach ($releases as $release)
             <a href="#{{ $release }}"
                 @class([
-                    'rounded px-2 py-0.5 text-xs',
+                    'rounded-sm px-2 py-0.5 text-xs',
                     'text-gray-700 bg-gray-200' => $release != $version->semver,
                     'font-bold bg-gray-700 text-gray-200' => $release == $version->semver
                 ])
@@ -20,7 +20,7 @@
     <div class="mb-6">
         @foreach ($releases as $release)
             <a name="{{ $release }}"></a>
-            <div class="mb-6 overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
+            <div class="mb-6 overflow-hidden border-b border-gray-200 shadow-sm sm:rounded-lg">
                 <div class="min-w-full">
                     <div class="px-6 py-4 text-sm font-medium text-gray-500 bg-gray-50">
                         {{ $release }}
