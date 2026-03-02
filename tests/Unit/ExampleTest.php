@@ -1,18 +1,8 @@
 <?php
 
-namespace Tests\Unit;
-
-use PHPUnit\Framework\Attributes\Test;
-use PHPUnit\Framework\TestCase;
-
-class ExampleTest extends TestCase
-{
-    /**
-     * A basic test example.
-     */
-    #[Test]
-    public function basic_test(): void
-    {
-        $this->assertTrue(true);
-    }
-}
+/**
+ * A basic test example.
+ */
+test('basic test', function () {
+    expect(true)->toBeTrue();
+});

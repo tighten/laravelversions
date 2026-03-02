@@ -1,34 +1,19 @@
 <?php
 
-namespace Tests\Feature;
+/**
+ * A basic test example.
+ */
+test('basic test', function () {
+    $response = $this->get('/en');
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use PHPUnit\Framework\Attributes\Test;
-use Tests\TestCase;
+    $response->assertStatus(200);
+});
 
-class ExampleTest extends TestCase
-{
-    use RefreshDatabase;
+/**
+ * A basic test example.
+ */
+test('redirection test', function () {
+    $response = $this->get('/');
 
-    /**
-     * A basic test example.
-     */
-    #[Test]
-    public function basic_test(): void
-    {
-        $response = $this->get('/en');
-
-        $response->assertStatus(200);
-    }
-
-    /**
-     * A basic test example.
-     */
-    #[Test]
-    public function redirection_test(): void
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(301);
-    }
-}
+    $response->assertStatus(301);
+});
