@@ -24,6 +24,6 @@ it('gets only released versions', function () {
 
     $released = LaravelVersion::released()->get();
 
-    $this->assertCount(1, $released);
-    $this->assertEquals($yes->id, $released->first()->id);
+    expect($released)->toHaveCount(1);
+    expect($released->first()->id)->toEqual($yes->id);
 });

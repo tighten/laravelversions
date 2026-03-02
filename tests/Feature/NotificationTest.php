@@ -28,10 +28,10 @@ test('versions need notification if today is a fix end date', function () {
         'ends_securityfixes_at' => now()->addYears(3),
     ]);
 
-    $this->assertTrue($bugfix->needsNotification());
-    $this->assertTrue($security->needsNotification());
-    $this->assertFalse($release->needsNotification());
-    $this->assertFalse($none->needsNotification());
+    expect($bugfix->needsNotification())->toBeTrue();
+    expect($security->needsNotification())->toBeTrue();
+    expect($release->needsNotification())->toBeFalse();
+    expect($none->needsNotification())->toBeFalse();
 });
 
 it('handles null fix dates', function () {
@@ -43,6 +43,6 @@ it('handles null fix dates', function () {
         'ends_bugfixes_at' => null,
     ]);
 
-    $this->assertFalse($null_security->needsNotification());
-    $this->assertFalse($null_bug->needsNotification());
+    expect($null_security->needsNotification())->toBeFalse();
+    expect($null_bug->needsNotification())->toBeFalse();
 });

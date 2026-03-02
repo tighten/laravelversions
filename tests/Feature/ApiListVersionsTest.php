@@ -17,7 +17,7 @@ it('loads', function () {
 it('lists valid versions', function () {
     LaravelVersion::factory()->active()->create();
     $response = $this->get(route('api.versions.index'));
-    $this->assertCount(1, $response->json()['data']);
+    expect($response->json()['data'])->toHaveCount(1);
 });
 
 it('doesnt list future versions', function () {
@@ -26,7 +26,7 @@ it('doesnt list future versions', function () {
     ]);
 
     $response = $this->get(route('api.versions.index'));
-    $this->assertEmpty($response->json()['data']);
+    expect($response->json()['data'])->toBeEmpty();
 });
 
 test('entries arent given specific version key', function () {
@@ -34,7 +34,7 @@ test('entries arent given specific version key', function () {
     $response = $this->get(route('api.versions.index'));
     $entry = $response->json()['data'][0];
 
-    $this->assertFalse(array_key_exists('specific_version', $entry));
+    expect(array_key_exists('specific_version', $entry))->toBeFalse();
 });
 
 it('lists versions in expected format', function () {
