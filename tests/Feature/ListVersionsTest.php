@@ -1,20 +1,13 @@
 <?php
 
-namespace Tests\Feature;
-
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class ListVersionsTest extends TestCase
-{
-    use RefreshDatabase;
+uses(Tests\TestCase::class);
+uses(RefreshDatabase::class);
 
-    #[Test]
-    public function it_loads(): void
-    {
-        $response = $this->get(route('versions.index'));
+it('loads', function () {
+    $response = $this->get(route('versions.index'));
 
-        $response->assertStatus(200);
-    }
-}
+    $response->assertStatus(200);
+});
