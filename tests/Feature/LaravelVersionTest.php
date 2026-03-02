@@ -4,8 +4,6 @@ use App\Models\LaravelVersion;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-uses(Tests\TestCase::class);
-uses(RefreshDatabase::class);
 
 it('gets only released versions', function () {
     LaravelVersion::factory()->create([
