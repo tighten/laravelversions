@@ -1,5 +1,12 @@
 [
     {
+        "release": "13",
+        "released_at" : "2026-03-17",
+        "ends_bugfixes_at": "2027-09-17",
+        "ends_securityfixes_at": "2028-03-17",
+        "supported_php": "8.3, 8.4, 8.5"
+    },
+    {
         "release": "12",
         "released_at" : "2025-02-24",
         "ends_bugfixes_at": "2026-08-13",
