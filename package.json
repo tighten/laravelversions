@@ -47,5 +47,6 @@
         "hooks": {
             "pre-commit": "lint-staged"
         }
-    }
+    },
+    "$schema": "https://www.schemastore.org/package.json"
 }
