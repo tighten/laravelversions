@@ -3,15 +3,15 @@
 namespace App\Console\Commands;
 
 use App\Models\LaravelVersion;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
+#[Signature('tweet-important-dates')]
+#[Description('Tweet out any important dates today.')]
 class TweetImportantDates extends Command
 {
-    protected $signature = 'tweet-important-dates';
-
-    protected $description = 'Tweet out any important dates today.';
-
     public function handle(): void
     {
         $this->versionsNeedingNotification()->each(function (LaravelVersion $version) {

@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use App\Models\LaravelVersion;
 use Carbon\Carbon;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
@@ -11,12 +13,10 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use PHLAK\SemVer\Version;
 
+#[Signature('fetch-laravel-versions')]
+#[Description('Pull the latest Laravel Version releases from GitHub into our application.')]
 class FetchLatestReleaseNumbers extends Command
 {
-    protected $signature = 'fetch-laravel-versions';
-
-    protected $description = 'Pull the latest Laravel Version releases from GitHub into our application.';
-
     // Not all tags have releases - so we need to pull both.
     private $gitHubQueries = [
         'refs' => [

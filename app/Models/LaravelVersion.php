@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Attributes\Unguarded;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\DB;
 
+#[Unguarded]
 class LaravelVersion extends Model
 {
     use HasFactory;
@@ -21,8 +23,6 @@ class LaravelVersion extends Model
     const STATUS_SECURITY = 'security';
 
     const STATUS_ENDOFLIFE = 'end-of-life';
-
-    protected $guarded = [];
 
     public static function notificationDays(): array
     {
