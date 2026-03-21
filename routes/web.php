@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\LaravelVersionsController;
-use CodeZero\LocalizedRoutes\Controllers\FallbackController;
-use CodeZero\LocalizedRoutes\Middleware\SetLocale;
+use App\Http\Controllers\LocalizedFallbackController;
+use App\Http\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
 
 Route::localized(function () {
@@ -10,4 +10,4 @@ Route::localized(function () {
     Route::get('{version}', [LaravelVersionsController::class, 'show'])->name('versions.show');
 });
 
-Route::fallback(FallbackController::class)->middleware(SetLocale::class);
+Route::fallback(LocalizedFallbackController::class)->middleware(SetLocale::class);
