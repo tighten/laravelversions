@@ -1,3 +1,4 @@
+*.log
 /node_modules
 /public/page-cache
 /public/hot

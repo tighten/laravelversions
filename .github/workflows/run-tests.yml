@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies
       run: |
         composer install --prefer-source --no-interaction
-        npm install --legacy-peer-deps --no-audit
+        npm install --no-audit
 
     - name: Build Assets
       run: npm run build
