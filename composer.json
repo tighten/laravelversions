@@ -9,7 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.4",
-        "laravel/framework": "^13.0",
+        "laravel/framework": "^13.3",
         "laravel/tinker": "^3.0",
         "phlak/semver": "^4.1",
         "silber/page-cache": "^1.1",
