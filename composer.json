@@ -13,10 +13,10 @@
         "laravel/tinker": "^3.0",
         "phlak/semver": "^4.1",
         "silber/page-cache": "^1.1",
-        "spatie/laravel-ignition": "^2.11"
+        "spatie/laravel-ignition": "^2.12"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^4.0",
+        "barryvdh/laravel-debugbar": "^4.2",
         "fakerphp/faker": "^1.24.1",
         "laravel/sail": "^1.53",
         "mockery/mockery": "^1.6.12",
