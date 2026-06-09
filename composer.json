@@ -16,7 +16,7 @@
         "spatie/laravel-ignition": "^2.12"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^4.2",
+        "barryvdh/laravel-debugbar": "^4.3",
         "fakerphp/faker": "^1.24.1",
         "laravel/sail": "^1.53",
         "mockery/mockery": "^1.6.12",
