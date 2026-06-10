@@ -17,7 +17,7 @@ class SetLocale
         if ($locale) {
             App::setLocale($locale);
             session()->put('locale', $locale);
-            cookie()->queue(cookie('locale', $locale, 60 * 24 * 365));
+            cookie()->queue(cookie('locale', $locale, 60 * 24 * 365, secure: true, httpOnly: true));
         }
 
         return $next($request);
