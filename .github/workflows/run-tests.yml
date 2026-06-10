@@ -29,6 +29,9 @@ jobs:
         composer install --prefer-source --no-interaction
         npm install --no-audit
 
+    - name: Composer audit
+      run: composer audit
+
     - name: Build Assets
       run: npm run build
 

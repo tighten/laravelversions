@@ -12,8 +12,7 @@
         "laravel/framework": "^13.4",
         "laravel/tinker": "^3.0",
         "phlak/semver": "^4.1",
-        "silber/page-cache": "^1.1",
-        "spatie/laravel-ignition": "^2.12"
+        "silber/page-cache": "^1.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^4.2",
@@ -24,7 +23,9 @@
         "tightenco/duster": "^3.1",
         "laravel/pail": "^1.2.5",
         "pestphp/pest": "^4.0",
-        "pestphp/pest-plugin-laravel": "^4.1"
+        "pestphp/pest-plugin-laravel": "^4.1",
+        "roave/security-advisories": "dev-latest",
+        "spatie/laravel-ignition": "^2.12"
     },
     "config": {
         "optimize-autoloader": true,
