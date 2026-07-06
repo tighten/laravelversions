@@ -9,7 +9,7 @@ class LowestSupportedVersion
     public function __invoke($greaterThanVersion = null)
     {
         $query = LaravelVersion::where('ends_securityfixes_at', '>', now())
-            ->orderBy('major', 'asc');
+            ->orderBy('major');
 
         if ($greaterThanVersion) {
             $query->where('major', '>', $greaterThanVersion->major);

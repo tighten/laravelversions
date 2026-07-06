@@ -10,7 +10,7 @@ class LocalizedFallbackController extends Controller
 {
     public function __invoke(Request $request)
     {
-        if (Config::get('localized-routes.redirect_to_localized_urls')) {
+        if (config('localized-routes.redirect_to_localized_urls')) {
             $localizedUrl = Route::localizedUrl();
             $matched = Route::getRoutes()->match(Request::create($localizedUrl));
 

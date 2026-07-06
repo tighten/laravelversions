@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\LaravelVersion;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
@@ -142,9 +142,7 @@ class FetchLatestReleaseNumbers extends Command
 
                     $responseJson = $response->json();
 
-                    if (! $response->ok()) {
-                        abort($response->getStatusCode(), 'Error connecting to GitHub: ' . $responseJson['message']);
-                    }
+                    abort_unless($response->ok(), $response->getStatusCode(, 'Error connecting to GitHub: ' . $responseJson['message']));
 
                     $carry = $carry->merge(
                         collect(data_get($responseJson, "data.repository.{$key}.nodes"))

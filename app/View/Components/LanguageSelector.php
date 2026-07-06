@@ -16,10 +16,10 @@ class LanguageSelector extends Component
 
     public function __construct()
     {
-        $this->formatted_languages = collect(Config::get('localized-routes.supported_locales', []))->map(function ($lang) {
+        $this->formatted_languages = collect(config('localized-routes.supported_locales', []))->map(function ($lang) {
             return [
                 'language_name' => $lang,
-                'language_name_native' => Config::get("localized-routes.locales-name-native.{$lang}", Str::upper($lang)),
+                'language_name_native' => config("localized-routes.locales-name-native.{$lang}", Str::upper($lang)),
                 'language_url' => Route::localizedUrl($lang),
             ];
         });

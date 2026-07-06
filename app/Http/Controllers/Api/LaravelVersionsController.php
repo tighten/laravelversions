@@ -14,7 +14,7 @@ class LaravelVersionsController extends Controller
     {
         $versions = Cache::remember('laravel-versions--released', 3600, function () {
             return LaravelVersion::released()
-                ->orderBy('order', 'desc')
+                ->orderByDesc('order')
                 ->get();
         });
 
