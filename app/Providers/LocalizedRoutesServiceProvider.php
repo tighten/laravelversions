@@ -61,7 +61,7 @@ class LocalizedRoutesServiceProvider extends ServiceProvider
     protected function registerLocalizedMacro(): void
     {
         Route::macro('localized', function (Closure $closure) {
-            $locales = Config::get('localized-routes.supported_locales', []);
+            $locales = config('localized-routes.supported_locales', []);
             $currentLocale = App::getLocale();
 
             foreach ($locales as $locale) {
@@ -83,7 +83,7 @@ class LocalizedRoutesServiceProvider extends ServiceProvider
         Route::macro('localizedUrl', function (?string $locale = null, $parameters = null, bool $absolute = true) {
             $request = app(Request::class);
             $route = $request->route();
-            $supported = Config::get('localized-routes.supported_locales', []);
+            $supported = config('localized-routes.supported_locales', []);
 
             // Determine target locale
             $locale = $locale

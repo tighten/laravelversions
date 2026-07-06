@@ -25,7 +25,7 @@ class SetLocale
 
     protected function detect(Request $request): ?string
     {
-        $supported = Config::get('localized-routes.supported_locales', []);
+        $supported = config('localized-routes.supported_locales', []);
 
         // 1. Check route action (set by Route::localized())
         $route = $request->route();

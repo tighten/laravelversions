@@ -17,7 +17,7 @@ class LocalizedUrlGenerator extends BaseUrlGenerator
         }
 
         // Try prefixing with the current locale
-        $supported = Config::get('localized-routes.supported_locales', []);
+        $supported = config('localized-routes.supported_locales', []);
         $locale = App::getLocale();
 
         // Strip any existing locale prefix
