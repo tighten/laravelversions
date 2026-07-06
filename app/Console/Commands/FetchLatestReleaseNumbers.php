@@ -142,9 +142,7 @@ class FetchLatestReleaseNumbers extends Command
 
                     $responseJson = $response->json();
 
-                    if (! $response->ok()) {
-                        abort($response->getStatusCode(), 'Error connecting to GitHub: ' . $responseJson['message']);
-                    }
+                    abort_unless($response->ok(), $response->getStatusCode(, 'Error connecting to GitHub: ' . $responseJson['message']));
 
                     $carry = $carry->merge(
                         collect(data_get($responseJson, "data.repository.{$key}.nodes"))
