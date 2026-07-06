@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\LaravelVersion;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
