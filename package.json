@@ -19,6 +19,9 @@
         "vue-loader": "^17.0.1",
         "vue-template-compiler": "^2.6.12"
     },
+    "optionalDependencies": {
+        "@laravel/multiplex": "^0.4.1"
+    },
     "prettier": {
         "singleQuote": true,
         "trailingComma": "es5",
