@@ -15,7 +15,7 @@
         "silber/page-cache": "^1.1"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^4.2",
+        "barryvdh/laravel-debugbar": "^4.4",
         "fakerphp/faker": "^1.24.1",
         "laravel/sail": "^1.53",
         "mockery/mockery": "^1.6.12",
