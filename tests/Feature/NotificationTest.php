@@ -31,11 +31,13 @@ test('versions need notification if today is a fix end date', function () {
 
 it('handles null fix dates', function () {
     $null_security = LaravelVersion::factory()->create([
+        'ends_bugfixes_at' => now()->addYear(),
         'ends_securityfixes_at' => null,
     ]);
 
     $null_bug = LaravelVersion::factory()->create([
         'ends_bugfixes_at' => null,
+        'ends_securityfixes_at' => now()->addYears(2),
     ]);
 
     expect($null_security->needsNotification())->toBeFalse();

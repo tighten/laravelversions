@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Support\LocalizedUrlGenerator;
 use Closure;
 use Illuminate\Contracts\Routing\UrlGenerator as UrlGeneratorContract;
+use Illuminate\Contracts\Routing\UrlRoutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
@@ -108,7 +109,7 @@ class LocalizedRoutesServiceProvider extends ServiceProvider
 
                     // Resolve UrlRoutable models to their route keys
                     foreach ($routeParams as $key => $param) {
-                        if ($param instanceof \Illuminate\Contracts\Routing\UrlRoutable) {
+                        if ($param instanceof UrlRoutable) {
                             $bindingField = $route->bindingFieldFor($key);
                             $routeParams[$key] = $bindingField ? $param->$bindingField : $param->getRouteKey();
                         }
