@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +33,7 @@ class LanguageSelector extends Component
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\View\View|string
+     * @return View|string
      */
     public function render()
     {

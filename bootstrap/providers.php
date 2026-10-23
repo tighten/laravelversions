@@ -1,7 +1,11 @@
 <?php
 
+use App\Providers\AppServiceProvider;
+use App\Providers\LocalizedRoutesServiceProvider;
+use App\Providers\RouteServiceProvider;
+
 return [
-    App\Providers\AppServiceProvider::class,
-    App\Providers\LocalizedRoutesServiceProvider::class,
-    App\Providers\RouteServiceProvider::class,
+    AppServiceProvider::class,
+    LocalizedRoutesServiceProvider::class,
+    RouteServiceProvider::class,
 ];
